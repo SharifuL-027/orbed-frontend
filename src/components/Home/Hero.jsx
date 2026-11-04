@@ -37,16 +37,18 @@ const Hero = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden flex items-center">
       
-      {/* High Quality Background Image */}
-      <motion.div 
+      {/* Background Video */}
+      <motion.video 
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
-        style={{ 
-          
-          backgroundImage: `url('https://res.cloudinary.com/dsrs8hryx/image/upload/v1793703181/american-public-power-association-XGAZzyLzn18-unsplash_kjkzit.jpg')` 
-        }}
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        autoPlay
+        loop
+        muted
+        playsInline
+        // Niche apnar video er URL ba path boshiye din
+        src="/orbed.mp4" 
       />
 
       {/* Dark Overlay gradient for contrast */}

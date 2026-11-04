@@ -124,7 +124,7 @@ const ServicesParallax = () => {
               
               {/* Image */}
               <img 
-                src="https://images.unsplash.com/photo-1509391366360-1200236a282f?auto=format&fit=crop&q=80&w=1000" 
+                src="https://res.cloudinary.com/dsrs8hryx/image/upload/v1793776396/image.png_12178865_zwnc3o.jpg" 
                 alt="Solar Panel Setup" 
                 className="w-full h-full object-cover rounded-md border-4 border-[#22272d] opacity-90 hover:opacity-100 transition-opacity"
               />
