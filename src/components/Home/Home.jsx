@@ -3,6 +3,7 @@ import Hero from './Hero';
 import WorkFlow from './WorkFlow';
 import ServicesParallax from './ServicesParallax';
 import AboutPremium from './AboutPremium';
+import ClientLogos from './ClientLogos';
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <WorkFlow/>
       <ServicesParallax/>
       <AboutPremium/>
+      <ClientLogos/>
     </div>
   );
 };

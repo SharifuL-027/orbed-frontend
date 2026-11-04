@@ -55,14 +55,14 @@ const AboutPremium = () => {
               </h4>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 font-serif leading-tight">
+            <h2 className="text-4xl md:text-5xl dm-sans-bold text-gray-900 mb-8 font-serif leading-tight">
               Building a Cleaner, <br/>
               <span className="text-[#8ab645]">
                 Sustainable Future
               </span>
             </h2>
 
-            <div className="space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-600 sans-medium text-justify text-base md:text-lg leading-relaxed">
               <p>
                 At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
               </p>
@@ -74,10 +74,10 @@ const AboutPremium = () => {
             {/* Sub-section: Services Brief */}
             <div className="mt-12 p-8 bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl relative overflow-hidden group hover:border-green-100 transition-colors duration-500">
               <div className="absolute top-0 left-0 w-1 h-full bg-[#8ab645]" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+              <h3 className="text-xl dm-sans-bold text-gray-900 mb-3 flex items-center gap-2">
                 <FaCogs className="text-[#8ab645]" /> Core Services
               </h3>
-              <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+              <p className="text-gray-500 sans-medium text-sm md:text-base leading-relaxed">
                 Orbed Green Energy Ltd. is an EPC company that provides full support on engineering, procurement, and construction activities. Our competencies in O&M services ensure the longevity and high performance of your PV systems.
               </p>
             </div>
@@ -93,7 +93,7 @@ const AboutPremium = () => {
             variants={fadeUp}
             className="mb-10"
           >
-            <h3 className="text-3xl font-bold text-gray-900 font-serif relative inline-block">
+            <h3 className="text-3xl font-bold text-gray-900 dm-sans-bold relative inline-block">
               Why Choose Us?
               <div className="absolute -bottom-3 left-0 w-1/2 h-1 bg-[#8ab645] rounded-full" />
             </h3>
@@ -118,7 +118,7 @@ const AboutPremium = () => {
                   <div className="flex-shrink-0 w-14 h-14 rounded-full bg-green-50 flex items-center justify-center group-hover:bg-[#8ab645] transition-colors duration-500">
                     <Icon className="text-2xl text-[#8ab645] group-hover:text-white transition-colors duration-500" />
                   </div>
-                  <p className="text-gray-700 font-medium text-base leading-snug group-hover:text-gray-900 transition-colors duration-300">
+                  <p className="text-gray-700 sans-medium text-base leading-snug group-hover:text-gray-900 transition-colors duration-300">
                     {item.text}
                   </p>
                 </motion.div>

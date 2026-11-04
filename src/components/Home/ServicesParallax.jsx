@@ -152,10 +152,10 @@ const ServicesParallax = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center px-6 max-w-4xl"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 dm-sans-bold">
+          <h2 className="text-4xl md:text-6xl dm-sans-bold text-white mb-4 dm-sans-bold">
             Powering a Greener Tomorrow
           </h2>
-          <p className="text-lg md:text-xl text-gray-200">
+          <p className="text-lg md:text-xl sans-medium text-gray-200">
             Join the transition to clean energy with reliable, affordable, and high-quality renewable technology. {/*[cite: 9, 15] */}
           </p>
         </motion.div>
