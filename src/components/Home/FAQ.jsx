@@ -34,12 +34,12 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-24 px-8 bg-[#fafaf9] relative font-sans overflow-hidden">
+    <section className="py-24 px-8 bg-white relative font-sans overflow-hidden">
       
       {/* Background Subtle Gradient Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-[#8ab645]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-linear-to-b from-[#8ab645]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-[1000px] mx-auto relative z-10">
+      <div className="max-w-250 mx-auto relative z-10">
         
         {/* Centered Header Area */}
         <motion.div 
