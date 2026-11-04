@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from './Hero';
 import WorkFlow from './WorkFlow';
 import ServicesParallax from './ServicesParallax';
+import AboutPremium from './AboutPremium';
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Hero/>
       <WorkFlow/>
       <ServicesParallax/>
+      <AboutPremium/>
     </div>
   );
 };
