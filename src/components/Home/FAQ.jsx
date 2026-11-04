@@ -51,17 +51,17 @@ const FAQ = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[2px] bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-sm tracking-[0.2em] uppercase">
+            <h4 className="text-[#8ab645] dm-sans-bold text-sm tracking-[0.2em] uppercase">
               Any Questions?
             </h4>
             <div className="w-8 h-[2px] bg-[#8ab645]" />
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">
+          <h2 className="text-4xl md:text-5xl dm-sans-bold text-gray-900 mb-6 font-serif">
             Frequently Asked Questions
           </h2>
           
-          <p className="text-gray-500 text-lg leading-relaxed">
+          <p className="text-gray-500 text-lg sans-medium leading-relaxed">
             Find answers to common questions about our solar solutions, installation process, and maintenance services.
           </p>
         </motion.div>
@@ -89,7 +89,7 @@ const FAQ = () => {
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between p-6 md:px-8 md:py-6 text-left focus:outline-none group"
                 >
-                  <h3 className={`text-lg md:text-xl font-bold pr-8 transition-colors duration-300 ${
+                  <h3 className={`text-lg md:text-xl dm-sans-bold pr-8 transition-colors duration-300 ${
                     isActive ? 'text-[#8ab645]' : 'text-gray-800 group-hover:text-[#8ab645]'
                   }`}>
                     {faq.question}
@@ -118,7 +118,7 @@ const FAQ = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
-                      <div className="px-6 md:px-8 pb-8 pt-0 text-gray-600 leading-relaxed text-base md:text-lg">
+                      <div className="px-6 md:px-8 pb-8 pt-0 text-gray-600 sans-medium leading-relaxed text-base md:text-lg">
                         <div className="pt-2 border-t border-gray-50">
                           {faq.answer}
                         </div>
