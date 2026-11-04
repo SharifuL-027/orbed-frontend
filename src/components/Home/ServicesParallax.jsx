@@ -40,10 +40,6 @@ const ServicesParallax = () => {
   return (
     <section className="relative bg-[#171b20] w-full pt-24 pb-0 overflow-hidden font-sans">
       
-      {/* Background Abstract Typography/Pattern Placeholder */}
-      <div className="absolute top-0 left-10 text-[150px] font-bold text-white/[0.02] tracking-widest uppercase pointer-events-none select-none z-0">
-        WORK
-      </div>
 
       <div className="max-w-[1400px] mx-auto px-8 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
@@ -57,10 +53,10 @@ const ServicesParallax = () => {
               variants={fadeIn}
               className="mb-12"
             >
-              <span className="text-gray-400 text-xs font-bold tracking-widest uppercase mb-2 block">
+              <span className="text-gray-400 text-xs dm-sans-bold tracking-widest uppercase mb-2 block">
                 Services
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-4xl md:text-5xl dm-sans-bold text-white mb-6">
                 Benefits to Save Energy
               </h2>
             </motion.div>
@@ -84,12 +80,12 @@ const ServicesParallax = () => {
                     </span>
                   </div>
                   <div className="w-full md:w-2/5 pr-4 mb-2 md:mb-0">
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#8ab645] transition-colors">
+                    <h3 className="text-xl dm-sans-bold text-white group-hover:text-[#8ab645] transition-colors">
                       {service.title}
                     </h3>
                   </div>
                   <div className="w-full md:w-[35%] pr-4">
-                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
+                    <p className="text-gray-200 sans-medium text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
                       {service.desc}
                     </p>
                   </div>
@@ -142,11 +138,11 @@ const ServicesParallax = () => {
       <div 
         className="mt-32 w-full h-[60vh] md:h-[80vh] relative bg-fixed bg-center bg-cover bg-no-repeat flex items-center justify-center"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=2076')`
+          backgroundImage: `url('https://res.cloudinary.com/dsrs8hryx/image/upload/v1793703181/american-public-power-association-XGAZzyLzn18-unsplash_kjkzit.jpg')`
         }}
       >
         {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-0"></div>
+        <div className="absolute inset-0 bg-black/20 z-10"></div>
         
         {/* Parallax Content */}
         <motion.div 
@@ -156,7 +152,7 @@ const ServicesParallax = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center px-6 max-w-4xl"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-serif">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 dm-sans-bold">
             Powering a Greener Tomorrow
           </h2>
           <p className="text-lg md:text-xl text-gray-200">
