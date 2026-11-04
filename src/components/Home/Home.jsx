@@ -4,6 +4,7 @@ import WorkFlow from './WorkFlow';
 import ServicesParallax from './ServicesParallax';
 import AboutPremium from './AboutPremium';
 import ClientLogos from './ClientLogos';
+import FAQ from './FAQ';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <ServicesParallax/>
       <AboutPremium/>
       <ClientLogos/>
+      <FAQ/>
     </div>
   );
 };

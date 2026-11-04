@@ -32,7 +32,7 @@ const AboutPremium = () => {
   ];
 
   return (
-    <section className="py-24 px-8 bg-white relative overflow-hidden font-sans">
+    <section className="py-24 px-8 bg-white relative overflow-hidden">
       
       {/* Subtle Background Pattern / Accent */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50 -skew-x-12 transform origin-top pointer-events-none z-0" />
@@ -72,7 +72,7 @@ const AboutPremium = () => {
             </div>
 
             {/* Sub-section: Services Brief */}
-            <div className="mt-12 p-8 bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl relative overflow-hidden group hover:border-green-100 transition-colors duration-500">
+            <div className="mt-12 p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl relative overflow-hidden group hover:border-green-100 transition-colors duration-500">
               <div className="absolute top-0 left-0 w-1 h-full bg-[#8ab645]" />
               <h3 className="text-xl dm-sans-bold text-gray-900 mb-3 flex items-center gap-2">
                 <FaCogs className="text-[#8ab645]" /> Core Services
