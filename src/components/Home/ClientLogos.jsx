@@ -36,7 +36,7 @@ const ClientLogos = () => {
   const duplicatedClients = [...clientsData, ...clientsData];
 
   return (
-    <section className="py-20 bg-white overflow-hidden border-t border-gray-100 font-sans">
+    <section className="py-20 bg-white overflow-hidden">
       
       {/* Title Area */}
       <div className="max-w-350 mx-auto px-8 mb-12 text-center">

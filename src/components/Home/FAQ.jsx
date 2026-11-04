@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPlus, FiMinus, FiMail } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 
 const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(0); // Prothom FAQ ta open thakbe
+  const [activeIndex, setActiveIndex] = useState(0); // Prothom ti open thakbe
 
-  // FAQ Data (Orbed er context onujayi)
+  // Orbed er data onujayi FAQ
   const faqData = [
     {
       question: "What type of solar solutions do you provide?",
@@ -34,97 +34,118 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-24 px-8 bg-gray-50 relative font-sans">
-      <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16">
+    <section className="py-24 px-8 bg-[#fafaf9] relative font-sans overflow-hidden">
+      
+      {/* Background Subtle Gradient Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-[#8ab645]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-[1000px] mx-auto relative z-10">
         
-        {/* Left Side: Heading & Contact Info */}
-        <div className="w-full lg:w-1/3 lg:sticky lg:top-32 h-fit">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-[2px] bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-sm tracking-widest uppercase">
-              F.A.Q
+        {/* Centered Header Area */}
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-[2px] bg-[#8ab645]" />
+            <h4 className="text-[#8ab645] font-bold text-sm tracking-[0.2em] uppercase">
+              Any Questions?
             </h4>
+            <div className="w-8 h-[2px] bg-[#8ab645]" />
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-serif leading-tight">
-            Frequently <br /> Asked Questions
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">
+            Frequently Asked Questions
           </h2>
           
-          <p className="text-gray-500 mb-10 leading-relaxed">
+          <p className="text-gray-500 text-lg leading-relaxed">
             Find answers to common questions about our solar solutions, installation process, and maintenance services.
           </p>
+        </motion.div>
 
-          {/* Contact Support Box */}
-          <div className="bg-white p-8 rounded-2xl shadow-[0_10px_40px_rgb(0,0,0,0.03)] border border-gray-100">
-            <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mb-4">
-              <FiMail className="text-[#8ab645] text-xl" />
-            </div>
-            <h4 className="text-xl font-bold text-gray-900 mb-2">Still have questions?</h4>
-            <p className="text-gray-500 text-sm mb-6">
-              Can't find the answer you're looking for? Please chat with our friendly team.
-            </p>
-            <button className="w-full py-3 px-6 bg-[#8ab645] hover:bg-[#7ebd34] text-white font-bold rounded-lg transition-colors duration-300">
-              Contact Us
-            </button>
-          </div>
-        </div>
+        {/* Centered Accordion List */}
+        <div className="flex flex-col gap-4">
+          {faqData.map((faq, index) => {
+            const isActive = activeIndex === index;
 
-        {/* Right Side: Accordion */}
-        <div className="w-full lg:w-2/3">
-          <div className="flex flex-col gap-4">
-            {faqData.map((faq, index) => {
-              const isActive = activeIndex === index;
-
-              return (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`border ${isActive ? 'border-[#8ab645] bg-white shadow-md' : 'border-gray-200 bg-white hover:border-gray-300'} rounded-2xl overflow-hidden transition-all duration-300`}
+            return (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className={`bg-white rounded-2xl transition-all duration-500 ${
+                  isActive 
+                    ? 'shadow-[0_15px_40px_rgb(0,0,0,0.06)] border border-[#8ab645]/30' 
+                    : 'shadow-sm border border-gray-100 hover:shadow-[0_8px_25px_rgb(0,0,0,0.04)] hover:border-gray-200'
+                }`}
+              >
+                {/* Question Header */}
+                <button 
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex items-center justify-between p-6 md:px-8 md:py-6 text-left focus:outline-none group"
                 >
-                  {/* Question Header */}
-                  <button 
-                    onClick={() => toggleFAQ(index)}
-                    className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none group"
+                  <h3 className={`text-lg md:text-xl font-bold pr-8 transition-colors duration-300 ${
+                    isActive ? 'text-[#8ab645]' : 'text-gray-800 group-hover:text-[#8ab645]'
+                  }`}>
+                    {faq.question}
+                  </h3>
+                  
+                  {/* Chevron Icon with Rotation */}
+                  <motion.div 
+                    animate={{ rotate: isActive ? -180 : 0 }}
+                    transition={{ duration: 0.4, ease: [0.2, 0.65, 0.3, 0.9] }}
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                      isActive 
+                        ? 'bg-[#8ab645] text-white' 
+                        : 'bg-gray-50 text-gray-400 group-hover:bg-green-50 group-hover:text-[#8ab645]'
+                    }`}
                   >
-                    <h3 className={`text-lg md:text-xl font-bold pr-8 transition-colors duration-300 ${isActive ? 'text-[#8ab645]' : 'text-gray-900 group-hover:text-[#8ab645]'}`}>
-                      {faq.question}
-                    </h3>
-                    
-                    {/* Animated Plus/Minus Icon */}
-                    <motion.div 
-                      animate={{ rotate: isActive ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${isActive ? 'bg-[#8ab645] text-white' : 'bg-gray-100 text-gray-500 group-hover:bg-green-50 group-hover:text-[#8ab645]'}`}
-                    >
-                      {isActive ? <FiMinus size={20} /> : <FiPlus size={20} />}
-                    </motion.div>
-                  </button>
+                    <FiChevronDown size={22} />
+                  </motion.div>
+                </button>
 
-                  {/* Answer Body with Smooth Height Animation */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-                      >
-                        <div className="px-6 md:px-8 pb-8 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
-                          <div className="pt-4">
-                            {faq.answer}
-                          </div>
+                {/* Answer Body */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    >
+                      <div className="px-6 md:px-8 pb-8 pt-0 text-gray-600 leading-relaxed text-base md:text-lg">
+                        <div className="pt-2 border-t border-gray-50">
+                          {faq.answer}
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Bottom Contact Prompt */}
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <p className="text-gray-500">
+            Can't find what you're looking for?{' '}
+            <a href="/contact" className="text-[#8ab645] font-bold hover:underline underline-offset-4 transition-all">
+              Contact our support team
+            </a>
+          </p>
+        </motion.div>
 
       </div>
     </section>
