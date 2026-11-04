@@ -18,11 +18,11 @@ const AboutPremium = () => {
   };
 
   const cardVariant = {
-    hidden: { opacity: 0, x: 30 },
+    hidden: { opacity: 0, x: 20 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
-  // Features Data from your content
+  // Features Data
   const features = [
     { icon: FaSolarPanel, text: "Powering businesses with expert solar solutions" },
     { icon: FaShieldAlt, text: "High-quality components and industry-leading warranties" },
@@ -32,11 +32,11 @@ const AboutPremium = () => {
   ];
 
   return (
-    <section className="py-24 px-8 bg-[#0a0f16] relative overflow-hidden font-sans">
+    <section className="py-24 px-8 bg-white relative overflow-hidden font-sans">
       
-      {/* Background Glow Effect */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#8ab645] rounded-full blur-[150px] opacity-10 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-900 rounded-full blur-[150px] opacity-10 pointer-events-none" />
+      {/* Subtle Background Pattern / Accent */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50 -skew-x-12 transform origin-top pointer-events-none z-0" />
+      <div className="absolute -left-40 top-40 w-96 h-96 bg-green-50 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="max-w-[1400px] mx-auto relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
         
@@ -48,21 +48,21 @@ const AboutPremium = () => {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeUp}
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[2px] bg-[#8ab645]" />
               <h4 className="text-[#8ab645] font-bold text-sm tracking-widest uppercase">
-                About Orbed Green Energy Limited
+                About Orbed Green Energy
               </h4>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 font-serif leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 font-serif leading-tight">
               Building a Cleaner, <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8ab645] to-green-400">
+              <span className="text-[#8ab645]">
                 Sustainable Future
               </span>
             </h2>
 
-            <div className="space-y-6 text-gray-400 text-base md:text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
               <p>
                 At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
               </p>
@@ -72,11 +72,12 @@ const AboutPremium = () => {
             </div>
 
             {/* Sub-section: Services Brief */}
-            <div className="mt-10 p-6 bg-white/[0.03] border border-white/10 rounded-lg backdrop-blur-sm hover:border-[#8ab645]/50 transition-colors duration-500">
-              <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+            <div className="mt-12 p-8 bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl relative overflow-hidden group hover:border-green-100 transition-colors duration-500">
+              <div className="absolute top-0 left-0 w-1 h-full bg-[#8ab645]" />
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
                 <FaCogs className="text-[#8ab645]" /> Core Services
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-500 text-sm md:text-base leading-relaxed">
                 Orbed Green Energy Ltd. is an EPC company that provides full support on engineering, procurement, and construction activities. Our competencies in O&M services ensure the longevity and high performance of your PV systems.
               </p>
             </div>
@@ -90,13 +91,16 @@ const AboutPremium = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeUp}
-            className="mb-8"
+            className="mb-10"
           >
-            <h3 className="text-3xl font-bold text-white font-serif">Why Choose Us?</h3>
+            <h3 className="text-3xl font-bold text-gray-900 font-serif relative inline-block">
+              Why Choose Us?
+              <div className="absolute -bottom-3 left-0 w-1/2 h-1 bg-[#8ab645] rounded-full" />
+            </h3>
           </motion.div>
 
           <motion.div 
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -108,13 +112,13 @@ const AboutPremium = () => {
                 <motion.div 
                   key={index}
                   variants={cardVariant}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  className="flex items-center gap-5 p-5 rounded-xl bg-gradient-to-r from-white/[0.05] to-transparent border border-white/[0.05] hover:border-[#8ab645]/40 hover:bg-white/[0.08] transition-all duration-300 cursor-default group"
+                  whileHover={{ scale: 1.02, x: 8 }}
+                  className="flex items-center gap-6 p-5 rounded-2xl bg-white border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgb(138,182,69,0.1)] hover:border-green-100 transition-all duration-300 cursor-default group"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-black/40 border border-white/10 flex items-center justify-center group-hover:border-[#8ab645] group-hover:bg-[#8ab645]/10 transition-colors duration-300">
-                    <Icon className="text-xl text-gray-400 group-hover:text-[#8ab645] transition-colors duration-300" />
+                  <div className="flex-shrink-0 w-14 h-14 rounded-full bg-green-50 flex items-center justify-center group-hover:bg-[#8ab645] transition-colors duration-500">
+                    <Icon className="text-2xl text-[#8ab645] group-hover:text-white transition-colors duration-500" />
                   </div>
-                  <p className="text-gray-300 font-medium text-sm md:text-base leading-snug group-hover:text-white transition-colors duration-300">
+                  <p className="text-gray-700 font-medium text-base leading-snug group-hover:text-gray-900 transition-colors duration-300">
                     {item.text}
                   </p>
                 </motion.div>
