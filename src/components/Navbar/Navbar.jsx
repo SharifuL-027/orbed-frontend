@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaSearch, FaShoppingBag } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaSearch, FaUser} from 'react-icons/fa';
 
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -115,14 +115,11 @@ const Navbar = () => {
             <FaSearch size={16} />
           </button>
           
-          <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="relative">
-              <FaShoppingBag size={20} className="group-hover:text-green-500 transition-colors" />
-              <span className="absolute -top-2 -right-2 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-            </div>
-            <span className="font-bold text-sm">$0.00</span>
-          </div>
-
+          <Link to="/login" className="flex items-center gap-2 cursor-pointer group">
+  <div className="relative p-2.5 bg-gray-100 group-hover:bg-green-50 rounded-full transition-colors">
+    <FaUser size={18} className="text-gray-700 group-hover:text-green-500 transition-colors" />
+  </div>
+</Link>
           <button className="bg-[#8cc63f] hover:bg-[#7ebd34] text-white font-bold py-3 px-6 rounded-sm text-sm transition-all">
             GET APPOINTMENT
           </button>
