@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { FaBullseye, FaEye, FaLeaf, FaShieldAlt, FaLightbulb, FaUsers } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
@@ -101,63 +100,116 @@ const AboutUs = () => {
       </section>
 
       {/* --- Section 1: The Orbed Story --- */}
-      <section className="py-24 lg:py-32 px-8 relative bg-[#fafaf9]">
-        <div className="max-w-350 mx-auto">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
-            
-            {/* Image Setup */}
-            <div className="w-full lg:w-1/2 relative">
-              <motion.div 
-                variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.1)] aspect-4/5 md:aspect-3/2 lg:aspect-[4/5]"
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=1200" 
-                  alt="Orbed Solar Plant" 
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-              
-              {/* Floating Vision 2030 Badge */}
-              <motion.div 
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="absolute -bottom-10 -right-4 md:-right-10 bg-white p-6 md:p-8 rounded-2xl shadow-[0_15px_40px_rgb(0,0,0,0.08)] border border-gray-100 max-w-[280px]"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center shrink-0">
-                    <BsLightningChargeFill className="text-[#8ab645] text-xl" />
-                  </div>
-                  <h3 className="text-gray-900 font-bold text-2xl">10,000<span className="text-[#8ab645]">MW</span></h3>
-                </div>
-                <p className="text-gray-500 text-sm leading-relaxed font-medium">
-                  Aligned with Bangladesh Government's Renewable Energy Vision 2030.
-                </p>
-              </motion.div>
-            </div>
+<section className="py-24 lg:py-32 px-8 relative bg-white overflow-hidden">
+  <div className="max-w-7xl mx-auto">
+    <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
+      
+      {/* Left Side: Overlapping Images & Floating Vision 2030 Badge */}
+      <div className="w-full lg:w-1/2 relative">
+        <div className="relative mx-auto max-w-lg lg:max-w-none">
+          
+          {/* Main Large Image */}
+          <motion.div 
+            variants={fadeLeft} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }}
+            className="rounded-3xl overflow-hidden shadow-2xl w-4/5 aspect-[4/4]"
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=1000" 
+              alt="Orbed Solar Plant" 
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
 
-            {/* Text Content */}
-            <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
-              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8 font-serif leading-tight">
-                  About Orbed Green Energy Limited
-                </h2>
-                <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
-                  <p>
-                    At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
-                  </p>
-                  <p>
-                    We are helping our clients to build an efficient solar system with our solar skills in Bangladesh. Our team brings together expertise in engineering, energy management, and project delivery, ensuring every system we install performs efficiently and reliably for years.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+          {/* Overlapping Smaller Image (Bottom Right) */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="absolute -bottom-8 right-0 sm:right-6 w-3/5 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=800" 
+              alt="Solar Setup" 
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
 
-          </div>
+          {/* Floating Vision 2030 Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="absolute top-10 -left-6 md:-left-10 bg-white p-4 md:p-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 max-w-[220px]"
+          >
+            <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center shrink-0">
+              <BsLightningChargeFill className="text-[#8ab645] text-lg" />
+            </div>
+            <div>
+              <h4 className="text-gray-900 font-bold text-lg leading-tight">10,000<span className="text-[#8ab645]">MW</span></h4>
+              <p className="text-gray-400 text-xs font-medium">Vision 2030 Target</p>
+            </div>
+          </motion.div>
+
         </div>
-      </section>
+      </div>
+
+      {/* Right Side: Text Content & Features */}
+      <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+          
+          {/* Subtitle */}
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#8ab645]"></span>
+            <span className="text-[#8ab645] font-bold text-xs uppercase tracking-widest">ABOUT US</span>
+          </div>
+
+          {/* Main Heading */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-serif leading-tight">
+            About Orbed Green Energy Limited
+          </h2>
+
+          {/* Paragraphs */}
+          <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed mb-8">
+            <p>
+              At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
+            </p>
+            <p>
+              We are helping our clients to build an efficient solar system with our solar skills in Bangladesh. Our team brings together expertise in engineering, energy management, and project delivery, ensuring every system we install performs efficiently and reliably.
+            </p>
+          </div>
+
+          {/* Bullet Feature Grid (Matching Reference Style) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+            {[
+              "Solar Inverter Setup",
+              "Battery Storage Solutions",
+              "Solar Material Financing",
+              "24 X 7 Call & Chat Support",
+              "Proven Track Record",
+              "Customer-Centric Approach"
+            ].map((item, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                  <svg className="w-3 h-3 text-[#8ab645]" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span className="text-gray-800 font-semibold text-sm">{item}</span>
+              </div>
+            ))}
+          </div>
+
+        </motion.div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* --- Section 2: How Green Energy Works (Staircase Siri Design + BG support) [cite: 10] --- */}
       <section className="py-24 lg:py-32 px-6 lg:px-8 bg-white relative overflow-hidden">
