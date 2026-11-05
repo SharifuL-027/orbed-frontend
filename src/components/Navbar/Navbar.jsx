@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaLinkedinIn, FaSearch, FaShoppingBag } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6'; // Twitter X logo
+import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaSearch, FaShoppingBag } from 'react-icons/fa';
 
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -52,19 +51,18 @@ const Navbar = () => {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <FaPhoneAlt size={12} />
-            <span>Call : 123456789</span>
+            <span>Call : 01805-523132</span>
           </div>
           <div className="w-[1px] h-4 bg-white/20" /> {/* Vertical divider[cite: 8] */}
           <div className="flex items-center gap-2">
             <FaEnvelope size={12} />
-            <span>mail@example.com</span>
+            <span>info@orbedenergy.com</span>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <a href="#" className="hover:text-green-500 transition-colors"><FaFacebookF size={14} /></a>
-          <a href="#" className="hover:text-green-500 transition-colors"><FaXTwitter size={14} /></a>
-          <a href="#" className="hover:text-green-500 transition-colors"><FaLinkedinIn size={14} /></a>
-        </div>
+  <a href="#" className="hover:text-green-500 transition-colors"><FaFacebookF size={14} /></a>
+  <a href="#" className="hover:text-green-500 transition-colors"><FaInstagram size={14} /></a>
+</div>
       </div>
 
       {/* Main Navbar[cite: 8] */}
@@ -97,14 +95,14 @@ const Navbar = () => {
                 {isActive && (
                   <motion.div
                     layoutId="navbar-underline"
-                    className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-500"
+                    className="absolute left-0 -bottom-1 w-full h-0.5 bg-green-500"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
 
                 {/* Hover Underline (Sudhu jokhun active thakbe na) */}
                 {!isActive && (
-                  <div className="absolute left-0 -bottom-1 w-0 h-[2px] bg-green-500 transition-all duration-300 group-hover:w-full" />
+                  <div className="absolute left-0 -bottom-1 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full" />
                 )}
               </li>
             );
