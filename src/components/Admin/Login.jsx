@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../api/axios'; // Apnar banano axios instance
+import axiosInstance from '../../api/axiosInstance'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
