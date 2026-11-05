@@ -63,41 +63,47 @@ const AboutUs = () => {
   return (
     <div className="w-full bg-white font-sans overflow-hidden">
       
-      {/* --- Special Hero Section --- */}
-      <section className="relative w-full h-[70vh] flex items-center justify-center">
-        <motion.div 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/80 z-10" />
-        
-        <div className="relative z-20 text-center max-w-5xl mx-auto px-6 mt-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center justify-center gap-3 mb-6"
-          >
-            <div className="w-12 h-[2px] bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-sm tracking-[0.2em] uppercase">
-              Who We Are
-            </h4>
-            <div className="w-12 h-[2px] bg-[#8ab645]" />
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold text-white font-serif leading-[1.1] mb-6"
-          >
-            Delivering solar solutions <br className="hidden md:block"/> to drive <span className="text-[#8ab645]">energy independence.</span>
-          </motion.h1>
-        </div>
-      </section>
+      {/* --- Special Hero Section with Smooth Parallax --- */}
+<section className="relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
+  
+  {/* Absolute Parallax Background Layer */}
+  <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+    <div 
+      className="absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center transform scale-105"
+      style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
+    />
+  </div>
+  
+  {/* Dark Gradient Overlay for Contrast */}
+  <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90 z-10" />
+  
+  {/* Content (Soto and Clean Heading) */}
+  <div className="relative z-20 text-center max-w-3xl mx-auto px-6 mt-16">
+    
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
+      className="flex items-center justify-center gap-3 mb-4"
+    >
+      <div className="w-8 h-[2px] bg-[#8ab645]" />
+      <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
+        Who We Are
+      </h4>
+      <div className="w-8 h-[2/5] bg-[#8ab645]" />
+    </motion.div>
+    
+    <motion.h1 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4, duration: 0.8 }}
+      className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif leading-[1.2]"
+    >
+      Driving <span className="text-[#8ab645]">Energy Independence</span> Through Advanced Solar Solutions
+    </motion.h1>
+
+  </div>
+</section>
 
       {/* --- Section 1: The Orbed Story --- */}
 <section className="py-24 lg:py-32 px-8 relative bg-white overflow-hidden">
