@@ -1,18 +1,9 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { FaBullseye, FaEye, FaLeaf, FaShieldAlt, FaLightbulb, FaUsers } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
 
 const AboutUs = () => {
-  // Parallax Setup for Hero Section
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-  
-  // Scrolls the background image slightly down as user scrolls down
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   // Animations
   const fadeUp = {
@@ -62,7 +53,6 @@ const AboutUs = () => {
     }
   ];
 
-  // Core Values Data
   const coreValues = [
     { icon: FaShieldAlt, title: "Integrity", desc: "Honest communication, transparent business practices, and reliable commitments." },
     { icon: FaBullseye, title: "Quality", desc: "Delivering high-quality products, dependable solutions, and professional service." },
@@ -72,27 +62,24 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="w-full bg-white font-sans overflow-hidden">
+    // Main container theke bg-white r overflow-hidden soriye deya hoyeche jate fixed bg kaj kore
+    <div className="w-full font-sans">
       
-      {/* --- Special Hero Section with Smooth Parallax --- */}
-      <section ref={heroRef} className="relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
+      {/* --- Special Hero Section with 100% PERFECT FIXED Parallax --- */}
+      <section className="relative w-full h-[70vh] flex items-center justify-center">
         
-        {/* Absolute Parallax Background Layer using Framer Motion */}
-        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-          <motion.div 
-            style={{ 
-              y: backgroundY, 
-              backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')`
-            }}
-            className="absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center"
+        {/* 100% Still Fixed Background Layer */}
+        <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
           />
+          {/* Dark Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
         
-        {/* Dark Gradient Overlay for Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90 z-10" />
-        
-        {/* Content (Soto and Clean Heading) */}
-        <div className="relative z-20 text-center max-w-3xl mx-auto px-6 mt-16">
+        {/* Hero Content */}
+        <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,15 +105,15 @@ const AboutUs = () => {
       </section>
 
       {/* --- Section 1: The Orbed Story --- */}
-      <section className="py-24 lg:py-32 px-8 relative bg-white overflow-hidden">
+      {/* Ekhane relative, z-10 ebong shadow deya hoyeche jate eta hero er upor diye slide kore */}
+      <section className="py-24 lg:py-32 px-8 relative z-10 bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
             
-            {/* Left Side: Overlapping Images & Floating Vision 2030 Badge */}
+            {/* Left Side: Overlapping Images */}
             <div className="w-full lg:w-1/2 relative">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 
-                {/* Main Large Image */}
                 <motion.div 
                   variants={fadeLeft} 
                   initial="hidden" 
@@ -141,7 +128,6 @@ const AboutUs = () => {
                   />
                 </motion.div>
 
-                {/* Overlapping Smaller Image (Bottom Right) */}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -156,7 +142,6 @@ const AboutUs = () => {
                   />
                 </motion.div>
 
-                {/* Floating Vision 2030 Badge */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -176,22 +161,19 @@ const AboutUs = () => {
               </div>
             </div>
 
-            {/* Right Side: Text Content & Features */}
+            {/* Right Side: Text Content */}
             <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
               <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 
-                {/* Subtitle */}
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-2 h-2 rounded-full bg-[#8ab645]"></span>
                   <span className="text-[#8ab645] font-bold text-xs uppercase tracking-widest">ABOUT US</span>
                 </div>
 
-                {/* Main Heading */}
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-serif leading-tight">
                   About Orbed Green Energy Limited
                 </h2>
 
-                {/* Paragraphs */}
                 <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed mb-8">
                   <p>
                     At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
@@ -201,7 +183,6 @@ const AboutUs = () => {
                   </p>
                 </div>
 
-                {/* Bullet Feature Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
                   {[
                     "Solar Inverter Setup",
@@ -230,7 +211,7 @@ const AboutUs = () => {
       </section>
 
       {/* --- Section 2: How Green Energy Works --- */}
-      <section className="py-24 lg:py-32 px-6 lg:px-8 bg-white relative overflow-hidden">
+      <section className="py-24 lg:py-32 px-6 lg:px-8 bg-white relative z-10 overflow-hidden">
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <img 
             src="https://res.cloudinary.com/dsrs8hryx/image/upload/v1793797837/Gemini_Generated_Image_sj292gsj292gsj29_mbdzri.jpg" 
@@ -309,13 +290,13 @@ const AboutUs = () => {
       </section>
 
       {/* --- Section 3: Mission & Vision --- */}
-      <section className="py-24 lg:py-32 px-8 bg-[#fafaf9] border-t border-gray-100 relative z-10">
+      <section className="py-24 lg:py-32 px-8 bg-white border-t border-gray-100 relative z-10">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             
             <motion.div 
               variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="bg-white p-10 lg:p-16 rounded-[2.5rem] border border-gray-100 relative overflow-hidden group hover:border-[#8ab645]/30 hover:shadow-[0_15px_40px_rgb(0,0,0,0.03)] transition-all duration-500"
+              className="bg-[#fafaf9] p-10 lg:p-16 rounded-[2.5rem] border border-gray-100 relative overflow-hidden group hover:border-[#8ab645]/30 hover:shadow-[0_15px_40px_rgb(0,0,0,0.03)] transition-all duration-500"
             >
               <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-8">
                 <FaBullseye className="text-3xl text-[#8ab645]" />
@@ -328,7 +309,7 @@ const AboutUs = () => {
 
             <motion.div 
               variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
-              className="bg-white p-10 lg:p-16 rounded-[2.5rem] border border-gray-100 relative overflow-hidden group hover:border-[#8ab645]/30 hover:shadow-[0_15px_40px_rgb(0,0,0,0.03)] transition-all duration-500"
+              className="bg-[#fafaf9] p-10 lg:p-16 rounded-[2.5rem] border border-gray-100 relative overflow-hidden group hover:border-[#8ab645]/30 hover:shadow-[0_15px_40px_rgb(0,0,0,0.03)] transition-all duration-500"
             >
               <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-8">
                 <FaEye className="text-3xl text-[#8ab645]" />
