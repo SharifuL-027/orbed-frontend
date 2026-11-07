@@ -170,7 +170,7 @@ const AboutUs = () => {
                   <span className="text-[#8ab645] font-bold text-xs uppercase tracking-widest">ABOUT US</span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-serif leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl dm-sans-bold text-gray-900 mb-6 font-serif leading-tight">
                   About Orbed Green Energy Limited
                 </h2>
 
@@ -220,7 +220,7 @@ const AboutUs = () => {
           />
         </div>
 
-        <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="max-w-350 mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-16 lg:mb-12">
             <div className="lg:w-3/5">
               <motion.h4 
