@@ -1,8 +1,19 @@
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaBullseye, FaEye, FaLeaf, FaShieldAlt, FaLightbulb, FaUsers } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
 
 const AboutUs = () => {
+  // Parallax Setup for Hero Section
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  // Scrolls the background image slightly down as user scrolls down
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   // Animations
   const fadeUp = {
     hidden: { opacity: 0, y: 50 },
@@ -19,35 +30,35 @@ const AboutUs = () => {
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
 
-  // Staircase/Siri Design Steps based on the process image [cite: 10]
+  // Staircase/Siri Design Steps
   const processData = [
     {
       num: "01",
       title: "Energy Assessment",
       desc: "We analyze energy consumption patterns and identify sustainable optimization opportunities.",
       img: "https://images.unsplash.com/photo-1724041875334-0a6397111c7e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
-      mt: "lg:mt-0" // Step 1: Normal top starting
+      mt: "lg:mt-0" 
     },
     {
       num: "02",
       title: "System Engineering",
       desc: "By evaluating your property's energy usage, roof capacity, and power requirements.",
       img: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80&w=600",
-      mt: "lg:mt-16" // Step 2: Moderately dropped
+      mt: "lg:mt-16" 
     },
     {
       num: "03",
       title: "Smart Installation",
       desc: "We analyze your energy consumption patterns to identify the most effective opportunities for sustainable..",
       img: "https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=600",
-      mt: "lg:mt-32" // Step 3: Deeply dropped
+      mt: "lg:mt-32" 
     },
     {
       num: "04",
       title: "Optimization",
       desc: "We analyze energy consumption patterns and identify sustainable optimization opportunities.",
       img: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80&w=600",
-      mt: "lg:mt-48" // Step 4: Full dropped bottom
+      mt: "lg:mt-48" 
     }
   ];
 
@@ -64,176 +75,171 @@ const AboutUs = () => {
     <div className="w-full bg-white font-sans overflow-hidden">
       
       {/* --- Special Hero Section with Smooth Parallax --- */}
-<section className="relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
-  
-  {/* Absolute Parallax Background Layer */}
-  <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-    <div 
-      className="absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center transform scale-105"
-      style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
-    />
-  </div>
-  
-  {/* Dark Gradient Overlay for Contrast */}
-  <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90 z-10" />
-  
-  {/* Content (Soto and Clean Heading) */}
-  <div className="relative z-20 text-center max-w-3xl mx-auto px-6 mt-16">
-    
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2, duration: 0.8 }}
-      className="flex items-center justify-center gap-3 mb-4"
-    >
-      <div className="w-8 h-[2px] bg-[#8ab645]" />
-      <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
-        Who We Are
-      </h4>
-      <div className="w-8 h-[2/5] bg-[#8ab645]" />
-    </motion.div>
-    
-    <motion.h1 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.4, duration: 0.8 }}
-      className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif leading-[1.2]"
-    >
-      Driving <span className="text-[#8ab645]">Energy Independence</span> Through Advanced Solar Solutions
-    </motion.h1>
-
-  </div>
-</section>
-
-      {/* --- Section 1: The Orbed Story --- */}
-<section className="py-24 lg:py-32 px-8 relative bg-white overflow-hidden">
-  <div className="max-w-7xl mx-auto">
-    <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
-      
-      {/* Left Side: Overlapping Images & Floating Vision 2030 Badge */}
-      <div className="w-full lg:w-1/2 relative">
-        <div className="relative mx-auto max-w-lg lg:max-w-none">
-          
-          {/* Main Large Image */}
+      <section ref={heroRef} className="relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
+        
+        {/* Absolute Parallax Background Layer using Framer Motion */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <motion.div 
-            variants={fadeLeft} 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true }}
-            className="rounded-3xl overflow-hidden shadow-2xl w-4/5 aspect-[4/4]"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=1000" 
-              alt="Orbed Solar Plant" 
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-
-          {/* Overlapping Smaller Image (Bottom Right) */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="absolute -bottom-8 right-0 sm:right-6 w-3/5 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=800" 
-              alt="Solar Setup" 
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-
-          {/* Floating Vision 2030 Badge */}
+            style={{ 
+              y: backgroundY, 
+              backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')`
+            }}
+            className="absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center"
+          />
+        </div>
+        
+        {/* Dark Gradient Overlay for Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90 z-10" />
+        
+        {/* Content (Soto and Clean Heading) */}
+        <div className="relative z-20 text-center max-w-3xl mx-auto px-6 mt-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute top-10 -left-6 md:-left-10 bg-white p-4 md:p-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 max-w-[220px]"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="flex items-center justify-center gap-3 mb-4"
           >
-            <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center shrink-0">
-              <BsLightningChargeFill className="text-[#8ab645] text-lg" />
-            </div>
-            <div>
-              <h4 className="text-gray-900 font-bold text-lg leading-tight">10,000<span className="text-[#8ab645]">MW</span></h4>
-              <p className="text-gray-400 text-xs font-medium">Vision 2030 Target</p>
-            </div>
+            <div className="w-8 h-[2px] bg-[#8ab645]" />
+            <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
+              Who We Are
+            </h4>
+            <div className="w-8 h-[2px] bg-[#8ab645]" />
           </motion.div>
-
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif leading-[1.2]"
+          >
+            Driving <span className="text-[#8ab645]">Energy Independence</span> Through Advanced Solar Solutions
+          </motion.h1>
         </div>
-      </div>
+      </section>
 
-      {/* Right Side: Text Content & Features */}
-      <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          
-          {/* Subtitle */}
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#8ab645]"></span>
-            <span className="text-[#8ab645] font-bold text-xs uppercase tracking-widest">ABOUT US</span>
-          </div>
+      {/* --- Section 1: The Orbed Story --- */}
+      <section className="py-24 lg:py-32 px-8 relative bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
+            
+            {/* Left Side: Overlapping Images & Floating Vision 2030 Badge */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="relative mx-auto max-w-lg lg:max-w-none">
+                
+                {/* Main Large Image */}
+                <motion.div 
+                  variants={fadeLeft} 
+                  initial="hidden" 
+                  whileInView="visible" 
+                  viewport={{ once: true }}
+                  className="rounded-3xl overflow-hidden shadow-2xl w-4/5 aspect-[4/4]"
+                >
+                  <img 
+                    src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=1000" 
+                    alt="Orbed Solar Plant" 
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
 
-          {/* Main Heading */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-serif leading-tight">
-            About Orbed Green Energy Limited
-          </h2>
+                {/* Overlapping Smaller Image (Bottom Right) */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="absolute -bottom-8 right-0 sm:right-6 w-3/5 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+                >
+                  <img 
+                    src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=800" 
+                    alt="Solar Setup" 
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
 
-          {/* Paragraphs */}
-          <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed mb-8">
-            <p>
-              At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
-            </p>
-            <p>
-              We are helping our clients to build an efficient solar system with our solar skills in Bangladesh. Our team brings together expertise in engineering, energy management, and project delivery, ensuring every system we install performs efficiently and reliably.
-            </p>
-          </div>
+                {/* Floating Vision 2030 Badge */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                  className="absolute top-10 -left-6 md:-left-10 bg-white p-4 md:p-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 max-w-[220px]"
+                >
+                  <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center shrink-0">
+                    <BsLightningChargeFill className="text-[#8ab645] text-lg" />
+                  </div>
+                  <div>
+                    <h4 className="text-gray-900 font-bold text-lg leading-tight">10,000<span className="text-[#8ab645]">MW</span></h4>
+                    <p className="text-gray-400 text-xs font-medium">Vision 2030 Target</p>
+                  </div>
+                </motion.div>
 
-          {/* Bullet Feature Grid (Matching Reference Style) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
-            {[
-              "Solar Inverter Setup",
-              "Battery Storage Solutions",
-              "Solar Material Financing",
-              "24 X 7 Call & Chat Support",
-              "Proven Track Record",
-              "Customer-Centric Approach"
-            ].map((item, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                  <svg className="w-3 h-3 text-[#8ab645]" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span className="text-gray-800 font-semibold text-sm">{item}</span>
               </div>
-            ))}
+            </div>
+
+            {/* Right Side: Text Content & Features */}
+            <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
+              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                
+                {/* Subtitle */}
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2 h-2 rounded-full bg-[#8ab645]"></span>
+                  <span className="text-[#8ab645] font-bold text-xs uppercase tracking-widest">ABOUT US</span>
+                </div>
+
+                {/* Main Heading */}
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-serif leading-tight">
+                  About Orbed Green Energy Limited
+                </h2>
+
+                {/* Paragraphs */}
+                <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed mb-8">
+                  <p>
+                    At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
+                  </p>
+                  <p>
+                    We are helping our clients to build an efficient solar system with our solar skills in Bangladesh. Our team brings together expertise in engineering, energy management, and project delivery, ensuring every system we install performs efficiently and reliably.
+                  </p>
+                </div>
+
+                {/* Bullet Feature Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+                  {[
+                    "Solar Inverter Setup",
+                    "Battery Storage Solutions",
+                    "Solar Material Financing",
+                    "24 X 7 Call & Chat Support",
+                    "Proven Track Record",
+                    "Customer-Centric Approach"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                        <svg className="w-3 h-3 text-[#8ab645]" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </div>
+                      <span className="text-gray-800 font-semibold text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+              </motion.div>
+            </div>
+
           </div>
+        </div>
+      </section>
 
-        </motion.div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-      {/* --- Section 2: How Green Energy Works (Staircase Siri Design + BG support) [cite: 10] --- */}
+      {/* --- Section 2: How Green Energy Works --- */}
       <section className="py-24 lg:py-32 px-6 lg:px-8 bg-white relative overflow-hidden">
-        
-        {/* === Visual Background (Bottom Left Tiny Roof with Solar) === */}
-        {/* Ekhane apnar generate kora image_13.png set kora hoyecha. 
-            Apni solid white image (tiny roof bottom left corner e thaka png / jpg) exact ekhane mount korben [cite: 13] */}
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-  <img 
-    src="https://res.cloudinary.com/dsrs8hryx/image/upload/v1793797837/Gemini_Generated_Image_sj292gsj292gsj29_mbdzri.jpg" 
-    alt="Background"
-    className="w-full h-full object-cover object-bottom-left"
-  />
-</div>
+          <img 
+            src="https://res.cloudinary.com/dsrs8hryx/image/upload/v1793797837/Gemini_Generated_Image_sj292gsj292gsj29_mbdzri.jpg" 
+            alt="Background"
+            className="w-full h-full object-cover object-bottom-left"
+          />
+        </div>
 
-        <div className="max-w-325 mx-auto relative z-10">
-          
-          {/* Header Area exact process design matching [cite: 10] */}
+        <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-16 lg:mb-12">
             <div className="lg:w-3/5">
               <motion.h4 
@@ -259,7 +265,6 @@ const AboutUs = () => {
             </div>
           </div>
 
-          {/* Staggered Siri / Staircase Grid [cite: 10] */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 lg:gap-y-0 pb-16 lg:pb-36">
             {processData.map((item, index) => (
               <motion.div 
@@ -271,20 +276,17 @@ const AboutUs = () => {
                 transition={{ delay: index * 0.15 }}
                 className={`flex flex-col ${item.mt}`}
               >
-                {/* Image and small circle visual badges matching reference [cite: 10] */}
                 <div className="relative mb-6 pb-3 pr-3 w-fit">
                   <img 
                     src={item.img} 
                     alt={item.title}
-                    className="w-65 h-65 md:w-full md:h-auto aspect-4/5 object-cover rounded-3xl border border-gray-100"
+                    className="w-65 h-65 md:w-full md:h-auto aspect-[4/5] object-cover rounded-3xl border border-gray-100"
                   />
-                  {/* Badge [cite: 10] */}
                   <div className="absolute bottom-0 right-0 w-11 h-11 bg-[#8ab645] rounded-full flex items-center justify-center text-white font-bold text-xs border-4 border-white shadow-sm z-10">
                     {item.num}
                   </div>
                 </div>
                 
-                {/* Text Description */}
                 <div className="pr-4 max-w-65 md:max-w-full relative z-10">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
@@ -295,7 +297,6 @@ const AboutUs = () => {
             ))}
           </div>
 
-          {/* Bottom link as matching reference image footer [cite: 10] */}
           <motion.div 
             variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="text-center mt-10 lg:mt-0 relative z-10"
@@ -304,7 +305,6 @@ const AboutUs = () => {
               Need more services based on your demand? <a href="/contact" className="text-gray-900 font-bold underline hover:text-[#8ab645] transition-colors">Contact us</a>
             </p>
           </motion.div>
-
         </div>
       </section>
 
@@ -313,7 +313,6 @@ const AboutUs = () => {
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             
-            {/* Mission Card */}
             <motion.div 
               variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="bg-white p-10 lg:p-16 rounded-[2.5rem] border border-gray-100 relative overflow-hidden group hover:border-[#8ab645]/30 hover:shadow-[0_15px_40px_rgb(0,0,0,0.03)] transition-all duration-500"
@@ -327,7 +326,6 @@ const AboutUs = () => {
               </p>
             </motion.div>
 
-            {/* Vision Card */}
             <motion.div 
               variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
               className="bg-white p-10 lg:p-16 rounded-[2.5rem] border border-gray-100 relative overflow-hidden group hover:border-[#8ab645]/30 hover:shadow-[0_15px_40px_rgb(0,0,0,0.03)] transition-all duration-500"
