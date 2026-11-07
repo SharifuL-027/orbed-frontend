@@ -6,6 +6,7 @@ import Login from '../Admin/Login';
 // Admin Components & Layouts
 import AdminLayout from '../Admin/AdminLayout';
 import PrivateRoute from '../Admin/PrivateRoute';
+import Services from '../Service/Services';
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/services" element={<Services/>} />
 
       {/* Protected Admin Routes (Private Route + Admin Layout) */}
       <Route 
