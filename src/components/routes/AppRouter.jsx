@@ -17,6 +17,8 @@ import PrivateRoute from '../Admin/PrivateRoute';
 import Dashboard from '../Admin/Dashboard';
 import ManageCategories from '../Admin/ManageCategories';
 import ManageProducts from '../Admin/ManageProducts';
+import ManageApplications from '../Admin/ManageApplication';
+import ManageMessages from '../Admin/ManageMessages';
 
 const AppRoutes = () => {
   return (
@@ -50,6 +52,8 @@ const AppRoutes = () => {
         <Route path="dashboard" element={<Dashboard/>} />
         <Route path="categories" element={<ManageCategories/>} />
         <Route path="products" element={<ManageProducts/>} />
+        <Route path='applications' element={<ManageApplications/>}/>
+        <Route path='messages' element={<ManageMessages/>}/>
       </Route>
       
     </Routes>
