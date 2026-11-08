@@ -62,11 +62,11 @@ const Products = () => {
                       transition={{ delay: 0.2, duration: 0.8 }}
                       className="flex items-center justify-center gap-3 mb-4"
                     >
-                      <div className="w-8 h-[2px] bg-[#8ab645]" />
+                      <div className="w-8 h-0.5 bg-[#8ab645]" />
                       <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
                         Our Inventory
                       </h4>
-                      <div className="w-8 h-[2px] bg-[#8ab645]" />
+                      <div className="w-8 h-0.5 bg-[#8ab645]" />
                     </motion.div>
           
           <motion.h1 
@@ -138,51 +138,99 @@ const Products = () => {
           )}
 
           {/* Product Grid */}
-          {!loading && !error && filteredProducts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProducts.map((product) => (
-                <motion.div
-                  key={product._id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group"
-                >
-                  {/* Product Image */}
-                  <div className="relative h-64 overflow-hidden bg-gray-100">
-                    <img
-                      src={product.image || "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=800"}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-gray-800 shadow-sm">
-                      ${product.price}
-                    </div>
-                  </div>
+{!loading && !error && filteredProducts.length > 0 && (
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+    {filteredProducts.map((product, index) => (
+      <motion.article
+        key={product._id}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: Math.min(index * 0.05, 0.3), ease: "easeOut" }}
+        whileHover={{ y: -6 }}
+        className="group relative flex flex-col bg-white rounded-[28px] p-3 border border-gray-100 shadow-[0_2px_20px_-8px_rgba(0,0,0,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(138,182,69,0.35)] hover:border-[#8ab645]/30 transition-shadow duration-500"
+      >
+        {/* Product Image - 1:1 */}
+        <div className="relative aspect-square w-full overflow-hidden rounded-[20px] bg-gradient-to-br from-gray-50 to-gray-100">
+          <img
+            src={
+              product.image ||
+              "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=800"
+            }
+            alt={product.name}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          />
 
-                  {/* Product Info */}
-                  <div className="p-6 flex flex-col grow">
-                    <span className="text-[#8ab645] text-xs font-bold uppercase tracking-wider mb-2">
-                      {product.category?.name || "Solar System"}
-                    </span>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-serif group-hover:text-[#8ab645] transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6 grow">
-                      {product.description || "High performance certified solar equipment designed for maximum energy efficiency and long-term durability."}
-                    </p>
+          {/* Soft gradient overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <button 
-                      onClick={() => alert(`Viewing details for: ${product.name}`)}
-                      className="w-full bg-[#fafaf9] group-hover:bg-[#8ab645] text-gray-800 group-hover:text-white py-3 rounded-xl font-bold text-sm transition-all border border-gray-200 group-hover:border-transparent shadow-sm"
-                    >
-                      View Details
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
+          {/* Category chip */}
+          <span className="absolute top-3 left-3 bg-white/85 backdrop-blur-md text-[#6f9a2e] text-[10px] font-bold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full shadow-sm">
+            {product.category?.name || "Solar System"}
+          </span>
+
+          {/* Quick view (appears on hover) */}
+          <button
+            onClick={() => alert(`Viewing details for: ${product.name}`)}
+            aria-label={`View ${product.name}`}
+            className="absolute bottom-3 right-3 h-11 w-11 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-[#8ab645] hover:text-white transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Product Info */}
+        <div className="flex flex-col grow px-3 pt-5 pb-3">
+          <h3 className="text-lg font-bold text-gray-900 font-serif leading-snug line-clamp-1 group-hover:text-[#8ab645] transition-colors duration-300">
+            {product.name}
+          </h3>
+
+          <p className="mt-2 text-sm text-gray-500 leading-relaxed line-clamp-2 grow">
+            {product.description ||
+              "High performance certified solar equipment designed for maximum energy efficiency and long-term durability."}
+          </p>
+
+          <div className="mt-5 pt-4 border-t border-dashed border-gray-200 flex items-center justify-between">
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
+                Price
+              </span>
+              <span className="text-xl font-extrabold text-gray-900">
+                ${product.price}
+              </span>
             </div>
-          )}
+
+            <button
+              onClick={() => alert(`Viewing details for: ${product.name}`)}
+              className="inline-flex items-center gap-2 bg-gray-900 hover:bg-[#8ab645] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
+            >
+              Details
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </motion.article>
+    ))}
+  </div>
+)}
 
         </div>
       </div>
