@@ -55,7 +55,7 @@ const Products = () => {
         </div>
         
         {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
+        <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-5">
           <motion.div 
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -78,14 +78,6 @@ const Products = () => {
             Our Solar Products & Solutions
           </motion.h1>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-gray-300 text-sm md:text-base sans-medium max-w-xl mx-auto"
-          >
-            Explore our high-efficiency solar panels, inverters, and sustainable energy equipment.
-          </motion.p>
         </div>
       </section>
 

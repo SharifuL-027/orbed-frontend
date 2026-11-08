@@ -8,6 +8,7 @@ import AdminLayout from '../Admin/AdminLayout';
 import PrivateRoute from '../Admin/PrivateRoute';
 import Services from '../Service/Services';
 import Products from '../Product/Products';
+import Careers from '../Career/Careers';
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/services" element={<Services/>} />
       <Route path="/products" element={<Products />} />
+      <Route path="/careers" element={<Careers />} />
 
       {/* Protected Admin Routes (Private Route + Admin Layout) */}
       <Route 
