@@ -14,6 +14,8 @@ import ContactUs from '../Contact/ContactUs';
 // Admin Components & Layouts
 import AdminLayout from '../Admin/AdminLayout';
 import PrivateRoute from '../Admin/PrivateRoute';
+import Dashboard from '../Admin/Dashboard';
+import ManageCategories from '../Admin/ManageCategories';
 
 const AppRoutes = () => {
   return (
@@ -44,8 +46,8 @@ const AppRoutes = () => {
         {/* /admin diye hit korle automatically dashboard-e chole jabe */}
         <Route index element={<Navigate to="dashboard" replace />} />
         
-        <Route path="dashboard" element={<div className="p-8 font-bold text-xl">Admin Dashboard Page</div>} />
-        <Route path="categories" element={<div className="p-8">Categories Management Page</div>} />
+        <Route path="dashboard" element={<Dashboard/>} />
+        <Route path="categories" element={<ManageCategories/>} />
         <Route path="products" element={<div className="p-8">Products Management Page</div>} />
       </Route>
       
