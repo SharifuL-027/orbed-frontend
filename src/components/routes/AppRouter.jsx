@@ -7,6 +7,7 @@ import Login from '../Admin/Login';
 import AdminLayout from '../Admin/AdminLayout';
 import PrivateRoute from '../Admin/PrivateRoute';
 import Services from '../Service/Services';
+import Products from '../Product/Products';
 
 const AppRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
       <Route path="/about" element={<AboutUs />} />
       <Route path="/login" element={<Login />} />
       <Route path="/services" element={<Services/>} />
+      <Route path="/products" element={<Products />} />
 
       {/* Protected Admin Routes (Private Route + Admin Layout) */}
       <Route 
