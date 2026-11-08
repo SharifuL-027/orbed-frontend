@@ -51,7 +51,7 @@ const Products = () => {
             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1509391366360-1200b7e1c8b7?auto=format&fit=crop&q=80&w=2070')` }}
           />
           {/* Dark Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
         
         {/* Hero Content */}
@@ -165,14 +165,14 @@ const Products = () => {
                   </div>
 
                   {/* Product Info */}
-                  <div className="p-6 flex flex-col flex-grow">
+                  <div className="p-6 flex flex-col grow">
                     <span className="text-[#8ab645] text-xs font-bold uppercase tracking-wider mb-2">
                       {product.category?.name || "Solar System"}
                     </span>
                     <h3 className="text-xl font-bold text-gray-900 mb-2 font-serif group-hover:text-[#8ab645] transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                    <p className="text-gray-500 text-sm leading-relaxed mb-6 grow">
                       {product.description || "High performance certified solar equipment designed for maximum energy efficiency and long-term durability."}
                     </p>
 
