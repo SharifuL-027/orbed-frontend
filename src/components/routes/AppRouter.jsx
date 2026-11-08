@@ -16,6 +16,7 @@ import AdminLayout from '../Admin/AdminLayout';
 import PrivateRoute from '../Admin/PrivateRoute';
 import Dashboard from '../Admin/Dashboard';
 import ManageCategories from '../Admin/ManageCategories';
+import ManageProducts from '../Admin/ManageProducts';
 
 const AppRoutes = () => {
   return (
@@ -48,7 +49,7 @@ const AppRoutes = () => {
         
         <Route path="dashboard" element={<Dashboard/>} />
         <Route path="categories" element={<ManageCategories/>} />
-        <Route path="products" element={<div className="p-8">Products Management Page</div>} />
+        <Route path="products" element={<ManageProducts/>} />
       </Route>
       
     </Routes>

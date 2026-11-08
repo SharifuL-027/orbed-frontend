@@ -29,7 +29,7 @@ const ManageProducts = () => {
   const [editId, setEditId] = useState(null);
   const [previewImage, setPreviewImage] = useState(null); // Edit er somoy old image dekhanor jonno
 
-  // 1. Fetch Products & Categories
+ // 1. Fetch Products & Categories
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -37,8 +37,22 @@ const ManageProducts = () => {
         axiosInstance.get('/products'),
         axiosInstance.get('/categories')
       ]);
-      setProducts(prodRes.data);
-      setCategories(catRes.data);
+
+      // Console log kore dekhun backend theke ashole ki asche (Browser er F12 tipe Console e)
+      console.log("Products Response:", prodRes.data);
+
+      // 🔥 Safely Array extract kora (Jodi data direct array na hoye object er vitor thake)
+      const productsArray = Array.isArray(prodRes.data) 
+        ? prodRes.data 
+        : (prodRes.data.products || prodRes.data.data || []);
+
+      const categoriesArray = Array.isArray(catRes.data) 
+        ? catRes.data 
+        : (catRes.data.categories || catRes.data.data || []);
+
+      setProducts(productsArray);
+      setCategories(categoriesArray);
+
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
