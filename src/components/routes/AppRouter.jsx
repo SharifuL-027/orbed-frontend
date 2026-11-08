@@ -9,6 +9,7 @@ import PrivateRoute from '../Admin/PrivateRoute';
 import Services from '../Service/Services';
 import Products from '../Product/Products';
 import Careers from '../Career/Careers';
+import ContactUs from '../Contact/ContactUs';
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
       <Route path="/services" element={<Services/>} />
       <Route path="/products" element={<Products />} />
       <Route path="/careers" element={<Careers />} />
+      <Route path="/contact" element={<ContactUs />} />
 
       {/* Protected Admin Routes (Private Route + Admin Layout) */}
       <Route 

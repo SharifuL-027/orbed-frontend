@@ -144,7 +144,7 @@ const Services = () => {
               className="absolute left-0 md:left-8 top-0 w-[60%] h-[75%] z-10"
             >
               <img 
-                src="https://images.unsplash.com/photo-1548615705-728eb781df5a?auto=format&fit=crop&q=80&w=600" 
+                src="https://plus.unsplash.com/premium_photo-1679917152396-4b18accacb9d?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" 
                 className="w-full h-full object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
                 alt="Solar Engineering"
               />
@@ -155,7 +155,7 @@ const Services = () => {
               className="absolute right-0 md:right-8 bottom-0 w-[60%] h-[75%] z-20"
             >
               <img 
-                src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=600" 
+                src="https://plus.unsplash.com/premium_photo-1680206587718-19b00a9be6b5?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" 
                 className="w-full h-full object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-8 border-white"
                 alt="Solar Maintenance"
               />

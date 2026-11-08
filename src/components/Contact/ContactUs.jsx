@@ -71,14 +71,14 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="w-full font-sans bg-white selection:bg-[#8ab645] selection:text-white pb-24">
+    <div className="w-full selection:bg-[#8ab645] selection:text-white pb-24">
       
       {/* --- 100% PERFECT FIXED Parallax Hero Section --- */}
       <section className="relative w-full h-[70vh] flex items-center justify-center">
         <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
           <div 
             className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80&w=2070')` }}
+            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
           />
           <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
@@ -89,13 +89,13 @@ const ContactUs = () => {
             className="flex items-center justify-center gap-3 mb-4"
           >
             <div className="w-8 h-0.5 bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">Contact Us</h4>
+            <h4 className="text-[#8ab645] dm-sans-bold text-xs tracking-[0.25em] uppercase">Contact Us</h4>
             <div className="w-8 h-0.5 bg-[#8ab645]" />
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-serif leading-[1.2] mb-6"
+            className="text-3xl md:text-5xl dm-sans-bold text-white font-serif leading-[1.2] mb-6"
           >
             From panels to net metering – your <span className="text-[#8ab645]">energy partners</span> in Bangladesh
           </motion.h1>

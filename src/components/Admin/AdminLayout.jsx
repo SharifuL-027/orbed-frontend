@@ -1,77 +1,90 @@
 import React from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { FaThLarge, FaTags, FaBoxOpen, FaSignOutAlt } from 'react-icons/fa';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { 
+  FaTachometerAlt, 
+  FaBoxOpen, 
+  FaTags, 
+  FaEnvelope, 
+  FaUserTie, 
+  FaSignOutAlt 
+} from 'react-icons/fa';
 
 const AdminLayout = () => {
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    // Token remove kore login page e pathiye deya
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/admin/login');
+    navigate('/login');
   };
 
+  const menuItems = [
+    { name: 'Dashboard', path: '/admin', icon: FaTachometerAlt },
+    { name: 'Manage Categories', path: '/admin/categories', icon: FaTags },
+    { name: 'Manage Products', path: '/admin/products', icon: FaBoxOpen },
+    { name: 'Job Applications', path: '/admin/applications', icon: FaUserTie },
+    { name: 'Messages', path: '/admin/messages', icon: FaEnvelope },
+  ];
+
   return (
-    <div className="flex h-screen bg-[#fafaf9] font-sans">
+    <div className="flex h-screen bg-gray-100 font-sans">
       
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-100 flex flex-col justify-between p-6">
-        <div>
-          <div className="mb-10 px-2">
-            <h2 className="text-xl font-bold text-gray-900 font-serif">Orbed Admin</h2>
-            <p className="text-xs text-gray-400">Green Energy Management</p>
-          </div>
-
-          <nav className="space-y-2">
-            <Link 
-              to="/admin/dashboard" 
-              className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-green-50 hover:text-[#8ab645] rounded-xl font-medium transition-all"
-            >
-              <FaThLarge size={16} /> Dashboard
-            </Link>
-            <Link 
-              to="/admin/categories" 
-              className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-green-50 hover:text-[#8ab645] rounded-xl font-medium transition-all"
-            >
-              <FaTags size={16} /> Categories
-            </Link>
-            <Link 
-              to="/admin/products" 
-              className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-green-50 hover:text-[#8ab645] rounded-xl font-medium transition-all"
-            >
-              <FaBoxOpen size={16} /> Products
-            </Link>
-          </nav>
+      <div className="w-64 bg-[#0a192f] text-white flex flex-col shadow-2xl">
+        <div className="p-6 text-center border-b border-gray-700">
+          <h2 className="text-2xl font-bold font-serif text-[#8ab645]">Orbed Admin</h2>
+          <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">Control Panel</p>
         </div>
 
-        {/* Logout Button */}
-        <div>
+        <nav className="flex-grow p-4 space-y-2 overflow-y-auto">
+          {menuItems.map((item, index) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={index}
+                to={item.path}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-[#8ab645] text-white shadow-lg' 
+                    : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                }`}
+              >
+                <item.icon size={18} />
+                <span className="font-semibold text-sm">{item.name}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="p-4 border-t border-gray-700">
           <button 
             onClick={handleLogout}
-            className="flex items-center gap-3 w-full px-4 py-3 text-red-500 hover:bg-red-50 rounded-xl font-medium transition-all"
+            className="flex items-center gap-3 w-full px-4 py-3 text-red-400 hover:bg-red-400 hover:text-white rounded-xl transition-colors font-semibold text-sm"
           >
-            <FaSignOutAlt size={16} /> Logout
+            <FaSignOutAlt size={18} />
+            Logout
           </button>
         </div>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col overflow-y-auto">
-        <header className="bg-white border-b border-gray-100 h-20 flex items-center justify-between px-8 shadow-sm">
-          <h3 className="text-lg font-bold text-gray-800 font-serif">Control Panel</h3>
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Topbar */}
+        <header className="bg-white shadow-sm border-b border-gray-200 px-8 py-4 flex justify-between items-center z-10">
+          <h2 className="text-xl font-bold text-gray-800">
+            {menuItems.find(item => item.path === location.pathname)?.name || 'Admin Panel'}
+          </h2>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-100 text-[#8ab645] rounded-full flex items-center justify-center font-bold">
-              A
+            <div className="w-10 h-10 bg-green-50 text-[#8ab645] rounded-full flex items-center justify-center font-bold border border-green-100">
+              AD
             </div>
-            <div>
-              <h4 className="text-sm font-bold text-gray-800">Admin User</h4>
-              <p className="text-xs text-gray-400">admin@orbed.com</p>
-            </div>
+            <span className="text-sm font-bold text-gray-700">Admin User</span>
           </div>
         </header>
 
-        <main className="p-8">
-          {/* Nested routes gulo ekhane show korbe */}
+        {/* Dynamic Page Content (Ekhane Dashboard, Products etc load hobe) */}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-[#fafaf9] p-8">
           <Outlet />
         </main>
       </div>
