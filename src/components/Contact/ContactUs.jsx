@@ -71,7 +71,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="w-full selection:bg-[#8ab645] selection:text-white pb-24">
+    <div className="w-full selection:bg-[#8ab645] selection:text-white">
       
       {/* --- 100% PERFECT FIXED Parallax Hero Section --- */}
       <section className="relative w-full h-[70vh] flex items-center justify-center">

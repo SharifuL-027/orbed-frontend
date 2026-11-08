@@ -108,13 +108,14 @@ const ManageApplications = () => {
                     <td className="p-4">
                       {app.cv ? (
                         <a 
-                          href={app.cv} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-flex items-center gap-2 bg-gray-100 hover:bg-[#8ab645] hover:text-white text-gray-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors"
-                        >
-                          <FaFileDownload /> Download CV
-                        </a>
+  href={`${import.meta.env.VITE_API_BASE_URL}/${app.cv}`} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  download
+  className="inline-flex items-center gap-2 bg-gray-100 hover:bg-[#8ab645] hover:text-white text-gray-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors"
+>
+  <FaFileDownload /> Download CV
+</a>
                       ) : (
                         <span className="text-gray-400 text-xs">No file</span>
                       )}

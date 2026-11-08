@@ -63,7 +63,7 @@ const AboutUs = () => {
 
   return (
     // Main container theke bg-white r overflow-hidden soriye deya hoyeche jate fixed bg kaj kore
-    <div className="w-full font-sans">
+    <div className="w-full selection:bg-[#8ab645] selection:text-white">
       
       {/* --- Special Hero Section with 100% PERFECT FIXED Parallax --- */}
       <section className="relative w-full h-[70vh] flex items-center justify-center">
@@ -75,7 +75,7 @@ const AboutUs = () => {
             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
           />
           {/* Dark Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
         
         {/* Hero Content */}

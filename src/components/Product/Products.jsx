@@ -39,7 +39,7 @@ const Products = () => {
     : products.filter(product => product.category === selectedCategory || product.category?._id === selectedCategory);
 
   return (
-    <div className="w-full font-sans selection:bg-[#8ab645] selection:text-white pb-24">
+    <div className="w-full selection:bg-[#8ab645] selection:text-white">
       
       {/* --- 100% PERFECT FIXED Parallax Hero Section (Same as About/Services) --- */}
       <section className="relative w-full h-[70vh] flex items-center justify-center">

@@ -52,7 +52,7 @@ const Hero = () => {
       />
 
       {/* Dark Overlay gradient for contrast */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent z-10" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/45 to-transparent z-10" />
 
       {/* Social Links on Left Panel */}
       <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 text-white/70 z-30">
