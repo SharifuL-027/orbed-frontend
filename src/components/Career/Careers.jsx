@@ -14,6 +14,7 @@ import {
   FaMapMarkerAlt
 } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
+import axiosInstance from '../../api/axiosInstance'; 
 
 const Careers = () => {
   // Animations
@@ -70,6 +71,7 @@ const Careers = () => {
     setFormData(prev => ({ ...prev, cv: e.target.files[0] }));
   };
 
+  // 🔥 Fully Dynamic Submission with FormData (for CV/Document file upload)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -81,18 +83,25 @@ const Careers = () => {
     submitData.append('position', formData.position);
     submitData.append('message', formData.message);
     if (formData.cv) {
-      submitData.append('cv', formData.cv);
+      submitData.append('cv', formData.cv); // File attachment
     }
 
     try {
-      // Simulate API call
-      setTimeout(() => {
+      // Backend API call to save application and file in MongoDB / Server storage
+      const response = await axiosInstance.post('/careers', submitData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      if (response.data) {
         setIsSubmitting(false);
         setSubmitSuccess(true);
         setFormData({ name: '', email: '', phone: '', position: '', message: '', cv: null });
-      }, 1500);
+      }
     } catch (error) {
       console.error("Application submission failed:", error);
+      alert("Failed to submit application. Please try again.");
       setIsSubmitting(false);
     }
   };
@@ -135,7 +144,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* --- Section 1: Career Growth & Development (Clean Grid Reference)[cite: 2] --- */}
+      {/* --- Section 1: Career Growth & Development --- */}
       <section className="relative z-10 bg-[#fafaf9] rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] py-24 px-6 lg:px-8 border-b border-gray-100">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-16">
@@ -162,7 +171,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* --- Section 2: Why Join Us (Split Layout Image Right)[cite: 2] --- */}
+      {/* --- Section 2: Why Join Us --- */}
       <section className="py-24 px-6 lg:px-8 bg-white relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
           <div className="w-full lg:w-1/2">
@@ -199,7 +208,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* --- Section 3: Equal Opportunity (Split Layout Image Left)[cite: 2] --- */}
+      {/* --- Section 3: Equal Opportunity --- */}
       <section className="py-24 px-6 lg:px-8 bg-[#cde4bf] relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16">
           <div className="w-full lg:w-1/2 relative">
@@ -226,7 +235,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* --- Section 4: Explore Career Opportunities (Cards Reference)[cite: 2] --- */}
+      {/* --- Section 4: Explore Career Opportunities --- */}
       <section id="jobs-section" className="py-24 px-6 lg:px-8 bg-white relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-16">

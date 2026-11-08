@@ -9,7 +9,7 @@ import {
   FaBoxOpen,
   FaImage
 } from 'react-icons/fa';
-import axiosInstance from '../../api/axiosInstance'; // Axios instance path thik kore niben
+import axiosInstance from '../../api/axiosInstance'; 
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -18,16 +18,16 @@ const ManageProducts = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Form State
+  // 🔥 Form State for Multiple Images
   const [formData, setFormData] = useState({ 
     name: '', 
     category: '', 
     price: '', 
     description: '',
-    image: null 
+    images: [] // Array for multiple files
   });
   const [editId, setEditId] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null); // Edit er somoy old image dekhanor jonno
+  const [previewImages, setPreviewImages] = useState([]); // Array for multiple previews
 
  // 1. Fetch Products & Categories
   const fetchData = async () => {
@@ -38,10 +38,6 @@ const ManageProducts = () => {
         axiosInstance.get('/categories')
       ]);
 
-      // Console log kore dekhun backend theke ashole ki asche (Browser er F12 tipe Console e)
-      console.log("Products Response:", prodRes.data);
-
-      // 🔥 Safely Array extract kora (Jodi data direct array na hoye object er vitor thake)
       const productsArray = Array.isArray(prodRes.data) 
         ? prodRes.data 
         : (prodRes.data.products || prodRes.data.data || []);
@@ -66,8 +62,8 @@ const ManageProducts = () => {
 
   // 2. Open Modal for Add/Edit
   const handleOpenAdd = () => {
-    setFormData({ name: '', category: '', price: '', description: '', image: null });
-    setPreviewImage(null);
+    setFormData({ name: '', category: '', price: '', description: '', images: [] });
+    setPreviewImages([]);
     setEditId(null);
     setIsModalOpen(true);
   };
@@ -75,20 +71,21 @@ const ManageProducts = () => {
   const handleOpenEdit = (product) => {
     setFormData({ 
       name: product.name, 
-      category: product.category?._id || product.category, // Backend theke populated asle _id nibo
+      category: product.category?._id || product.category, 
       price: product.price, 
       description: product.description || '',
-      image: null // Notun image select na korle null thakbe
+      images: [] // Ekhane faka thakbe, jodi notun image na dey tahole agertai backend e thakbe
     });
-    setPreviewImage(product.image); // Old image preview
+    // 🔥 Backend theke asha imageUrls array take preview te set kora
+    setPreviewImages(product.imageUrls || []); 
     setEditId(product._id);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setFormData({ name: '', category: '', price: '', description: '', image: null });
-    setPreviewImage(null);
+    setFormData({ name: '', category: '', price: '', description: '', images: [] });
+    setPreviewImages([]);
     setEditId(null);
   };
 
@@ -97,15 +94,25 @@ const ManageProducts = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // 🔥 Handle Multiple File Selection
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData(prev => ({ ...prev, image: file }));
-      setPreviewImage(URL.createObjectURL(file)); // Local preview
+    const files = Array.from(e.target.files);
+    
+    if (files.length > 5) {
+      alert("You can only upload up to 5 images.");
+      return;
+    }
+
+    if (files.length > 0) {
+      setFormData(prev => ({ ...prev, images: files }));
+      
+      // Local preview URLs toiri kora
+      const previews = files.map(file => URL.createObjectURL(file));
+      setPreviewImages(previews); 
     }
   };
 
-  // 3. Submit Form (Create or Update with FormData for Image Upload)
+  // 3. Submit Form (Create or Update with FormData)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -115,23 +122,25 @@ const ManageProducts = () => {
     submitData.append('category', formData.category);
     submitData.append('price', formData.price);
     submitData.append('description', formData.description);
-    if (formData.image) {
-      submitData.append('image', formData.image);
+    
+    // 🔥 Multiple images append kora
+    if (formData.images && formData.images.length > 0) {
+      formData.images.forEach(image => {
+        submitData.append('imageUrls', image); // Backend er sathe match korte hobe
+      });
     }
 
     try {
       if (editId) {
-        // Update Product
         await axiosInstance.put(`/products/${editId}`, submitData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       } else {
-        // Create Product
         await axiosInstance.post('/products', submitData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       }
-      fetchData(); // Refresh list
+      fetchData(); 
       handleCloseModal();
     } catch (error) {
       console.error("Error saving product:", error);
@@ -146,7 +155,7 @@ const ManageProducts = () => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         await axiosInstance.delete(`/products/${id}`);
-        fetchData(); // Refresh list
+        fetchData(); 
       } catch (error) {
         console.error("Error deleting product:", error);
         alert("Failed to delete product.");
@@ -207,8 +216,9 @@ const ManageProducts = () => {
                 {products.map((product) => (
                   <tr key={product._id} className="hover:bg-gray-50 transition-colors">
                     <td className="p-4">
-                      {product.image ? (
-                        <img src={product.image} alt={product.name} className="w-12 h-12 rounded-lg object-cover border border-gray-200" />
+                      {/* 🔥 Table-e first image ta show korabo */}
+                      {product.imageUrls && product.imageUrls.length > 0 ? (
+                        <img src={product.imageUrls[0]} alt={product.name} className="w-12 h-12 rounded-lg object-cover border border-gray-200" />
                       ) : (
                         <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 border border-gray-200">
                           <FaImage />
@@ -311,25 +321,35 @@ const ManageProducts = () => {
                   ></textarea>
                 </div>
 
-                {/* Image Upload Area */}
+                {/* Multiple Image Upload Area */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Product Image</label>
-                  <div className="flex items-center gap-6">
-                    {previewImage ? (
-                      <div className="relative w-24 h-24 rounded-xl overflow-hidden border border-gray-200 shrink-0">
-                        <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
-                      </div>
-                    ) : (
-                      <div className="w-24 h-24 rounded-xl bg-[#fafaf9] border-2 border-dashed border-gray-200 flex items-center justify-center text-gray-400 shrink-0">
-                        <FaImage size={24} />
-                      </div>
-                    )}
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Product Images (Up to 5)</label>
+                  <div className="flex flex-col gap-4">
+                    {/* Image Previews Grid */}
+                    <div className="flex items-center gap-4 flex-wrap">
+                      {previewImages.length > 0 ? (
+                        previewImages.map((src, index) => (
+                          <div key={index} className="relative w-20 h-20 rounded-xl overflow-hidden border border-gray-200 shrink-0 shadow-sm">
+                            <img src={src} alt={`Preview ${index}`} className="w-full h-full object-cover" />
+                          </div>
+                        ))
+                      ) : (
+                        <div className="w-20 h-20 rounded-xl bg-[#fafaf9] border-2 border-dashed border-gray-200 flex items-center justify-center text-gray-400 shrink-0">
+                          <FaImage size={24} />
+                        </div>
+                      )}
+                    </div>
+                    
                     <div className="flex-grow">
                       <input 
-                        type="file" name="image" onChange={handleFileChange} accept="image/*"
+                        type="file" 
+                        name="imageUrls" 
+                        onChange={handleFileChange} 
+                        accept="image/*"
+                        multiple // 🔥 Allows selecting multiple files
                         className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-[#8ab645] hover:file:bg-green-100 transition-colors cursor-pointer"
                       />
-                      <p className="text-xs text-gray-400 mt-2">Upload high-quality images (Max 2MB).</p>
+                      <p className="text-xs text-gray-400 mt-2">Hold Ctrl/Cmd to select multiple images (Max 5, 2MB each).</p>
                     </div>
                   </div>
                 </div>

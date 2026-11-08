@@ -11,7 +11,7 @@ import {
   FaCheckCircle
 } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
-
+import axiosInstance from '../../api/axiosInstance'; 
 const ContactUs = () => {
   // Animations
   const fadeUp = {
@@ -47,25 +47,25 @@ const ContactUs = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // 🔥 Fully Dynamic Submission using axiosInstance
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Form data payload admin panel API er jonno ready
     const payload = { ...formData };
 
     try {
-      // Future Backend API Call Example:
-      // await axiosInstance.post('/api/contact', payload);
+      // Backend API call to save contact message in MongoDB database
+      const response = await axiosInstance.post('/contact', payload);
       
-      // Simulation for now
-      setTimeout(() => {
+      if (response.data) {
         setIsSubmitting(false);
         setSubmitSuccess(true);
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      }, 1500);
+      }
     } catch (error) {
       console.error("Message submission failed:", error);
+      alert("Failed to send message. Please try again.");
       setIsSubmitting(false);
     }
   };
@@ -105,7 +105,7 @@ const ContactUs = () => {
       {/* --- Main Content Wrapper --- */}
       <div className="relative z-10 bg-[#fafaf9] rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] pt-24 pb-12 border-b border-gray-100">
         
-        {/* --- Info Cards Grid (Clean layout inspired by image[cite: 3]) --- */}
+        {/* --- Info Cards Grid --- */}
         <div className="max-w-350 mx-auto px-6 lg:px-8 mb-24">
           <motion.div 
             variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -160,11 +160,11 @@ const ContactUs = () => {
           </motion.div>
         </div>
 
-        {/* --- Split Layout: Image Left, Form Right (Inspired by top section of image[cite: 3]) --- */}
+        {/* --- Split Layout: Image Left, Form Right --- */}
         <div className="max-w-350 mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             
-            {/* Left Side Visual[cite: 3] */}
+            {/* Left Side Visual */}
             <div className="w-full lg:w-5/12 relative pt-8 lg:pt-0">
               <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <img 
@@ -172,7 +172,6 @@ const ContactUs = () => {
                   alt="Solar Experts" 
                   className="w-full h-auto object-cover rounded-3xl shadow-xl"
                 />
-                {/* Overlapping Green Box matching reference layout[cite: 3] */}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
                   className="absolute -bottom-8 -right-4 lg:-right-10 bg-[#8ab645] text-white p-8 rounded-2xl shadow-xl max-w-[220px]"
