@@ -106,15 +106,15 @@ const Services = () => {
         
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
-          <motion.div 
+         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="flex items-center justify-center gap-3 mb-4"
           >
             <div className="w-8 h-[2px] bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
-              Who We Are
+            <h4 className="text-[#8ab645] dm-sans-bold text-xs tracking-[0.25em] uppercase">
+              Our Services
             </h4>
             <div className="w-8 h-[2px] bg-[#8ab645]" />
           </motion.div>
@@ -123,9 +123,9 @@ const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif leading-[1.2]"
+            className="text-3xl md:text-4xl lg:text-5xl dm-sans-bold text-white leading-[1.2]"
           >
-            Driving <span className="text-[#8ab645]">Energy Independence</span> Through Advanced Solar Solutions
+            Delivering Expert Solar Services for <span className="text-[#8ab645]">Reliable</span>, Cost-effective Energy.
           </motion.h1>
         </div>
       </section>
@@ -135,7 +135,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           
           {/* Left: Premium Overlapping Vertical Images[cite: 2] */}
-          <div className="w-full lg:w-1/2 relative h-[500px] lg:h-[600px] flex justify-center items-center">
+          <div className="w-full lg:w-1/2 relative h-125 lg:h-150 flex justify-center items-center">
             {/* Background Decorative Blob */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-green-50 rounded-full blur-3xl opacity-60 z-0"></div>
             

@@ -48,7 +48,7 @@ const Products = () => {
         <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
           <div 
             className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1509391366360-1200b7e1c8b7?auto=format&fit=crop&q=80&w=2070')` }}
+            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
           />
           {/* Dark Gradient Overlay */}
           <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
@@ -57,19 +57,23 @@ const Products = () => {
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md mb-4 border border-white/10 text-[#8ab645] text-xs font-bold uppercase tracking-widest"
-          >
-            <BsLightningChargeFill /> Dynamic Inventory
-          </motion.div>
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2, duration: 0.8 }}
+                      className="flex items-center justify-center gap-3 mb-4"
+                    >
+                      <div className="w-8 h-[2px] bg-[#8ab645]" />
+                      <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
+                        Our Inventory
+                      </h4>
+                      <div className="w-8 h-[2px] bg-[#8ab645]" />
+                    </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-serif leading-[1.2] mb-4"
+            className="text-3xl md:text-5xl dm-sans-bold text-white leading-[1.2] mb-4"
           >
             Our Solar Products & Solutions
           </motion.h1>
@@ -78,7 +82,7 @@ const Products = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-gray-300 text-sm md:text-base max-w-xl mx-auto"
+            className="text-gray-300 text-sm md:text-base sans-medium max-w-xl mx-auto"
           >
             Explore our high-efficiency solar panels, inverters, and sustainable energy equipment.
           </motion.p>
