@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float } from '@react-three/drei';
-import { FaFacebookF, FaLinkedinIn, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import { FaFacebookF, FaWhatsapp, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 // --- 3D Wind Turbine (Glossy White) ---
 const WindTurbine = ({ position, scale, speed = 0.015 }) => {
@@ -73,28 +73,28 @@ const Footer = () => {
       </div>
 
       {/* --- Glass Panel Content (Foreground) --- */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-20 pb-10">
+      <div className="relative z-10 max-w-350 mx-auto px-4 sm:px-6 pt-12 pb-8 md:pt-20 md:pb-10">
         
         {/* The Frosted Glass Container */}
-        <div className="bg-white/60 backdrop-blur-xl border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-10 lg:p-16">
+        <div className="bg-white/60 backdrop-blur-xl border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-6 sm:p-10 lg:p-16">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-12">
             
-            {/* Column 1: Brand (Takes up more space) */}
-            <div className="lg:col-span-4 flex flex-col gap-6">
-              <a href="/" className="flex items-center gap-2 cursor-pointer">
+            {/* Column 1: Brand */}
+            <div className="sm:col-span-2 lg:col-span-5 flex flex-col gap-6">
+              <Link to="/" className="flex items-center gap-2 cursor-pointer">
                 <img 
                   src="https://res.cloudinary.com/dsrs8hryx/image/upload/v1793700637/Logo-02_aoau4k.png" 
                   alt="Orbed Energy" 
-                  className="h-12 w-auto object-contain" 
+                  className="h-10 md:h-12 w-auto object-contain" 
                 />
-              </a>
-              <p className="text-gray-600 text-sm leading-relaxed pr-4">
+              </Link>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed lg:pr-4">
                 Empowering Bangladesh with cutting-edge solar technology and sustainable energy solutions. Built for a greener tomorrow.
               </p>
               
               {/* Newsletter Subscription */}
-              <div className="mt-4 flex items-center bg-white/80 rounded-full border border-gray-200 overflow-hidden pr-1 max-w-sm">
+              <div className="mt-2 flex items-center bg-white/80 rounded-full border border-gray-200 overflow-hidden pr-1 max-w-sm w-full">
                 <input 
                   type="email" 
                   placeholder="Enter your email" 
@@ -106,48 +106,40 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Column 2: Solutions */}
-            <div className="lg:col-span-3 lg:pl-10">
-              <h3 className="text-gray-900 text-lg font-bold mb-6">Solutions</h3>
-              <ul className="flex flex-col gap-4">
-                {['Residential Solar', 'Commercial EPC', 'Industrial Systems', 'Solar Street Light', 'Maintenance (O&M)'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-gray-600 hover:text-[#8ab645] transition-colors text-sm font-medium">
-                      {item}
-                    </a>
+            {/* Column 2: Quick Links (Website Navigation) */}
+            <div className="sm:col-span-1 lg:col-span-3 lg:pl-10">
+              <h3 className="text-gray-900 text-lg font-bold mb-5 md:mb-6">Quick Links</h3>
+              <ul className="flex flex-col gap-3 md:gap-4">
+                {[
+                  { name: 'Home', path: '/' },
+                  { name: 'About Us', path: '/about' },
+                  { name: 'Services', path: '/services' },
+                  { name: 'Our Products', path: '/products' },
+                  { name: 'Career Opportunities', path: '/careers' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.path} className="text-gray-600 hover:text-[#8ab645] transition-colors text-sm font-medium">
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Column 3: Company */}
-            <div className="lg:col-span-2">
-              <h3 className="text-gray-900 text-lg font-bold mb-6">Company</h3>
-              <ul className="flex flex-col gap-4">
-                {['About Us', 'Our Projects', 'Sustainability', 'Careers', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-gray-600 hover:text-[#8ab645] transition-colors text-sm font-medium">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 4: Contact */}
-            <div className="lg:col-span-3">
-              <h3 className="text-gray-900 text-lg font-bold mb-6">Contact Us</h3>
-              <ul className="flex flex-col gap-5">
+            {/* Column 3: Contact Info */}
+            <div className="sm:col-span-1 lg:col-span-4">
+              <h3 className="text-gray-900 text-lg font-bold mb-5 md:mb-6">Contact Us</h3>
+              <ul className="flex flex-col gap-4 md:gap-5">
                 <li className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="text-[#8ab645] mt-1 flex-shrink-0" />
+                  <FaMapMarkerAlt className="text-[#8ab645] mt-1 flex-shrink-0 text-base" />
                   <span className="text-gray-600 text-sm font-medium">House 482 (1st Fl), Road 6, Ave 6, Mirpur DOHS, Dhaka 1216</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <FaPhoneAlt className="text-[#8ab645] flex-shrink-0" />
-                  <span className="text-gray-600 text-sm font-medium">+880 1340 320161</span>
+                  <FaPhoneAlt className="text-[#8ab645] flex-shrink-0 text-base" />
+                  <span className="text-gray-600 text-sm font-medium">+880 1805-523132</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <FaEnvelope className="text-[#8ab645] flex-shrink-0" />
+                  <FaEnvelope className="text-[#8ab645] flex-shrink-0 text-base" />
                   <span className="text-gray-600 text-sm font-medium">info@orbedenergy.com</span>
                 </li>
               </ul>
@@ -155,23 +147,46 @@ const Footer = () => {
 
           </div>
 
-          {/* Bottom Divider & Socials */}
-          <div className="mt-16 pt-8 border-t border-gray-300/50 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-sm text-gray-500 font-medium">
-              © {new Date().getFullYear()} Orbed Green Energy Limited. All Rights Reserved.
+          {/* Bottom Divider, Copyright & Socials */}
+          <div className="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-gray-300/50 flex flex-col-reverse lg:flex-row justify-between items-center gap-6">
+            
+            {/* Copyright & Developed By */}
+            <p className="text-sm text-gray-500 font-medium text-center lg:text-left flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+              <span>© {new Date().getFullYear()} Orbed Green Energy Limited. All Rights Reserved.</span>
+              <span className="hidden sm:inline">|</span>
+              <span>
+                Developed by{' '}
+                <a 
+                  href="https://genesystech.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#8ab645] hover:underline font-bold"
+                >
+                  Genesys
+                </a>
+              </span>
             </p>
             
+            {/* Social Icons (FB & WhatsApp only) */}
             <div className="flex gap-4">
-              <a href="#" className="w-9 h-9 rounded-full bg-white/50 border border-white flex items-center justify-center hover:bg-[#8ab645] hover:text-white transition-all duration-300 text-gray-600 shadow-sm">
-                <FaFacebookF size={14} />
+              <a 
+                href="https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="w-10 h-10 rounded-full bg-white/60 border border-white flex items-center justify-center hover:bg-[#8ab645] hover:text-white transition-all duration-300 text-gray-600 shadow-sm"
+              >
+                <FaFacebookF size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-white/50 border border-white flex items-center justify-center hover:bg-[#8ab645] hover:text-white transition-all duration-300 text-gray-600 shadow-sm">
-                <FaXTwitter size={14} />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-white/50 border border-white flex items-center justify-center hover:bg-[#8ab645] hover:text-white transition-all duration-300 text-gray-600 shadow-sm">
-                <FaLinkedinIn size={14} />
+              <a 
+                href="https://wa.me/8801805523132" 
+                target="_blank" 
+                rel="noreferrer"
+                className="w-10 h-10 rounded-full bg-white/60 border border-white flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all duration-300 text-gray-600 shadow-sm"
+              >
+                <FaWhatsapp size={18} />
               </a>
             </div>
+            
           </div>
 
         </div>
