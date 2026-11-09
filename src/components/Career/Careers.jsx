@@ -128,7 +128,7 @@ const Careers = () => {
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-3xl md:text-5xl dm-sans-bold text-white font-serif leading-[1.2] mb-6"
+            className="text-3xl md:text-4xl dm-sans-bold text-white font-serif leading-[1.2] mb-6"
           >
             Join the Orbed Green Energy Ltd. Team and Power a Greener Future!
           </motion.h1>

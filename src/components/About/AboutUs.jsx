@@ -85,7 +85,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif leading-[1.2]"
+            className="text-3xl md:text-4xl dm-sans-bold text-white leading-[1.2]"
           >
             Driving Energy Independence Through Advanced Solar Solutions
           </motion.h1>

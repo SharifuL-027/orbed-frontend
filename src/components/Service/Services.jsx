@@ -167,7 +167,7 @@ const Services = () => {
                 <span className="w-2 h-2 bg-[#8ab645] rounded-full animate-pulse"></span>
                 <span className="text-[#8ab645] font-bold text-xs tracking-widest uppercase">Our Core Expertise</span>
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl dm-sans-bold text-gray-900 mb-8 font-serif leading-[1.1]">
+              <h2 className="text-3xl md:text-4xl dm-sans-bold text-gray-900 mb-8 font-serif leading-[1.1]">
                 Orbed Green Energy Ltd. provides full EPC services
               </h2>
               <p className="text-gray-500 sans-medium text-lg leading-relaxed mb-10">
