@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { 
   FaTachometerAlt, 
@@ -6,12 +6,16 @@ import {
   FaTags, 
   FaEnvelope, 
   FaUserTie, 
-  FaSignOutAlt 
+  FaSignOutAlt,
+  FaBars,
+  FaTimes,
+  FaGlobe
 } from 'react-icons/fa';
 
 const AdminLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleLogout = () => {
     // Token remove kore login page e pathiye deya
@@ -28,22 +32,47 @@ const AdminLayout = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100 font-sans">
+    <div className="flex h-screen bg-gray-100 font-sans overflow-hidden">
       
+      {/* Mobile Overlay */}
+      {isSidebarOpen && (
+        <div 
+          onClick={() => setIsSidebarOpen(false)}
+          className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-sm"
+        />
+      )}
+
       {/* Sidebar */}
-      <div className="w-64 bg-[#0a192f] text-white flex flex-col shadow-2xl">
-        <div className="p-6 text-center border-b border-gray-700">
-          <h2 className="text-2xl font-bold font-serif text-[#8ab645]">Orbed Admin</h2>
-          <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">Control Panel</p>
+      <aside className={`
+        fixed md:static inset-y-0 left-0 z-50
+        w-64 bg-[#0a192f] text-white flex flex-col shadow-2xl
+        transform transition-transform duration-300 ease-in-out
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      `}>
+        {/* Sidebar Header */}
+        <div className="p-6 text-center border-b border-gray-700 flex justify-between items-center">
+          <div>
+            <h2 className="text-2xl font-bold font-serif text-[#8ab645]">Orbed Admin</h2>
+            <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">Control Panel</p>
+          </div>
+          {/* Close button for mobile */}
+          <button 
+            onClick={() => setIsSidebarOpen(false)}
+            className="md:hidden text-gray-400 hover:text-white p-1"
+          >
+            <FaTimes size={20} />
+          </button>
         </div>
 
-        <nav className="flex-grow p-4 space-y-2 overflow-y-auto">
+        {/* Navigation Links */}
+        <nav className="grow p-4 space-y-2 overflow-y-auto">
           {menuItems.map((item, index) => {
             const isActive = location.pathname === item.path;
             return (
               <Link
                 key={index}
                 to={item.path}
+                onClick={() => setIsSidebarOpen(false)} // Mobile a click korle sidebar close hobe
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                   isActive 
                     ? 'bg-[#8ab645] text-white shadow-lg' 
@@ -57,7 +86,17 @@ const AdminLayout = () => {
           })}
         </nav>
 
-        <div className="p-4 border-t border-gray-700">
+        {/* Bottom Actions: Back to Website & Logout */}
+        <div className="p-4 border-t border-gray-700 space-y-2">
+          {/* 🔥 Back to Website Button */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 w-full px-4 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-xl transition-colors font-semibold text-sm"
+          >
+            <FaGlobe size={18} className="text-[#8ab645]" />
+            Back to Website
+          </Link>
+
           <button 
             onClick={handleLogout}
             className="flex items-center gap-3 w-full px-4 py-3 text-red-400 hover:bg-red-400 hover:text-white rounded-xl transition-colors font-semibold text-sm"
@@ -66,25 +105,29 @@ const AdminLayout = () => {
             Logout
           </button>
         </div>
-      </div>
+      </aside>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden w-full">
+        
         {/* Topbar */}
-        <header className="bg-white shadow-sm border-b border-gray-200 px-8 py-4 flex justify-between items-center z-10">
-          <h2 className="text-xl font-bold text-gray-800">
-            {menuItems.find(item => item.path === location.pathname)?.name || 'Admin Panel'}
-          </h2>
+        <header className="bg-white shadow-sm border-b border-gray-200 px-4 sm:px-8 py-4 flex justify-between items-center z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-50 text-[#8ab645] rounded-full flex items-center justify-center font-bold border border-green-100">
-              AD
-            </div>
-            <span className="text-sm font-bold text-gray-700">Admin User</span>
+            {/* 🔥 Mobile Hamburger Button */}
+            <button 
+              onClick={() => setIsSidebarOpen(true)}
+              className="md:hidden text-gray-700 hover:text-[#8ab645] p-1 focus:outline-none"
+            >
+              <FaBars size={22} />
+            </button>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-800 truncate">
+              {menuItems.find(item => item.path === location.pathname)?.name || 'Admin Panel'}
+            </h2>
           </div>
         </header>
 
-        {/* Dynamic Page Content (Ekhane Dashboard, Products etc load hobe) */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-[#fafaf9] p-8">
+        {/* Dynamic Page Content */}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-[#fafaf9] p-4 sm:p-8">
           <Outlet />
         </main>
       </div>
