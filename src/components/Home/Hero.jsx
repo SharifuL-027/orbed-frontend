@@ -48,7 +48,7 @@ const Hero = () => {
         muted
         playsInline
         // Niche apnar video er URL ba path boshiye din
-        src="/orbed.mp4" 
+        src="https://res.cloudinary.com/wtbwxhmc/video/upload/v1794212874/orbed_whvabr.mp4" 
       />
 
       {/* Dark Overlay gradient for contrast */}

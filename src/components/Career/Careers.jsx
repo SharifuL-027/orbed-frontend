@@ -206,8 +206,8 @@ const Careers = () => {
           <div className="w-full lg:w-1/2 relative">
             <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <div className="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Team Diversity" className="w-full h-64 object-cover rounded-3xl mt-8 shadow-lg" />
-                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600" alt="Professional Workplace" className="w-full h-64 object-cover rounded-3xl shadow-lg" />
+                <img src="https://images.unsplash.com/photo-1668097613572-40b7c11c8727?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Team Diversity" className="w-full h-64 object-cover rounded-3xl mt-8 shadow-lg" />
+                <img src="https://images.unsplash.com/photo-1726221062287-fda475b85493?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Professional Workplace" className="w-full h-64 object-cover rounded-3xl shadow-lg" />
               </div>
             </motion.div>
           </div>
