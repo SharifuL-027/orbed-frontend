@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaPlay } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
 import { FiArrowRight } from 'react-icons/fi';
 
@@ -8,7 +9,6 @@ const Hero = () => {
   const dynamicWords = ["Solar.", "Wind.", "Clean Tech.", "Future."];
   const [index, setIndex] = useState(0);
 
-  // Auto cyclic text timing transition (প্রতি ৩ সেকেন্ডে শব্দ পাল্টাবে)
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % dynamicWords.length);
@@ -56,17 +56,22 @@ const Hero = () => {
 
       {/* Social Links on Left Panel */}
       <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 text-white/70 z-30">
-        {[FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube].map((Icon, idx) => (
-          <motion.a 
-            key={idx}
-            href="#" 
-            whileHover={{ scale: 1.2, x: 4, color: "#ffffff" }}
-            className="transition-colors"
-          >
-            <Icon size={18} />
-          </motion.a>
-        ))}
-      </div>
+  {[
+    { Icon: FaFacebookF, url: "https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" },
+    { Icon: FaLinkedinIn, url: "https://www.linkedin.com/company/orbed-green-energy-limited/home/" },
+  ].map((item, idx) => (
+    <motion.a 
+      key={idx}
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer" 
+      whileHover={{ scale: 1.2, x: 4, color: "#ffffff" }}
+      className="transition-colors"
+    >
+      <item.Icon size={18} />
+    </motion.a>
+  ))}
+</div>
 
       {/* Hero Content Section */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-8 lg:pl-32">
@@ -123,14 +128,16 @@ const Hero = () => {
 
           {/* Click actions buttons */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-[#8ab645] hover:bg-[#729938] text-white font-bold py-4 px-8 rounded-sm transition-colors duration-300"
-            >
-              GET A QUOTE
-              <FiArrowRight className="text-xl" />
-            </motion.button>
+            <Link to="/products">
+  <motion.button 
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="flex items-center gap-2 bg-[#8ab645] hover:bg-[#729938] text-white dm-sans-bold py-4 px-8 rounded-sm transition-colors duration-300 cursor-pointer"
+  >
+    Explore our Products
+    <FiArrowRight className="text-xl" />
+  </motion.button>
+</Link>
           </motion.div>
         </motion.div>
       </div>
