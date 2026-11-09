@@ -18,18 +18,18 @@ const ManageProducts = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // 🔥 Form State for Multiple Images
+  // 🔥 Form State updated to include features instead of price
   const [formData, setFormData] = useState({ 
     name: '', 
     category: '', 
-    price: '', 
     description: '',
-    images: [] // Array for multiple files
+    features: [''], // Starts with one empty bullet point
+    images: [] 
   });
   const [editId, setEditId] = useState(null);
   const [previewImages, setPreviewImages] = useState([]); // Array for multiple previews
 
- // 1. Fetch Products & Categories
+  // 1. Fetch Products & Categories
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -62,7 +62,7 @@ const ManageProducts = () => {
 
   // 2. Open Modal for Add/Edit
   const handleOpenAdd = () => {
-    setFormData({ name: '', category: '', price: '', description: '', images: [] });
+    setFormData({ name: '', category: '', description: '', features: [''], images: [] });
     setPreviewImages([]);
     setEditId(null);
     setIsModalOpen(true);
@@ -72,11 +72,11 @@ const ManageProducts = () => {
     setFormData({ 
       name: product.name, 
       category: product.category?._id || product.category, 
-      price: product.price, 
       description: product.description || '',
-      images: [] // Ekhane faka thakbe, jodi notun image na dey tahole agertai backend e thakbe
+      // Ensure features array exists, otherwise empty array with one string
+      features: product.features && product.features.length > 0 ? product.features : [''],
+      images: []
     });
-    // 🔥 Backend theke asha imageUrls array take preview te set kora
     setPreviewImages(product.imageUrls || []); 
     setEditId(product._id);
     setIsModalOpen(true);
@@ -84,7 +84,7 @@ const ManageProducts = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setFormData({ name: '', category: '', price: '', description: '', images: [] });
+    setFormData({ name: '', category: '', description: '', features: [''], images: [] });
     setPreviewImages([]);
     setEditId(null);
   };
@@ -106,13 +106,12 @@ const ManageProducts = () => {
     if (files.length > 0) {
       setFormData(prev => ({ ...prev, images: files }));
       
-      // Local preview URLs toiri kora
       const previews = files.map(file => URL.createObjectURL(file));
       setPreviewImages(previews); 
     }
   };
 
-  // 3. Submit Form (Create or Update with FormData)
+  // 3. Submit Form (Create or Update)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -120,13 +119,17 @@ const ManageProducts = () => {
     const submitData = new FormData();
     submitData.append('name', formData.name);
     submitData.append('category', formData.category);
-    submitData.append('price', formData.price);
     submitData.append('description', formData.description);
     
-    // 🔥 Multiple images append kora
+    // 🔥 Send only non-empty feature strings
+    if (formData.features && formData.features.length > 0) {
+      const validFeatures = formData.features.filter(f => f.trim() !== '');
+      submitData.append('features', JSON.stringify(validFeatures));
+    }
+
     if (formData.images && formData.images.length > 0) {
       formData.images.forEach(image => {
-        submitData.append('imageUrls', image); // Backend er sathe match korte hobe
+        submitData.append('imageUrls', image); 
       });
     }
 
@@ -208,7 +211,6 @@ const ManageProducts = () => {
                   <th className="p-4 font-semibold w-16">Image</th>
                   <th className="p-4 font-semibold">Product Name</th>
                   <th className="p-4 font-semibold">Category</th>
-                  <th className="p-4 font-semibold">Price</th>
                   <th className="p-4 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
@@ -216,7 +218,6 @@ const ManageProducts = () => {
                 {products.map((product) => (
                   <tr key={product._id} className="hover:bg-gray-50 transition-colors">
                     <td className="p-4">
-                      {/* 🔥 Table-e first image ta show korabo */}
                       {product.imageUrls && product.imageUrls.length > 0 ? (
                         <img src={product.imageUrls[0]} alt={product.name} className="w-12 h-12 rounded-lg object-cover border border-gray-200" />
                       ) : (
@@ -231,7 +232,6 @@ const ManageProducts = () => {
                         {product.category?.name || 'Uncategorized'}
                       </span>
                     </td>
-                    <td className="p-4 text-gray-900 font-bold">${product.price}</td>
                     <td className="p-4 text-right">
                       <button 
                         onClick={() => handleOpenEdit(product)}
@@ -266,17 +266,15 @@ const ManageProducts = () => {
               exit={{ opacity: 0, scale: 0.95 }}
               className="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden my-8"
             >
-              {/* Modal Header */}
               <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-[#fafaf9] sticky top-0 z-10">
                 <h3 className="text-xl font-bold text-gray-900 font-serif">
                   {editId ? 'Edit Product' : 'Add New Product'}
                 </h3>
-                <button onClick={handleCloseModal} className="text-gray-400 hover:text-red-500 transition-colors">
+                <button type="button" onClick={handleCloseModal} className="text-gray-400 hover:text-red-500 transition-colors">
                   <FaTimes size={20} />
                 </button>
               </div>
 
-              {/* Modal Form */}
               <form onSubmit={handleSubmit} className="p-6 space-y-5">
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -304,28 +302,58 @@ const ManageProducts = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Price ($) *</label>
-                  <input 
-                    type="number" name="price" required min="0" step="0.01" value={formData.price} onChange={handleInputChange} 
-                    className="w-full bg-[#fafaf9] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8ab645]/50 focus:border-[#8ab645] transition-all text-sm" 
-                    placeholder="e.g. 299.99" 
-                  />
-                </div>
-                
-                <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Description</label>
                   <textarea 
-                    name="description" rows="4" value={formData.description} onChange={handleInputChange} 
+                    name="description" rows="3" value={formData.description} onChange={handleInputChange} 
                     className="w-full bg-[#fafaf9] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8ab645]/50 focus:border-[#8ab645] transition-all text-sm resize-none" 
                     placeholder="Detailed product description..."
                   ></textarea>
+                </div>
+
+                {/* 🔥 Dynamic Key Features Section */}
+                <div className="col-span-1 md:col-span-2">
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Key Features (Bullet Points)</label>
+                  {formData.features.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-2 mb-2">
+                      <div className="h-2 w-2 rounded-full bg-[#8ab645] mt-0.5 shrink-0"></div>
+                      <input
+                        type="text"
+                        value={feature}
+                        onChange={(e) => {
+                          const newFeatures = [...formData.features];
+                          newFeatures[index] = e.target.value;
+                          setFormData({ ...formData, features: newFeatures });
+                        }}
+                        placeholder={`Feature ${index + 1}`}
+                        className="w-full bg-[#fafaf9] border border-gray-200 rounded-lg px-4 py-2 focus:border-[#8ab645] focus:outline-none text-sm"
+                      />
+                      {formData.features.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newFeatures = formData.features.filter((_, i) => i !== index);
+                            setFormData({ ...formData, features: newFeatures });
+                          }}
+                          className="text-red-400 hover:text-red-600 font-bold px-2 py-1 transition-colors"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, features: [...formData.features, ''] })}
+                    className="text-sm text-[#8ab645] font-bold hover:underline mt-1 inline-block"
+                  >
+                    + Add Another Feature
+                  </button>
                 </div>
 
                 {/* Multiple Image Upload Area */}
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Product Images (Up to 5)</label>
                   <div className="flex flex-col gap-4">
-                    {/* Image Previews Grid */}
                     <div className="flex items-center gap-4 flex-wrap">
                       {previewImages.length > 0 ? (
                         previewImages.map((src, index) => (
@@ -346,7 +374,7 @@ const ManageProducts = () => {
                         name="imageUrls" 
                         onChange={handleFileChange} 
                         accept="image/*"
-                        multiple // 🔥 Allows selecting multiple files
+                        multiple
                         className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-[#8ab645] hover:file:bg-green-100 transition-colors cursor-pointer"
                       />
                       <p className="text-xs text-gray-400 mt-2">Hold Ctrl/Cmd to select multiple images (Max 5, 2MB each).</p>
@@ -354,7 +382,6 @@ const ManageProducts = () => {
                   </div>
                 </div>
 
-                {/* Modal Footer / Actions */}
                 <div className="flex items-center justify-end gap-4 pt-6 border-t border-gray-100 mt-6">
                   <button 
                     type="button" onClick={handleCloseModal}
@@ -378,7 +405,6 @@ const ManageProducts = () => {
           </div>
         )}
       </AnimatePresence>
-
     </div>
   );
 };

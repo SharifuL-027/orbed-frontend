@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axiosInstance from '../../api/axiosInstance'; 
 import { FaBoxOpen, FaSpinner, FaExclamationCircle } from 'react-icons/fa';
-// 1. useNavigate import korlam
 import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
-  // 2. navigate function define korlam
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
@@ -40,7 +38,6 @@ const Products = () => {
     ? products 
     : products.filter(product => product.category === selectedCategory || product.category?._id === selectedCategory);
 
-  // 3. Details Page-e jabar function
   const handleViewDetails = (productId) => {
     navigate(`/products/${productId}`);
   };
@@ -162,7 +159,6 @@ const Products = () => {
                       {product.category?.name || "Solar System"}
                     </span>
 
-                    {/* 4. Alert er bodole navigate diye dilam */}
                     <button
                       onClick={() => handleViewDetails(product._id)}
                       aria-label={`View ${product.name}`}
@@ -186,24 +182,15 @@ const Products = () => {
                       {product.description || "High performance certified solar equipment designed for maximum energy efficiency and long-term durability."}
                     </p>
 
-                    <div className="mt-5 pt-4 border-t border-dashed border-gray-200 flex items-center justify-between">
-                      <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
-                          Price
-                        </span>
-                        <span className="text-xl font-extrabold text-gray-900">
-                          ৳ {product.price?.toLocaleString()}
-                        </span>
-                      </div>
-
-                      {/* 5. Details button e navigate bosiye dilam */}
+                    {/* 🔥 Price soriye View Details button k w-full kora holo */}
+                    <div className="mt-5 pt-4 border-t border-dashed border-gray-200">
                       <button
                         onClick={() => handleViewDetails(product._id)}
-                        className="inline-flex items-center gap-2 bg-gray-900 hover:bg-[#8ab645] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
+                        className="w-full flex justify-center items-center gap-2 bg-gray-900 hover:bg-[#8ab645] text-white text-sm font-semibold px-5 py-3 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
                       >
-                        Details
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                        View Details
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                       </button>
                     </div>

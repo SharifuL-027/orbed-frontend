@@ -60,8 +60,8 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-  <a href="#" className="hover:text-green-500 transition-colors"><FaFacebookF size={14} /></a>
-  <a href="#" className="hover:text-green-500 transition-colors"><FaInstagram size={14} /></a>
+  <a href="https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" className="hover:text-green-500 transition-colors"><FaFacebookF size={14} /></a>
+  
 </div>
       </div>
 

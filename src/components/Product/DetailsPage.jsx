@@ -21,7 +21,6 @@ const DetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState('');
   
-  // Inquiry Form State
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,7 +30,6 @@ const DetailsPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submittedSuccess, setSubmittedSuccess] = useState(false);
 
-  // Fetch Product Details
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
@@ -50,16 +48,12 @@ const DetailsPage = () => {
     fetchProductDetails();
   }, [id]);
 
-  // Handle Inquiry Form Submit
   const handleInquirySubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      // 🔥 Ekhane product er nam message er sathe jure deya hocche, 
-      // jate Admin panel-e apni sohojei bujhte paren kon product er inquiry
       const customizedMessage = `Product Inquiry: ${product?.name} (ID: ${product?._id})\n\nCustomer Message:\n${formData.message}`;
 
-      // 🟢 Apnar backend er contact/messages api route (jemon '/contact' ba '/messages')
       await axiosInstance.post('/contact', {
         name: formData.name,
         email: formData.email,
@@ -77,7 +71,6 @@ const DetailsPage = () => {
     }
   };
 
-  // Scroll to Inquiry Form Section
   const scrollToContact = () => {
     const contactSection = document.getElementById('inquiry-section');
     if (contactSection) {
@@ -127,7 +120,6 @@ const DetailsPage = () => {
           
           {/* Image Gallery Column */}
           <div className="space-y-4">
-            {/* Main Active Preview Image */}
             <div className="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 flex items-center justify-center">
               <motion.img 
                 key={activeImage}
@@ -143,7 +135,6 @@ const DetailsPage = () => {
               </span>
             </div>
 
-            {/* Thumbnail Selection Row */}
             {product.imageUrls && product.imageUrls.length > 1 && (
               <div className="flex gap-3 overflow-x-auto pb-2">
                 {product.imageUrls.map((img, index) => (
@@ -175,33 +166,38 @@ const DetailsPage = () => {
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4 font-serif">
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-6 font-serif">
                 {product.name}
               </h1>
 
-              {/* Price */}
-              <div className="text-3xl font-black text-gray-900 mb-6 flex items-baseline gap-2">
-                ৳ {product.price?.toLocaleString() || 'Contact for Price'}
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">VAT included</span>
-              </div>
-
               {/* Description */}
-              <div className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                <h3 className="text-xs font-extrabold text-gray-800 uppercase tracking-wider mb-2 flex items-center gap-2">
-                  Product Overview
-                </h3>
-                <p>{product.description || 'High performance certified solar equipment designed for maximum energy efficiency and long-term durability.'}</p>
-              </div>
+              {product.description && (
+                <div className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                  <h3 className="text-xs font-extrabold text-gray-800 uppercase tracking-wider mb-2 flex items-center gap-2">
+                    Product Overview
+                  </h3>
+                  <p>{product.description}</p>
+                </div>
+              )}
 
-              {/* Key Features highlights */}
-              <div className="grid grid-cols-2 gap-4 py-3 border-t border-b border-gray-100 my-6 text-sm text-gray-700 font-bold">
-                <div className="flex items-center gap-2">
-                  <FaShieldAlt className="text-[#8ab645] text-lg" /> Official Warranty Support
+              {/* 🔥 Key Features Section (Dynamic from Admin panel) */}
+              {product.features && product.features.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-sm font-extrabold text-gray-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+                    <FaShieldAlt className="text-[#8ab645]" /> Key Features
+                  </h3>
+                  <ul className="grid grid-cols-1 gap-3 text-sm text-gray-700 font-medium">
+                    {product.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="h-5 w-5 rounded-full bg-[#8ab645]/10 flex items-center justify-center shrink-0 mt-0.5">
+                          <div className="h-2 w-2 rounded-full bg-[#8ab645]"></div>
+                        </div>
+                        <span className="leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="flex items-center gap-2">
-                  <FaRegClock className="text-[#8ab645] text-lg" /> High Efficiency Output
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Action CTA Button */}
