@@ -6,12 +6,13 @@ import {
   FaPhoneAlt, 
   FaFacebookF, 
   FaLinkedinIn, 
-  FaTwitter,
+  FaWhatsapp,
   FaPaperPlane,
   FaCheckCircle
 } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
 import axiosInstance from '../../api/axiosInstance'; 
+
 const ContactUs = () => {
   // Animations
   const fadeUp = {
@@ -31,7 +32,7 @@ const ContactUs = () => {
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
 
-  // Form State Management for Admin Panel
+  // Form State Management
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -55,7 +56,6 @@ const ContactUs = () => {
     const payload = { ...formData };
 
     try {
-      // Backend API call to save contact message in MongoDB database
       const response = await axiosInstance.post('/contact', payload);
       
       if (response.data) {
@@ -78,7 +78,7 @@ const ContactUs = () => {
         <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
           <div 
             className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
+            style={{ backgroundImage: `url('https\://res.cloudinary.com/dsrs8hryx/image/upload/q_auto,f_auto/v1794207752/Solar_panels_reflecting_sun_1ffa0567_2K_kdrgyu.jpg')` }}
           />
           <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
@@ -106,7 +106,7 @@ const ContactUs = () => {
       <div className="relative z-10 bg-[#fafaf9] rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] pt-24 pb-12 border-b border-gray-100">
         
         {/* --- Info Cards Grid --- */}
-        <div className="max-w-350 mx-auto px-6 lg:px-8 mb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">
           <motion.div 
             variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
@@ -116,9 +116,9 @@ const ContactUs = () => {
               <div className="w-16 h-16 bg-[#f4f9f1] rounded-full flex items-center justify-center text-[#8ab645] mb-6">
                 <FaMapMarkerAlt size={24} />
               </div>
-              <h3 className="text-lg dm-sans-bold text-gray-900 mb-3">Contact Us</h3>
-              <p className="text-gray-500 sans-medium text-sm leading-relaxed max-w-50">
-                House No. 482, Road No. 06, Avenue 06,<br/>Mirpur DOHS, Mirpur,<br/>Dhaka 1216
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Visit Us</h3>
+              <p className="text-gray-500 font-medium text-sm leading-relaxed max-w-[200px]">
+                House No. 482, Road No. 06, Avenue 06,<br/>Mirpur DOHS,<br/>Dhaka 1216
               </p>
             </motion.div>
 
@@ -128,7 +128,7 @@ const ContactUs = () => {
                 <FaEnvelope size={24} />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-3">Email Us At</h3>
-              <a href="mailto:info@orbedenergy.com" className="text-gray-500 text-sm hover:text-[#8ab645] transition-colors">
+              <a href="mailto:info@orbedenergy.com" className="text-gray-500 font-medium text-sm hover:text-[#8ab645] transition-colors">
                 info@orbedenergy.com
               </a>
             </motion.div>
@@ -139,8 +139,9 @@ const ContactUs = () => {
                 <FaPhoneAlt size={24} />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-3">Call Us At</h3>
-              <p className="text-gray-500 text-sm leading-loose">
+              <p className="text-gray-500 font-medium text-sm leading-loose">
                 <a href="tel:+8801805523132" className="block hover:text-[#8ab645] transition-colors">+880 180 552 3132</a>
+                <a href="tel:+8801340320161" className="block hover:text-[#8ab645] transition-colors">+880 134 032 0161</a>
               </p>
             </motion.div>
 
@@ -151,16 +152,37 @@ const ContactUs = () => {
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-4">Follow Us</h3>
               <div className="flex gap-3">
-                <a href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-[#8ab645] hover:text-white transition-colors"><FaFacebookF /></a>
-                <a href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-[#8ab645] hover:text-white transition-colors"><FaLinkedinIn /></a>
-                <a href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-[#8ab645] hover:text-white transition-colors"><FaTwitter /></a>
+                <a 
+                  href="https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-[#8ab645] hover:text-white transition-colors"
+                >
+                  <FaFacebookF />
+                </a>
+                <a 
+                  href="https://www.linkedin.com/company/orbed-green-energy-limited/home/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-[#8ab645] hover:text-white transition-colors"
+                >
+                  <FaLinkedinIn />
+                </a>
+                <a 
+                  href="https://wa.me/8801805523132" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-[#25D366] hover:text-white transition-colors"
+                >
+                  <FaWhatsapp />
+                </a>
               </div>
             </motion.div>
           </motion.div>
         </div>
 
         {/* --- Split Layout: Image Left, Form Right --- */}
-        <div className="max-w-350 mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             
             {/* Left Side Visual */}
@@ -186,11 +208,11 @@ const ContactUs = () => {
             <div className="w-full lg:w-7/12 lg:pl-10">
               <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 
-                <h4 className="text-[#8ab645] dm-sans-bold text-sm tracking-[0.2em] uppercase mb-3">Send Us Message</h4>
-                <h2 className="text-4xl md:text-5xl dm-sans-bold text-gray-900 mb-6 leading-tight">
+                <h4 className="text-[#8ab645] font-bold text-sm tracking-[0.2em] uppercase mb-3">Send Us Message</h4>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                   Get In Touch With Us
                 </h2>
-                <p className="text-gray-500 sans-medium text-lg leading-relaxed mb-10">
+                <p className="text-gray-500 font-medium text-lg leading-relaxed mb-10">
                   Contact us today, and our experts will be happy to assist you in making the best decision for your solar energy needs!
                 </p>
 
@@ -250,8 +272,31 @@ const ContactUs = () => {
             
           </div>
         </div>
-      </div>
 
+        {/* --- 🔥 Google Maps Integration Section --- */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-lg border border-gray-100"
+          >
+            {/* Embed link generated from your provided Google Maps URL */}
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14601.76510373003!2d90.35246738910403!3d23.836592237071987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c10036fd7e1b%3A0xf1ece9741d4c7ed2!2sOrbed%20Green%20Energy%20Limited!5e0!3m2!1sen!2sbd!4v1711234567890!5m2!1sen!2sbd" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Orbed Green Energy Limited Location"
+            ></iframe>
+          </motion.div>
+        </div>
+
+      </div>
     </div>
   );
 };

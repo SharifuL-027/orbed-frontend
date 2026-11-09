@@ -72,7 +72,7 @@ const AboutUs = () => {
         <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
           <div 
             className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
+            style={{ backgroundImage: `url('https\://res.cloudinary.com/dsrs8hryx/image/upload/q_auto,f_auto/v1794207752/Solar_panels_reflecting_sun_1ffa0567_2K_kdrgyu.jpg')` }}
           />
           {/* Dark Gradient Overlay */}
           <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />

@@ -119,26 +119,18 @@ const Careers = () => {
         <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
           <div 
             className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=2070')` }}
+            style={{ backgroundImage: `url('https\://res.cloudinary.com/dsrs8hryx/image/upload/q_auto,f_auto/v1794207752/Solar_panels_reflecting_sun_1ffa0567_2K_kdrgyu.jpg')` }}
           />
           <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6 mt-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <div className="w-8 h-[2px] bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">Join Our Team</h4>
-            <div className="w-8 h-[2px] bg-[#8ab645]" />
-          </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
             className="text-3xl md:text-5xl dm-sans-bold text-white font-serif leading-[1.2] mb-6"
           >
-            Join the Orbed Green Energy Ltd. Team and Power a <span className="text-[#8ab645]">Greener Future!</span>
+            Join the Orbed Green Energy Ltd. Team and Power a Greener Future!
           </motion.h1>
         
         </div>
