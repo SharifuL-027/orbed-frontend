@@ -110,7 +110,7 @@ const AboutUs = () => {
                   className="rounded-3xl overflow-hidden shadow-2xl w-4/5 aspect-4/4"
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=1000" 
+                    src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" 
                     alt="Orbed Solar Plant" 
                     className="w-full h-full object-cover"
                   />
@@ -124,7 +124,7 @@ const AboutUs = () => {
                   className="absolute -bottom-8 right-0 sm:right-6 w-3/5 aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=800" 
+                    src="https://plus.unsplash.com/premium_photo-1663091595941-65815fcfeb32?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" 
                     alt="Solar Setup" 
                     className="w-full h-full object-cover"
                   />
@@ -155,14 +155,14 @@ const AboutUs = () => {
                 
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-2 h-2 rounded-full bg-[#8ab645]"></span>
-                  <span className="text-[#8ab645] font-bold text-xs uppercase tracking-widest">ABOUT US</span>
+                  <span className="text-[#8ab645] dm-sans-bold text-xs uppercase tracking-widest">ABOUT US</span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl lg:text-5xl dm-sans-bold text-gray-900 mb-6 font-serif leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl dm-sans-bold text-gray-900 mb-6 leading-tight">
                   About Orbed Green Energy Limited
                 </h2>
 
-                <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed mb-8">
+                <div className="space-y-4 text-gray-600 sans-medium text-base md:text-lg leading-relaxed mb-8">
                   <p>
                     At Orbed Green Energy Limited, we believe in building a cleaner, greener and more sustainable future through renewable energy. Founded with a vision to make solar power accessible across Bangladesh, we provide end-to-end solar solutions from design and installation to maintenance and energy optimization.
                   </p>
@@ -219,9 +219,9 @@ const AboutUs = () => {
               </motion.h4>
               <motion.h2 
                 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-sans tracking-tight leading-[1.1]"
+                className="text-4xl md:text-5xl dm-sans-bold text-gray-900 tracking-tight leading-tight"
               >
-                Building A Sustainable <br className="hidden md:block"/> Future With Smart Solar <br className="hidden md:block"/> Technology
+                Building A Sustainable Future With Smart Solar Technology
               </motion.h2>
             </div>
             <div className="lg:w-2/5 lg:mt-12">
@@ -249,7 +249,7 @@ const AboutUs = () => {
                   <img 
                     src={item.img} 
                     alt={item.title}
-                    className="w-65 h-65 md:w-full md:h-auto aspect-[4/5] object-cover rounded-3xl border border-gray-100"
+                    className="w-65 h-65 md:w-full md:h-auto aspect-4/5 object-cover rounded-3xl border border-gray-100"
                   />
                   <div className="absolute bottom-0 right-0 w-11 h-11 bg-[#8ab645] rounded-full flex items-center justify-center text-white font-bold text-xs border-4 border-white shadow-sm z-10">
                     {item.num}
@@ -278,7 +278,7 @@ const AboutUs = () => {
       </section>
 
       {/* --- Section 3: Mission & Vision --- */}
-      <section className="py-24 lg:py-32 px-8 bg-white border-t border-gray-100 relative z-10">
+      <section className="py-24 lg:py-32 px-8 bg-white relative z-10">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             
