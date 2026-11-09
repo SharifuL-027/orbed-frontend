@@ -116,8 +116,8 @@ const ContactUs = () => {
               <div className="w-16 h-16 bg-[#f4f9f1] rounded-full flex items-center justify-center text-[#8ab645] mb-6">
                 <FaMapMarkerAlt size={24} />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Contact Us</h3>
-              <p className="text-gray-500 text-sm leading-relaxed max-w-50">
+              <h3 className="text-lg dm-sans-bold text-gray-900 mb-3">Contact Us</h3>
+              <p className="text-gray-500 sans-medium text-sm leading-relaxed max-w-50">
                 House No. 482, Road No. 06, Avenue 06,<br/>Mirpur DOHS, Mirpur,<br/>Dhaka 1216
               </p>
             </motion.div>
@@ -140,7 +140,6 @@ const ContactUs = () => {
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-3">Call Us At</h3>
               <p className="text-gray-500 text-sm leading-loose">
-                <a href="tel:+8801340320161" className="block hover:text-[#8ab645] transition-colors">+880 134 032 0161</a>
                 <a href="tel:+8801805523132" className="block hover:text-[#8ab645] transition-colors">+880 180 552 3132</a>
               </p>
             </motion.div>
@@ -168,7 +167,7 @@ const ContactUs = () => {
             <div className="w-full lg:w-5/12 relative pt-8 lg:pt-0">
               <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=800" 
+                  src="https://res.cloudinary.com/dsrs8hryx/image/upload/v1794200136/ledc-at4KKO2AJDU-unsplash_eqxmfk.jpg" 
                   alt="Solar Experts" 
                   className="w-full h-auto object-cover rounded-3xl shadow-xl"
                 />
@@ -187,11 +186,11 @@ const ContactUs = () => {
             <div className="w-full lg:w-7/12 lg:pl-10">
               <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 
-                <h4 className="text-[#8ab645] font-bold text-sm tracking-[0.2em] uppercase mb-3">Send Us Message</h4>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-serif leading-tight">
+                <h4 className="text-[#8ab645] dm-sans-bold text-sm tracking-[0.2em] uppercase mb-3">Send Us Message</h4>
+                <h2 className="text-4xl md:text-5xl dm-sans-bold text-gray-900 mb-6 leading-tight">
                   Get In Touch With Us
                 </h2>
-                <p className="text-gray-500 text-lg leading-relaxed mb-10">
+                <p className="text-gray-500 sans-medium text-lg leading-relaxed mb-10">
                   Contact us today, and our experts will be happy to assist you in making the best decision for your solar energy needs!
                 </p>
 

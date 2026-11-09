@@ -19,6 +19,7 @@ import ManageCategories from '../Admin/ManageCategories';
 import ManageProducts from '../Admin/ManageProducts';
 import ManageApplications from '../Admin/ManageApplication';
 import ManageMessages from '../Admin/ManageMessages';
+import DetailsPage from '../Product/DetailsPage';
 
 const AppRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const AppRoutes = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/products/:id" element={<DetailsPage />} />
       </Route>
 
       {/* 🟠 LOGIN ROUTE: Admin login e Navbar thakar dorkar nai */}
