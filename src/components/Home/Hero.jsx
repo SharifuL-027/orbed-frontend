@@ -131,38 +131,9 @@ const Hero = () => {
               GET A QUOTE
               <FiArrowRight className="text-xl" />
             </motion.button>
-            
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3 bg-transparent border border-white/40 hover:border-white text-white font-semibold py-4 px-8 rounded-sm transition-colors duration-300 group"
-            >
-              <span className="flex items-center justify-center w-8 h-8 rounded-full border border-white/40 group-hover:border-white transition-all">
-                <FaPlay className="text-sm ml-1" />
-              </span>
-              WATCH STORY
-            </motion.button>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Down sliding indicators scroll block */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white z-20"
-      >
-        <span className="text-sm font-medium tracking-widest text-white">01 / 04</span>
-        <motion.div 
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-        >
-          <svg className="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
-      </motion.div>
     </div>
   );
 };
