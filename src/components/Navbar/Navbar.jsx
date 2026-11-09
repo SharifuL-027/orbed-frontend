@@ -68,11 +68,6 @@ const Navbar = () => {
               <span>info@orbedenergy.com</span>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <a href="https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" target="_blank" rel="noreferrer" className="hover:text-green-500 transition-colors">
-              <FaFacebookF size={14} />
-            </a>
-          </div>
         </div>
 
         {/* Main Navbar */}
@@ -203,11 +198,6 @@ const Navbar = () => {
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-[#8cc63f]" />
                 <span>info@orbedenergy.com</span>
-              </div>
-              <div className="flex gap-4 mt-4">
-                <a href="https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" target="_blank" rel="noreferrer" className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#8cc63f] hover:text-white transition-all">
-                  <FaFacebookF />
-                </a>
               </div>
             </div>
           </motion.div>

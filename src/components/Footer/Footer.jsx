@@ -131,15 +131,15 @@ const Footer = () => {
               <h3 className="text-gray-900 text-lg font-bold mb-5 md:mb-6">Contact Us</h3>
               <ul className="flex flex-col gap-4 md:gap-5">
                 <li className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="text-[#8ab645] mt-1 flex-shrink-0 text-base" />
+                  <FaMapMarkerAlt className="text-[#8ab645] mt-1 shrink-0 text-base" />
                   <span className="text-gray-600 text-sm font-medium">House 482 (1st Fl), Road 6, Ave 6, Mirpur DOHS, Dhaka 1216</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <FaPhoneAlt className="text-[#8ab645] flex-shrink-0 text-base" />
+                  <FaPhoneAlt className="text-[#8ab645] shrink-0 text-base" />
                   <span className="text-gray-600 text-sm font-medium">+880 1805-523132</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <FaEnvelope className="text-[#8ab645] flex-shrink-0 text-base" />
+                  <FaEnvelope className="text-[#8ab645] shrink-0 text-base" />
                   <span className="text-gray-600 text-sm font-medium">info@orbedenergy.com</span>
                 </li>
               </ul>
@@ -157,7 +157,7 @@ const Footer = () => {
               <span>
                 Developed by{' '}
                 <a 
-                  href="https://genesystech.vercel.app/" 
+                  href="https://genesysltd.com/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#8ab645] hover:underline font-bold"
