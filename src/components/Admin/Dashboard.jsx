@@ -9,7 +9,7 @@ import {
   FaCircleNotch
 } from 'react-icons/fa';
 import { BsLightningChargeFill } from 'react-icons/bs';
-import api from '../api/axiosConfig'; // 🔥 তোমার প্রজেক্টের axios instance বা api কনফিগারেশন ইমপোর্ট করা হলো
+import api from '../../api/axiosInstance'; 
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);

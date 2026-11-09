@@ -8,7 +8,7 @@ import {
   FaTimes, 
   FaTags 
 } from 'react-icons/fa';
-import axiosInstance from '../../api/axiosInstance'; // Apnar axios file er sothik path din
+import axiosInstance from '../../api/axiosInstance'; 
 
 const ManageCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -98,16 +98,16 @@ const ManageCategories = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
       {/* Header Section */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 font-serif">Manage Categories</h1>
-          <p className="text-gray-500 mt-2 text-sm">Add, edit, or delete product categories for your store.</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 font-serif">Manage Categories</h1>
+          <p className="text-gray-500 mt-1 sm:mt-2 text-xs sm:text-sm">Add, edit, or delete product categories for your store.</p>
         </div>
         <button 
           onClick={handleOpenAdd}
-          className="bg-[#0a192f] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#8ab645] transition-colors shadow-lg flex items-center gap-2"
+          className="w-full sm:w-auto bg-[#0a192f] text-white px-5 sm:px-6 py-3 rounded-xl font-bold text-xs sm:text-sm hover:bg-[#8ab645] transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer"
         >
           <FaPlus /> Add New Category
         </button>
@@ -118,51 +118,51 @@ const ManageCategories = () => {
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} 
         className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
       >
-        <div className="p-6 border-b border-gray-100 bg-[#fafaf9] flex items-center gap-3">
-          <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center text-[#8ab645]">
-            <FaTags size={18} />
+        <div className="p-4 sm:p-6 border-b border-gray-100 bg-[#fafaf9] flex items-center gap-3">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 bg-green-50 rounded-full flex items-center justify-center text-[#8ab645] flex-shrink-0">
+            <FaTags size={16} className="sm:text-lg" />
           </div>
-          <h3 className="text-lg font-bold text-gray-900">All Categories</h3>
+          <h3 className="text-base sm:text-lg font-bold text-gray-900">All Categories</h3>
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <FaSpinner className="animate-spin text-[#8ab645] text-4xl mb-4" />
-            <p className="text-gray-500 font-semibold text-sm">Loading categories...</p>
+          <div className="flex flex-col items-center justify-center py-20 px-4">
+            <FaSpinner className="animate-spin text-[#8ab645] text-3xl sm:text-4xl mb-4" />
+            <p className="text-gray-500 font-semibold text-xs sm:text-sm">Loading categories...</p>
           </div>
         ) : categories.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-gray-500 mb-4">No categories found. Create your first category!</p>
+          <div className="text-center py-20 px-4">
+            <p className="text-gray-500 text-sm mb-4">No categories found. Create your first category!</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
-                <tr className="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
-                  <th className="p-4 font-semibold w-1/4">Name</th>
-                  <th className="p-4 font-semibold w-2/4">Description</th>
-                  <th className="p-4 font-semibold w-1/4 text-right">Actions</th>
+                <tr className="bg-gray-50 text-gray-500 text-[11px] sm:text-xs uppercase tracking-wider">
+                  <th className="p-3 sm:p-4 font-semibold w-1/4">Name</th>
+                  <th className="p-3 sm:p-4 font-semibold w-2/4">Description</th>
+                  <th className="p-3 sm:p-4 font-semibold w-1/4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-gray-100 text-xs sm:text-sm">
                 {categories.map((cat) => (
                   <tr key={cat._id} className="hover:bg-gray-50 transition-colors">
-                    <td className="p-4 font-bold text-gray-900">{cat.name}</td>
-                    <td className="p-4 text-gray-600 text-sm truncate max-w-xs">{cat.description || 'No description'}</td>
-                    <td className="p-4 text-right">
+                    <td className="p-3 sm:p-4 font-bold text-gray-900">{cat.name}</td>
+                    <td className="p-3 sm:p-4 text-gray-600 truncate max-w-xs">{cat.description || 'No description'}</td>
+                    <td className="p-3 sm:p-4 text-right whitespace-nowrap">
                       <button 
                         onClick={() => handleOpenEdit(cat)}
-                        className="text-blue-500 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition-colors mr-2"
+                        className="text-blue-500 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition-colors mr-1 cursor-pointer"
                         title="Edit"
                       >
-                        <FaEdit size={18} />
+                        <FaEdit size={16} className="sm:text-lg" />
                       </button>
                       <button 
                         onClick={() => handleDelete(cat._id)}
-                        className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors"
+                        className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors cursor-pointer"
                         title="Delete"
                       >
-                        <FaTrashAlt size={18} />
+                        <FaTrashAlt size={16} className="sm:text-lg" />
                       </button>
                     </td>
                   </tr>
@@ -176,63 +176,63 @@ const ManageCategories = () => {
       {/* Add/Edit Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }} 
               animate={{ opacity: 1, scale: 1 }} 
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden"
+              className="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden my-8"
             >
               {/* Modal Header */}
-              <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-[#fafaf9]">
-                <h3 className="text-xl font-bold text-gray-900 font-serif">
+              <div className="flex justify-between items-center p-4 sm:p-6 border-b border-gray-100 bg-[#fafaf9]">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-serif">
                   {editId ? 'Edit Category' : 'Add New Category'}
                 </h3>
-                <button onClick={handleCloseModal} className="text-gray-400 hover:text-red-500 transition-colors">
-                  <FaTimes size={20} />
+                <button onClick={handleCloseModal} className="text-gray-400 hover:text-red-500 transition-colors p-1">
+                  <FaTimes size={18} />
                 </button>
               </div>
 
               {/* Modal Form */}
-              <form onSubmit={handleSubmit} className="p-6 space-y-5">
+              <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-5">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Category Name *</label>
+                  <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-2">Category Name *</label>
                   <input 
                     type="text" 
                     name="name" 
                     required 
                     value={formData.name} 
                     onChange={handleInputChange} 
-                    className="w-full bg-[#fafaf9] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8ab645]/50 focus:border-[#8ab645] transition-all text-sm" 
+                    className="w-full bg-[#fafaf9] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8ab645]/50 focus:border-[#8ab645] transition-all text-xs sm:text-sm" 
                     placeholder="e.g. Solar Panels" 
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Description (Optional)</label>
+                  <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-2">Description (Optional)</label>
                   <textarea 
                     name="description" 
                     rows="3" 
                     value={formData.description} 
                     onChange={handleInputChange} 
-                    className="w-full bg-[#fafaf9] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8ab645]/50 focus:border-[#8ab645] transition-all text-sm resize-none" 
+                    className="w-full bg-[#fafaf9] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8ab645]/50 focus:border-[#8ab645] transition-all text-xs sm:text-sm resize-none" 
                     placeholder="Brief description of this category..."
                   ></textarea>
                 </div>
 
                 {/* Modal Footer / Actions */}
-                <div className="flex items-center justify-end gap-4 pt-4 border-t border-gray-100 mt-6">
+                <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-3 sm:gap-4 pt-4 border-t border-gray-100 mt-6">
                   <button 
                     type="button" 
                     onClick={handleCloseModal}
-                    className="px-6 py-2.5 text-gray-600 font-bold text-sm hover:bg-gray-100 rounded-xl transition-colors"
+                    className="w-full sm:w-auto px-6 py-2.5 text-gray-600 font-bold text-xs sm:text-sm hover:bg-gray-100 rounded-xl transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="bg-[#8ab645] text-white px-8 py-2.5 rounded-xl font-bold text-sm hover:bg-[#7a9d3d] shadow-[0_5px_15px_rgba(138,182,69,0.3)] transition-all flex items-center gap-2"
+                    className="w-full sm:w-auto bg-[#8ab645] text-white px-8 py-2.5 rounded-xl font-bold text-xs sm:text-sm hover:bg-[#7a9d3d] shadow-[0_5px_15px_rgba(138,182,69,0.3)] transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isSubmitting ? (
                       <><FaSpinner className="animate-spin" /> Saving...</>
