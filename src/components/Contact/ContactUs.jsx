@@ -84,20 +84,12 @@ const ContactUs = () => {
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6 mt-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <div className="w-8 h-0.5 bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] dm-sans-bold text-xs tracking-[0.25em] uppercase">Contact Us</h4>
-            <div className="w-8 h-0.5 bg-[#8ab645]" />
-          </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
             className="text-3xl md:text-5xl dm-sans-bold text-white font-serif leading-[1.2] mb-6"
           >
-            From panels to net metering – your <span className="text-[#8ab645]">energy partners</span> in Bangladesh
+            From panels to net metering – your energy partners in Bangladesh
           </motion.h1>
         </div>
       </section>

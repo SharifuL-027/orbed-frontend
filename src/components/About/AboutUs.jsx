@@ -80,18 +80,6 @@ const AboutUs = () => {
         
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <div className="w-8 h-[2px] bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
-              Who We Are
-            </h4>
-            <div className="w-8 h-[2px] bg-[#8ab645]" />
-          </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -99,7 +87,7 @@ const AboutUs = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif leading-[1.2]"
           >
-            Driving <span className="text-[#8ab645]">Energy Independence</span> Through Advanced Solar Solutions
+            Driving Energy Independence Through Advanced Solar Solutions
           </motion.h1>
         </div>
       </section>
@@ -119,7 +107,7 @@ const AboutUs = () => {
                   initial="hidden" 
                   whileInView="visible" 
                   viewport={{ once: true }}
-                  className="rounded-3xl overflow-hidden shadow-2xl w-4/5 aspect-[4/4]"
+                  className="rounded-3xl overflow-hidden shadow-2xl w-4/5 aspect-4/4"
                 >
                   <img 
                     src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=1000" 
@@ -133,7 +121,7 @@ const AboutUs = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.6 }}
-                  className="absolute -bottom-8 right-0 sm:right-6 w-3/5 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+                  className="absolute -bottom-8 right-0 sm:right-6 w-3/5 aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
                 >
                   <img 
                     src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=800" 

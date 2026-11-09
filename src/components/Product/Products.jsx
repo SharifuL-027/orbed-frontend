@@ -56,18 +56,6 @@ const Products = () => {
         </div>
         
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-5">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <div className="w-8 h-0.5 bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] font-bold text-xs tracking-[0.25em] uppercase">
-              Our Inventory
-            </h4>
-            <div className="w-8 h-0.5 bg-[#8ab645]" />
-          </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}

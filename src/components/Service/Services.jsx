@@ -106,18 +106,6 @@ const Services = () => {
         
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
-         <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <div className="w-8 h-[2px] bg-[#8ab645]" />
-            <h4 className="text-[#8ab645] dm-sans-bold text-xs tracking-[0.25em] uppercase">
-              Our Services
-            </h4>
-            <div className="w-8 h-[2px] bg-[#8ab645]" />
-          </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -125,7 +113,7 @@ const Services = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-3xl md:text-4xl lg:text-5xl dm-sans-bold text-white leading-[1.2]"
           >
-            Delivering Expert Solar Services for <span className="text-[#8ab645]">Reliable</span>, Cost-effective Energy.
+            Delivering Expert Solar Services for Reliable, Cost-effective Energy.
           </motion.h1>
         </div>
       </section>
@@ -196,7 +184,7 @@ const Services = () => {
 
       {/* --- Section 2: Services Grid (Premium Light Green BG)[cite: 2] --- */}
       <section className="py-24 lg:py-32 px-6 lg:px-8 bg-[#f8fbf6] relative z-10 border-t border-green-50">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-350 mx-auto">
           
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-5xl dm-sans-bold text-gray-900 font-serif leading-tight">
@@ -224,7 +212,7 @@ const Services = () => {
                   
                   <h3 className="text-2xl font-bold text-gray-900 mb-3 font-serif">{service.title}</h3>
                   <p className="text-[#8ab645] font-bold text-xs uppercase tracking-widest mb-5">{service.tagline}</p>
-                  <p className="text-gray-500 text-base leading-relaxed mb-8 flex-grow">
+                  <p className="text-gray-500 text-base leading-relaxed mb-8 grow">
                     {service.desc}
                   </p>
                   
