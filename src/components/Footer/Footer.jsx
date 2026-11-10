@@ -109,7 +109,7 @@ const Footer = () => {
               <span>
                 Developed by{' '}
                 <a 
-                  href="https://genesystech.vercel.app/" 
+                  href="https://genesysltd.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#8ab645] hover:underline font-extrabold tracking-wide"
