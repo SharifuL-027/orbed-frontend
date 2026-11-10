@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebookF, FaWhatsapp, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
+import { FaFacebookF, FaWhatsapp, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedinIn, FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -121,23 +121,36 @@ const Footer = () => {
             
             {/* Social Icons (FB & WhatsApp only) */}
             <div className="flex gap-3">
-              <a 
-                href="https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" 
-                target="_blank" 
-                rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center hover:bg-[#8ab645] hover:text-white hover:border-[#8ab645] transition-all duration-300 text-gray-600 shadow-sm"
-              >
-                <FaFacebookF size={14} />
-              </a>
-              <a 
-                href="https://wa.me/8801805523132" 
-                target="_blank" 
-                rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 text-gray-600 shadow-sm"
-              >
-                <FaWhatsapp size={16} />
-              </a>
-            </div>
+  {/* Facebook */}
+  <a 
+    href="https://www.facebook.com/p/Orbed-Green-Energy-Ltd-61586079396076/" 
+    target="_blank" 
+    rel="noreferrer"
+    className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center hover:bg-[#8ab645] hover:text-white hover:border-[#8ab645] transition-all duration-300 text-gray-600 shadow-sm"
+  >
+    <FaFacebookF size={14} />
+  </a>
+
+  {/* LinkedIn */}
+  <a 
+    href="https://www.linkedin.com/company/orbed-green-energy-limited/" 
+    target="_blank" 
+    rel="noreferrer"
+    className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all duration-300 text-gray-600 shadow-sm"
+  >
+    <FaLinkedinIn size={14} />
+  </a>
+
+  {/* WhatsApp */}
+  <a 
+    href="https://wa.me/8801805523132" 
+    target="_blank" 
+    rel="noreferrer"
+    className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 text-gray-600 shadow-sm"
+  >
+    <FaWhatsapp size={16} />
+  </a>
+</div>
             
           </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { 
@@ -18,20 +18,34 @@ const Navbar = () => {
   const { scrollY } = useScroll();
   const location = useLocation();
 
+  // 🔥 Auto-scroll Logic: Jodi link e '#contact-form' thake, tahole form e scroll korbe
+  useEffect(() => {
+    if (location.hash === '#contact-form') {
+      setTimeout(() => {
+        const element = document.getElementById('contact-form');
+        if (element) {
+          // Navbar er height er jonno 100px offset rakha hoyeche, jate form ta navbar er niche na dhuke jay
+          const y = element.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 300);
+    }
+  }, [location]);
+
   // Scroll detect korar jonno framer-motion er hook
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
     
-    // Scroll down korle navbar hide hobe (150px er niche namle) - Kintu Mobile menu open thakle hide hobe na
     if (latest > previous && latest > 150 && !mobileMenuOpen) {
       setHidden(true);
     } else {
       setHidden(false);
     }
 
-    // 50px er niche scroll korlei background solid white hobe
-    setIsScrolled(latest > 50 || mobileMenuOpen);
+    setIsScrolled(latest > 50);
   });
+
+  const isHeaderSolid = isScrolled || mobileMenuOpen;
 
   const navItems = [
     { name: 'HOME', path: '/' },
@@ -45,18 +59,15 @@ const Navbar = () => {
   return (
     <>
       <motion.header
-        variants={{
-          visible: { y: 0 },
-          hidden: { y: "-100%" },
-        }}
+        variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={`fixed top-0 left-0 w-full z-50 flex flex-col transition-colors duration-300 ${
-          isScrolled ? "bg-white text-black shadow-md" : "bg-transparent text-white"
+          isHeaderSolid ? "bg-white text-black shadow-md" : "bg-transparent text-white"
         }`}
       >
-        {/* Topbar (Hidden on Mobile) */}
-        <div className={`hidden md:flex justify-between items-center px-4 md:px-8 py-2 text-sm border-b transition-colors duration-300 ${isScrolled ? 'border-gray-200 text-gray-600' : 'border-white/20 text-white/90'}`}>
+        {/* Topbar */}
+        <div className={`hidden md:flex justify-between items-center px-4 md:px-8 py-2 text-sm border-b transition-colors duration-300 ${isHeaderSolid ? 'border-gray-200 text-gray-600' : 'border-white/20 text-white/90'}`}>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <FaPhoneAlt size={12} />
@@ -72,8 +83,6 @@ const Navbar = () => {
 
         {/* Main Navbar */}
         <nav className="flex items-center justify-between px-4 md:px-8 py-4">
-          
-          {/* Logo Area */}
           <Link to="/" className="flex items-center gap-2 cursor-pointer z-50">
             <img 
               src="https://res.cloudinary.com/dsrs8hryx/image/upload/v1793700637/Logo-02_aoau4k.png" 
@@ -90,12 +99,10 @@ const Navbar = () => {
                 <li key={item.name} className="relative group cursor-pointer">
                   <Link 
                     to={item.path} 
-                    className={`py-1 transition-colors duration-300 ${isScrolled ? 'hover:text-[#8cc63f]' : 'hover:text-green-300'}`}
+                    className={`py-1 transition-colors duration-300 ${isHeaderSolid ? 'hover:text-[#8cc63f]' : 'hover:text-green-300'}`}
                   >
                     {item.name}
                   </Link>
-
-                  {/* Active Page Underline */}
                   {isActive && (
                     <motion.div
                       layoutId="navbar-underline"
@@ -103,8 +110,6 @@ const Navbar = () => {
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-
-                  {/* Hover Underline */}
                   {!isActive && (
                     <div className="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#8cc63f] transition-all duration-300 group-hover:w-full" />
                   )}
@@ -121,8 +126,8 @@ const Navbar = () => {
               </div>
             </Link>
             
-            {/* GET APPOINTMENT linked to contact */}
-            <Link to="/contact">
+            {/* 🔥 Updated Desktop GET APPOINTMENT button link */}
+            <Link to="/contact#contact-form">
               <button className="bg-[#8cc63f] hover:bg-[#7ebd34] text-white font-bold py-3 px-6 rounded-sm text-sm transition-all shadow-md">
                 GET APPOINTMENT
               </button>
@@ -131,8 +136,9 @@ const Navbar = () => {
 
           {/* Mobile Hamburger Menu Icon */}
           <div className="lg:hidden flex items-center gap-4">
-            {/* Mobile Contact Button */}
-            <Link to="/contact" className="md:hidden">
+            
+            {/* 🔥 Updated Mobile Contact Button link */}
+            <Link to="/contact#contact-form" className="md:hidden">
               <button className="bg-[#8cc63f] text-white font-bold py-2 px-4 rounded-sm text-xs transition-all">
                 APPOINTMENT
               </button>
@@ -140,7 +146,7 @@ const Navbar = () => {
             
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 focus:outline-none transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}
+              className={`p-2 focus:outline-none transition-colors z-50 relative ${isHeaderSolid ? 'text-gray-900' : 'text-white'}`}
             >
               {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -174,7 +180,6 @@ const Navbar = () => {
                 );
               })}
               
-              {/* Admin Login added in mobile menu */}
               <li className="border-b border-gray-100 pb-3 mt-4">
                 <Link 
                   to="/login" 
@@ -189,7 +194,6 @@ const Navbar = () => {
               </li>
             </ul>
 
-            {/* Mobile Footer Info */}
             <div className="mt-auto pt-10 flex flex-col gap-4 text-sm text-gray-600 font-medium">
               <div className="flex items-center gap-3">
                 <FaPhoneAlt className="text-[#8cc63f]" />

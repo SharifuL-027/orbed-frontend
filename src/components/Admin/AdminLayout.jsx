@@ -52,10 +52,10 @@ const AdminLayout = () => {
         {/* Sidebar Header */}
         <div className="p-6 text-center border-b border-gray-700 flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-bold font-serif text-[#8ab645]">Orbed Admin</h2>
+            <h2 className="text-2xl dm-sans-bold  text-[#8ab645]">Orbed Admin</h2>
             <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">Control Panel</p>
           </div>
-          {/* Close button for mobile */}
+          {/* Close button for mobile */} 
           <button 
             onClick={() => setIsSidebarOpen(false)}
             className="md:hidden text-gray-400 hover:text-white p-1"

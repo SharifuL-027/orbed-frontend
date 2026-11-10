@@ -197,7 +197,7 @@ const ContactUs = () => {
             </div>
 
             {/* Right Side Form */}
-            <div className="w-full lg:w-7/12 lg:pl-10">
+            <div id="contact-form" className="w-full lg:w-7/12 lg:pl-10">
               <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 
                 <h4 className="text-[#8ab645] font-bold text-sm tracking-[0.2em] uppercase mb-3">Send Us Message</h4>
