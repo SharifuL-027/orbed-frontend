@@ -114,7 +114,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-[#8ab645] hover:underline font-extrabold tracking-wide"
                 >
-                  Genesys
+                  Genesys Tech
                 </a>
               </span>
             </p>
