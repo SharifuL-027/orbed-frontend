@@ -20,8 +20,14 @@ const Products = () => {
         axiosInstance.get('/categories'),
         axiosInstance.get('/products')
       ]);
-      setCategories(catRes.data);
-      setProducts(prodRes.data);
+
+      // 🔥 FIX: Backend theke data je format-ei ashuk, amra shudhu Array-takei filter kore nibo
+      const categoriesData = Array.isArray(catRes.data) ? catRes.data : (catRes.data.categories || catRes.data.data || []);
+      const productsData = Array.isArray(prodRes.data) ? prodRes.data : (prodRes.data.products || prodRes.data.data || []);
+
+      setCategories(categoriesData);
+      setProducts(productsData);
+
     } catch (err) {
       console.error("Error fetching data:", err);
       setError("Failed to load products from server. Please try again later.");
