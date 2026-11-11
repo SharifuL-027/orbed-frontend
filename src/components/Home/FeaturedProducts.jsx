@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaBolt, FaSpinner, FaBoxOpen } from 'react-icons/fa';
-import axiosInstance from '../../api/axiosInstance'; // Make sure this path is correct
+import axiosInstance from '../../api/axiosInstance'; 
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -132,8 +132,8 @@ const FeaturedProducts = () => {
                       transition={{ duration: 0.4, delay: index * 0.05 }}
                       className="group bg-white rounded-[24px] p-3 border border-gray-100 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_-15px_rgba(138,182,69,0.25)] hover:border-[#8ab645]/30 transition-all duration-500 flex flex-col"
                     >
-                      {/* Product Image */}
-                      <Link to={`/products/${product._id}`} className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-gray-50 block cursor-pointer">
+                      {/* 🔥 Product Image (Updated to 4:5 Aspect Ratio) */}
+                      <Link to={`/products/${product._id}`} className="relative aspect-[4/5] w-full overflow-hidden rounded-[18px] bg-gray-50 block cursor-pointer">
                         <img
                           src={product.imageUrls?.[0] || product.image || "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=80&w=800"}
                           alt={product.name}
