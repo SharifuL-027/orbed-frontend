@@ -6,7 +6,7 @@ import { BsLightningChargeFill } from 'react-icons/bs';
 import { FiArrowRight } from 'react-icons/fi';
 
 const Hero = () => {
-  const dynamicWords = ["Solar.", "Wind.", "Clean Tech.", "Future."];
+  const dynamicWords = ["Solar.", "Clean Tech.", "Future."];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
