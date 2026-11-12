@@ -8,37 +8,37 @@ const ServicesParallax = () => {
     {
       num: "01",
       title: "Residential Solar",
-      desc: "Lower electricity bills, increase property value, and reduce carbon footprint for households[cite: 1].",
+      desc: "Lower electricity bills, increase property value, and reduce carbon footprint for households.",
     },
     {
       num: "02",
       title: "Industrial Solutions",
-      desc: "Customized solar for energy-intensive industries to improve efficiency and reduce costs[cite: 1].",
+      desc: "Customized solar for energy-intensive industries to improve efficiency and reduce costs.",
     },
     {
       num: "03",
       title: "Commercial EPC",
-      desc: "Large-scale solar solutions offering reliable power and significant long-term savings[cite: 1].",
+      desc: "Large-scale solar solutions offering reliable power and significant long-term savings.",
     },
     {
       num: "04",
       title: "System Design",
-      desc: "Personalized consultation, system sizing, and complete solution design to maximize energy output[cite: 1].",
+      desc: "Personalized consultation, system sizing, and complete solution design to maximize energy output.",
     },
     {
       num: "05",
       title: "After-Sales Service",
-      desc: "Constant maintenance support and regular servicing to keep panels efficient over their lifespan[cite: 1].",
+      desc: "Constant maintenance support and regular servicing to keep panels efficient over their lifespan.",
     },
     {
       num: "06",
       title: "Solar Water Pump Solutions",
-      desc: "Efficient and sustainable water pumping for agricultural irrigation, livestock, and drinking water[cite: 2].",
+      desc: "Efficient and sustainable water pumping for agricultural irrigation, livestock, and drinking water.",
     },
     {
       num: "07",
       title: "Solar Street Light Solutions",
-      desc: "Reliable and energy-efficient lighting solutions for roads, highways, and rural areas ensuring safer communities[cite: 2].",
+      desc: "Reliable and energy-efficient lighting solutions for roads, highways, and rural areas ensuring safer communities.",
     }
   ];
 
