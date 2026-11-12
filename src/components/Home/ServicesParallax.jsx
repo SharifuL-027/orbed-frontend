@@ -4,26 +4,41 @@ import { FiArrowUpRight } from 'react-icons/fi';
 
 const ServicesParallax = () => {
   // Orbed er brochure theke neya data
-  const servicesData = [
+ const servicesData = [
     {
       num: "01",
       title: "Residential Solar",
-      desc: "Lower electricity bills, increase property value, and reduce carbon footprint for households.", //[cite: 10]
+      desc: "Lower electricity bills, increase property value, and reduce carbon footprint for households[cite: 1].",
     },
     {
       num: "02",
       title: "Industrial Solutions",
-      desc: "Customized solar for energy-intensive industries to improve efficiency and reduce costs.", //[cite: 10]
+      desc: "Customized solar for energy-intensive industries to improve efficiency and reduce costs[cite: 1].",
     },
     {
       num: "03",
       title: "Commercial EPC",
-      desc: "Large-scale solar solutions offering reliable power and significant long-term savings.", //[cite: 10]
+      desc: "Large-scale solar solutions offering reliable power and significant long-term savings[cite: 1].",
     },
     {
       num: "04",
-      title: "Solar Street Light",
-      desc: "Reliable and energy-efficient solar street lighting solutions for safer communities.", //[cite: 11]
+      title: "System Design",
+      desc: "Personalized consultation, system sizing, and complete solution design to maximize energy output[cite: 1].",
+    },
+    {
+      num: "05",
+      title: "After-Sales Service",
+      desc: "Constant maintenance support and regular servicing to keep panels efficient over their lifespan[cite: 1].",
+    },
+    {
+      num: "06",
+      title: "Solar Water Pump Solutions",
+      desc: "Efficient and sustainable water pumping for agricultural irrigation, livestock, and drinking water[cite: 2].",
+    },
+    {
+      num: "07",
+      title: "Solar Street Light Solutions",
+      desc: "Reliable and energy-efficient lighting solutions for roads, highways, and rural areas ensuring safer communities[cite: 2].",
     }
   ];
 

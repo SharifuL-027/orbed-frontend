@@ -7,7 +7,17 @@ import {
   FaHardHat, 
   FaHandHoldingUsd, 
   FaDraftingCompass, 
-  FaArrowRight
+  FaArrowRight,
+  FaLeaf, 
+  FaBolt, 
+  FaRegClock, 
+  FaShieldAlt, 
+  FaUsers,
+  FaTint,
+  FaSeedling,
+  FaChartLine,
+  FaCogs,
+  FaGlobe
 } from 'react-icons/fa';
 import { BsLightningChargeFill, BsCheckCircleFill } from 'react-icons/bs';
 
@@ -28,85 +38,24 @@ const Services = () => {
     visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] } }
   };
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
-  };
-
-  // Services Data
-  const servicesData = [
-    {
-      icon: FaDraftingCompass,
-      title: "System Design & Engineering",
-      tagline: "Intelligent Design, Engineered Excellence",
-      desc: "Our engineering experts deliver precision solar system designs tailored to your site, energy demands, and performance goals.",
-      bullets: [
-        { title: "Custom Engineering", text: "Site-specific designs optimize yield." },
-        { title: "Performance Modeling", text: "Simulations predict output." }
-      ]
-    },
-    {
-      icon: FaHandHoldingUsd,
-      title: "Procurement of Components",
-      tagline: "Trusted Sourcing, Quality Assured",
-      desc: "Our procurement experts secure premium solar components through established global partnerships.",
-      bullets: [
-        { title: "Global Sourcing", text: "Partnerships with leading manufacturers." },
-        { title: "Supply Chain", text: "Streamlined logistics ensure delivery." }
-      ]
-    },
-    {
-      icon: FaHardHat,
-      title: "Construction & Installation",
-      tagline: "Precision Engineering, Flawless Execution",
-      desc: "Our skilled teams handle complete solar construction and installation with precision. We deliver turnkey reliability.",
-      bullets: [
-        { title: "Site Assessment", text: "Expert evaluation matches design." },
-        { title: "Expert Installation", text: "Industry-leading installation methods." }
-      ]
-    },
-    {
-      icon: FaTools,
-      title: "Operation & Maintenance",
-      tagline: "Smart Design, Maximum Energy",
-      desc: "Our proven expertise in operation and maintenance maximizes PV plant performance and lifespan.",
-      bullets: [
-        { title: "Tailored Design", text: "Designs fitting your specific spaces." },
-        { title: "Optimization", text: "Ensure each component is optimized." }
-      ]
-    },
-    {
-      icon: FaSolarPanel,
-      title: "Financing & Consultancy",
-      tagline: "Strategic Funding, Expert Guidance",
-      desc: "Comprehensive financing solutions paired with professional consultancy ensure viable solar investments.",
-      bullets: [
-        { title: "Financial Planning", text: "Customized funding strategies." },
-        { title: "Project Consultancy", text: "Expertise streamlines design." }
-      ]
-    }
-  ];
-
   return (
     <div className="w-full selection:bg-[#8ab645] selection:text-white">
       
       {/* --- 100% PERFECT FIXED Parallax Hero Section --- */}
-            {/* --- 100% PERFECT FIXED Parallax Hero Section --- */}
       <section className="relative w-full h-[70vh] flex items-center justify-center">
         
         {/* 100% Still Fixed Background Layer */}
         <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
           <div 
             className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url('https\://res.cloudinary.com/dsrs8hryx/image/upload/q_auto,f_auto/v1794207752/Solar_panels_reflecting_sun_1ffa0567_2K_kdrgyu.jpg')` }}
+            style={{ backgroundImage: `url('https://res.cloudinary.com/dsrs8hryx/image/upload/q_auto,f_auto/v1794207752/Solar_panels_reflecting_sun_1ffa0567_2K_kdrgyu.jpg')` }}
           />
-          {/* Dark Gradient Overlay - Corrected class here */}
+          {/* Dark Gradient Overlay */}
           <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
         
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
-          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,12 +67,12 @@ const Services = () => {
         </div>
       </section>
 
-      {/* --- Section 1: Intro (Premium Overlapping Visuals)[cite: 2] --- */}
+      {/* --- Section 1: Intro (Premium Overlapping Visuals) --- */}
       <section className="py-24 lg:py-36 px-6 lg:px-8 relative z-10 bg-white rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.08)]">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           
-          {/* Left: Premium Overlapping Vertical Images[cite: 2] */}
-          <div className="w-full lg:w-1/2 relative h-125 lg:h-150 flex justify-center items-center">
+          {/* Left: Premium Overlapping Vertical Images */}
+          <div className="w-full lg:w-1/2 relative h-[500px] lg:h-[600px] flex justify-center items-center">
             {/* Background Decorative Blob */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-green-50 rounded-full blur-3xl opacity-60 z-0"></div>
             
@@ -149,7 +98,7 @@ const Services = () => {
               />
             </motion.div>
             
-            {/* Center Circular Glassy Badge[cite: 2] */}
+            {/* Center Circular Glassy Badge */}
             <motion.div 
               initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 bg-white/90 backdrop-blur-md rounded-full flex flex-col items-center justify-center shadow-[0_15px_35px_rgba(0,0,0,0.15)] border-[8px] border-white z-30"
@@ -160,7 +109,7 @@ const Services = () => {
             </motion.div>
           </div>
 
-          {/* Right: Intro Text[cite: 2] */}
+          {/* Right: Intro Text */}
           <div className="w-full lg:w-1/2">
             <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 mb-6 border border-green-100">
@@ -182,70 +131,150 @@ const Services = () => {
         </div>
       </section>
 
-      {/* --- Section 2: Services Grid (Premium Light Green BG)[cite: 2] --- */}
-      <section className="py-24 lg:py-32 px-6 lg:px-8 bg-[#f8fbf6] relative z-10 border-t border-green-50">
-        <div className="max-w-350 mx-auto">
+  
+     {/* --- Section 2: Services Infographic (Premium Light Green BG) --- */}
+      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white relative z-10">
+        <div className="max-w-[1200px] mx-auto">
           
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl dm-sans-bold text-gray-900 font-serif leading-tight">
+          {/* Title Area */}
+          <motion.div 
+            variants={fadeUp} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }} 
+            className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl dm-sans-bold text-gray-900 font-serif leading-tight">
               Complete solar solution with <br className="hidden md:block" /> specialized EPC services
             </h2>
           </motion.div>
 
-          {/* Service Cards Grid[cite: 2] */}
+          {/* Infographic Image Area with Mobile Swipe Scroll */}
           <motion.div 
-            variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10"
+            variants={fadeUp} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }}
+            className="w-full rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 bg-white relative"
           >
-            {servicesData.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div 
-                  key={index}
-                  variants={fadeUp} 
-                  className="bg-white p-10 rounded-[2.5rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(138,182,69,0.1)] transition-all duration-500 border border-gray-100 group relative flex flex-col h-full transform hover:-translate-y-2"
-                >
-                  {/* Top Icon Box[cite: 2] */}
-                  <div className="w-16 h-16 bg-green-50 group-hover:bg-[#8ab645] rounded-2xl flex items-center justify-center text-[#8ab645] group-hover:text-white mb-8 transition-colors duration-500">
-                    <Icon className="text-3xl" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 font-serif">{service.title}</h3>
-                  <p className="text-[#8ab645] font-bold text-xs uppercase tracking-widest mb-5">{service.tagline}</p>
-                  <p className="text-gray-500 text-base leading-relaxed mb-8 grow">
-                    {service.desc}
-                  </p>
-                  
-                  {/* Mini bullets */}
-                  <div className="space-y-4 mb-10 border-t border-gray-100 pt-6">
-                    {service.bullets.map((b, i) => (
-                      <div key={i} className="flex gap-3 items-start">
-                        <BsCheckCircleFill className="text-[#8ab645] mt-1 text-sm shrink-0" />
-                        <p className="text-sm text-gray-600 leading-tight"><strong className="text-gray-900">{b.title}:</strong> {b.text}</p>
-                      </div>
-                    ))}
-                  </div>
+            
+            {/* Mobile Swipe Hint Badge */}
+            <div className="sm:hidden absolute top-4 right-4 z-10 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-md flex items-center gap-2 text-xs font-bold text-[#8ab645] border border-gray-100 animate-pulse">
+               Swipe to read <span className="text-sm">👉</span>
+            </div>
 
-                  {/* Bottom Arrow Icon Button[cite: 2] */}
-                  <div className="mt-auto flex justify-end">
-                    <button className="w-12 h-12 rounded-full bg-[#f8fbf6] flex items-center justify-center text-gray-900 group-hover:bg-[#8ab645] group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
-                      <FaArrowRight size={16} />
-                    </button>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {/* Scrollable Container for Mobile */}
+            <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide pb-2">
+              
+              {/* Image Box: Mobile e force kore 180% choura kora hoyeche jate boro dekhay, Desktop e normal */}
+              <div className="w-[180%] sm:w-[130%] lg:w-full min-w-[700px] lg:min-w-full">
+                <img 
+                  src="https://res.cloudinary.com/wtbwxhmc/image/upload/v1794462526/Orbed_Bros_Print_File-03_in2awz.jpg" 
+                  alt="Orbed EPC Services Infographic" 
+                  className="w-full h-auto object-contain pointer-events-none select-none"
+                />
+              </div>
+              
+            </div>
           </motion.div>
+          
         </div>
       </section>
-     
+      
 
-      {/* --- Section 4: Bottom CTA / Contact (High-End Overlapping Dark Box)[cite: 2] --- */}
+      {/* --- Section 3: Specialized Solutions Infographic --- */}
+    <section className="py-24 lg:py-32 bg-white relative z-10 border-t border-gray-100">
+
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+
+            variants={fadeUp}
+
+            initial="hidden"
+
+            whileInView="visible"
+
+            viewport={{ once: true }}
+
+            className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
+
+          >
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl dm-sans-bold text-gray-900 font-serif leading-tight">
+
+             Solar Street Light &  <br className="hidden md:block" /> Waterpump Solutions
+
+            </h2>
+
+          </motion.div>
+
+          <motion.div
+
+            variants={fadeUp}
+
+            initial="hidden"
+
+            whileInView="visible"
+
+            viewport={{ once: true }}
+
+            className="w-full rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 bg-white relative"
+
+          >
+
+            {/* Mobile Swipe Hint Badge (Optional kintu helpful) */}
+
+            <div className="sm:hidden absolute top-4 right-4 z-10 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-md flex items-center gap-2 text-xs font-bold text-[#8ab645] border border-gray-100 animate-pulse">
+
+               Swipe to read <span className="text-sm">👉</span>
+
+            </div>
+
+
+
+            {/* Scrollable Container for Mobile to prevent zooming issues */}
+
+            <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide pb-2 bg-gray-50">
+
+             
+
+              {/* Image Box: Ensures readability on mobile by widening it */}
+
+              <div className="w-[180%] sm:w-full min-w-[700px] lg:min-w-full flex justify-center">
+
+                <img
+
+                  // Ekhane apnar brochure image er link (Orbed Bros Print File-04.jpg.jpg) boshiye diben
+
+                  src="https://res.cloudinary.com/wtbwxhmc/image/upload/v1794464612/Orbed_Bros_Print_File-04_k90q7e.jpg"
+
+                  alt="Solar Street Light and Water Pump Solutions"
+
+                  className="w-full h-auto object-contain pointer-events-none select-none"
+
+                />
+
+              </div>
+
+             
+
+            </div>
+
+          </motion.div>
+
+
+
+        </div>
+
+      </section>
+
+      {/* --- Section 4: Bottom CTA / Contact (High-End Overlapping Dark Box) --- */}
       <section className="py-24 lg:py-36 px-6 lg:px-8 bg-white relative z-10">
-        <div className="max-w-350 mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+        <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
           
-          {/* Left: 2 Staggered Vertical Images[cite: 2] */}
-          <div className="w-full lg:w-[45%] flex gap-6 h-125 lg:h-150">
+          {/* Left: 2 Staggered Vertical Images */}
+          <div className="w-full lg:w-[45%] flex gap-6 h-[500px] lg:h-[600px]">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="w-1/2 h-full pt-12 relative z-10">
               <img 
                 src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80&w=600" 
@@ -262,7 +291,7 @@ const Services = () => {
             </motion.div>
           </div>
 
-          {/* Right: Content & Stunning Premium Dark Box[cite: 2] */}
+          {/* Right: Content & Stunning Premium Dark Box */}
           <div className="w-full lg:w-[55%] lg:pl-12">
             <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               
@@ -273,8 +302,8 @@ const Services = () => {
                 We partner with companies to deliver innovative solar EPC solutions that optimize energy output and reduce costs. Our end-to-end expertise ensures reliable performance tailored to your business needs.
               </p>
 
-              {/* The Dark Box Overlapping Style[cite: 2] */}
-              <div className="bg-linear-to-br from-[#061325] to-[#0a192f] p-10 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_rgba(10,25,47,0.2)] border border-white/10 relative overflow-hidden group">
+              {/* The Dark Box Overlapping Style */}
+              <div className="bg-gradient-to-br from-[#061325] to-[#0a192f] p-10 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_rgba(10,25,47,0.2)] border border-white/10 relative overflow-hidden group">
                 
                 {/* Subtle light glow effect inside box */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#8ab645] rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"></div>
