@@ -123,7 +123,7 @@ const Hero = () => {
 
           {/* Secondary Subtext overlay */}
           <motion.p variants={itemVariants} className="text-lg text-white/90 mb-10 flex items-center gap-2">
-            <span className="text-white">🌱</span> Powered by Nature. Engineered for Tomorrow.
+            <span className="text-white">🌱</span> Powering a Greener Tomorrow.
           </motion.p>
 
           {/* Click actions buttons */}

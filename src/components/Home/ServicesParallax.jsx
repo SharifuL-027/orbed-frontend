@@ -72,7 +72,7 @@ const ServicesParallax = () => {
                 Services
               </span>
               <h2 className="text-4xl md:text-5xl dm-sans-bold text-white mb-6">
-                Benefits to Save Energy
+              We Offer Our Clients.
               </h2>
             </motion.div>
 
