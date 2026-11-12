@@ -117,7 +117,7 @@ const ServicesParallax = () => {
             
             {/* Circular View All Button */}
             <motion.a 
-              href="#"
+              href="/services"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="absolute top-0 right-10 w-24 h-24 rounded-full border border-gray-600 flex flex-col items-center justify-center text-gray-300 hover:text-white hover:border-white transition-all z-20"
