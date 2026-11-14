@@ -94,7 +94,7 @@ const AboutUs = () => {
 
       {/* --- Section 1: The Orbed Story --- */}
       {/* Ekhane relative, z-10 ebong shadow deya hoyeche jate eta hero er upor diye slide kore */}
-      <section className="py-24 lg:py-32 px-8 relative z-10 bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
+      <section className="py-24 lg:py-32 px-8 relative z-10 bg-white rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.15)]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
             
