@@ -794,63 +794,104 @@ const Services = () => {
         </div>
       </section>
 
-      {/* --- Section 4: Bottom CTA / Contact (High-End Overlapping Dark Box) --- */}
-      <section className="py-24 lg:py-36 px-6 lg:px-8 bg-white relative z-10">
-        <div className="max-w-300 mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+      {/* --- Section 4: Bottom CTA / Contact (Single Heroic Image + Premium Dark Box) --- */}
+      <section className="py-24 lg:py-36 px-6 lg:px-8 bg-white relative z-10 overflow-hidden">
+        <div className="max-w-300 mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-14">
           
-          {/* Left: 2 Staggered Vertical Images */}
-          <div className="w-full lg:w-[45%] flex gap-6 h-125 lg:h-150">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="w-1/2 h-full pt-12 relative z-10">
-              <img 
-                src="https://plus.unsplash.com/premium_photo-1680206587718-19b00a9be6b5?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" 
-                alt="Solar Panel" 
-                className="w-full h-full object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+          {/* Left: Single Architectural Portrait Frame */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="w-full lg:w-[45%] relative"
+          >
+            {/* Subtle Soft Accent Backdrop */}
+            <div className="hidden sm:block absolute -inset-3 rounded-[2.8rem] bg-linear-to-tr from-[#8ab645]/15 via-transparent to-[#0a192f]/10 -z-10" />
+
+            <div className="relative w-full h-[420px] sm:h-[520px] lg:h-[640px] rounded-[2.5rem] overflow-hidden shadow-[0_25px_65px_rgba(6,19,37,0.16)] border border-gray-100 group">
+              <img
+                src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=85&w=1200"
+                alt="Solar Engineers Inspection and Maintenance"
+                className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
               />
-            </motion.div>
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, delay: 0.2 }} className="w-1/2 h-full pb-12 relative z-20">
-              <img 
-                src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80&w=600" 
-                alt="Engineers" 
-                className="w-full h-full object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
-              />
-            </motion.div>
-          </div>
+
+              {/* Subtle Bottom Dark Gradient for Depth */}
+              <div className="absolute inset-0 bg-linear-to-t from-[#061325]/85 via-[#061325]/15 to-transparent" />
+
+              {/* Floating Glassmorphic O&M Badge */}
+              <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 flex items-center justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-[#8ab645] animate-pulse" />
+                    <span className="text-[11px] dm-sans-bold uppercase tracking-widest text-[#8ab645]">
+                      24/7 O&amp;M Support
+                    </span>
+                  </div>
+                  <p className="text-white dm-sans-bold text-base sm:text-lg leading-snug">
+                    Peak Solar Efficiency &amp; Care
+                  </p>
+                </div>
+
+                <div className="text-right shrink-0 border-l border-white/15 pl-4">
+                  <p className="text-2xl sm:text-3xl dm-sans-bold text-white leading-none">
+                    99<span className="text-[#8ab645]">%</span>
+                  </p>
+                  <p className="text-[11px] text-gray-300 uppercase tracking-wider mt-1">
+                    System Uptime
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Right: Content & Stunning Premium Dark Box */}
-          <div className="w-full lg:w-[55%] lg:pl-12">
+          <div className="w-full lg:w-[55%]">
             <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               
-              <h2 className="text-3xl md:text-3xl lg:text-4xl dm-sans-bold text-gray-900 mb-6 font-serif leading-[1.1]">
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="w-2 h-2 rounded-full bg-[#8ab645]" />
+                <span className="text-[#8ab645] dm-sans-bold text-xs uppercase tracking-widest">
+                  Enterprise &amp; O&amp;M Solutions
+                </span>
+              </div>
+
+              <h2 className="text-3xl md:text-4xl lg:text-[42px] dm-sans-bold text-gray-900 mb-5 font-serif leading-[1.15]">
                 Helping Companies With Better Solutions
               </h2>
-              <p className="text-gray-500 sans-medium text-lg mb-10 leading-relaxed max-w-2xl">
+              <p className="text-gray-500 sans-medium text-base sm:text-lg mb-9 leading-relaxed max-w-2xl">
                 We partner with companies to deliver innovative solar EPC solutions that optimize energy output and reduce costs. Our end-to-end expertise ensures reliable performance tailored to your business needs.
               </p>
 
-              {/* The Dark Box Overlapping Style */}
-              <div className="bg-linear-to-br from-[#061325] to-[#0a192f] p-10 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_rgba(10,25,47,0.2)] border border-white/10 relative overflow-hidden group">
+              {/* The Dark Box */}
+              <div className="bg-linear-to-br from-[#061325] to-[#0a192f] p-8 sm:p-10 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_rgba(10,25,47,0.2)] border border-white/10 relative overflow-hidden group">
                 
                 {/* Subtle light glow effect inside box */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#8ab645] rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#8ab645] rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
 
-                <h3 className="text-2xl md:text-3xl dm-sans-bold text-white mb-4 relative z-10">Do you Need Help With Solar Panel Maintenance?</h3>
+                <h3 className="text-2xl md:text-3xl dm-sans-bold text-white mb-4 relative z-10 leading-snug">
+                  Do you Need Help With Solar Panel Maintenance?
+                </h3>
                 <p className="text-gray-400 sans-medium text-base leading-relaxed mb-8 relative z-10">
-                  Keep your solar panels performing at peak efficiency with our expert O&M services. We handle inspections, cleaning, and performance optimization.
+                  Keep your solar panels performing at peak efficiency with our expert O&amp;M services. We handle inspections, cleaning, and performance optimization.
                 </p>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10 relative z-10">
-                  <div className="flex items-center gap-3 text-white text-base sans-medium bg-white/5 px-4 py-3 rounded-xl border border-white/5">
-                    <BsCheckCircleFill className="text-[#8ab645] text-lg" /> Easy Booking
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-9 relative z-10">
+                  <div className="flex items-center gap-3 text-white text-sm sm:text-base sans-medium bg-white/5 px-4 py-3.5 rounded-xl border border-white/5">
+                    <BsCheckCircleFill className="text-[#8ab645] text-lg shrink-0" /> Easy Booking
                   </div>
-                  <div className="flex items-center gap-3 text-white text-base sans-medium bg-white/5 px-4 py-3 rounded-xl border border-white/5">
-                    <BsCheckCircleFill className="text-[#8ab645] text-lg" /> Free Expert Opinion
+                  <div className="flex items-center gap-3 text-white text-sm sm:text-base sans-medium bg-white/5 px-4 py-3.5 rounded-xl border border-white/5">
+                    <BsCheckCircleFill className="text-[#8ab645] text-lg shrink-0" /> Free Expert Opinion
                   </div>
-                  <div className="flex items-center gap-3 text-white text-base sans-medium bg-white/5 px-4 py-3 rounded-xl border border-white/5 sm:col-span-2">
-                    <BsCheckCircleFill className="text-[#8ab645] text-lg" /> Get Your products delivered directly
+                  <div className="flex items-center gap-3 text-white text-sm sm:text-base sans-medium bg-white/5 px-4 py-3.5 rounded-xl border border-white/5 sm:col-span-2">
+                    <BsCheckCircleFill className="text-[#8ab645] text-lg shrink-0" /> Get Your products delivered directly
                   </div>
                 </div>
 
-                <Link to="/contact" className="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-[#8ab645] text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[#7a9d3d] transition-all duration-300 shadow-[0_10px_30px_rgba(138,182,69,0.3)] hover:shadow-[0_15px_40px_rgba(138,182,69,0.5)] transform hover:-translate-y-1 relative z-10">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-[#8ab645] text-white px-10 py-4 rounded-2xl font-bold text-base sm:text-lg hover:bg-[#7a9d3d] transition-all duration-300 shadow-[0_10px_30px_rgba(138,182,69,0.3)] hover:shadow-[0_15px_40px_rgba(138,182,69,0.5)] transform hover:-translate-y-1 relative z-10"
+                >
                   Book a Consultation
                 </Link>
               </div>
