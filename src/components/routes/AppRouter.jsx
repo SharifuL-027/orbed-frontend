@@ -25,6 +25,7 @@ import ManageJobs from '../Admin/ManageJobs';
 // Import PageHead Component
 import PageHead from '../../components/PageHead'; 
 import Gallery from '../Gallery/Gallery';
+import ManageGallery from '../Admin/ManageGallery';
 
 const AppRoutes = () => {
   return (
@@ -146,6 +147,7 @@ const AppRoutes = () => {
           <Route path="applications" element={<><PageHead title="Job Applications" /><ManageApplications /></>} />
           <Route path="messages" element={<><PageHead title="Messages & Inquiries" /><ManageMessages /></>} />
           <Route path="jobs" element={<><PageHead title="Manage Job Openings" /><ManageJobs /></>} />
+          <Route path="gallery" element={<><PageHead title="Manage Our Gallery" /><ManageGallery /></>} />
         </Route>
         
       </Routes>
