@@ -622,13 +622,13 @@ const Services = () => {
                   viewport={{ once: true }}
                   className="lg:col-span-7"
                 >
-                  <div className="relative rounded-[2rem] overflow-hidden shadow-[0_25px_60px_rgba(10,25,47,0.12)] border-4 border-white bg-gray-100 group h-[280px] sm:h-[370px] lg:h-[410px]">
+                  <div className="relative rounded-4xl overflow-hidden shadow-[0_25px_60px_rgba(10,25,47,0.12)] border-4 border-white bg-gray-100 group h-[280px] sm:h-[370px] lg:h-[410px]">
                     <img
                       src="https://res.cloudinary.com/wtbwxhmc/image/upload/q_auto,f_auto/v1794633517/orbed_02_ngr4er.png"
                       alt="Solar Street Light Solutions"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/65 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0a192f]/65 via-transparent to-transparent" />
 
                     {/* Floating Glass Pill */}
                     <div className="absolute bottom-5 left-5 right-5 sm:right-auto bg-white/90 backdrop-blur-md px-5 py-3 rounded-2xl shadow-lg border border-white/60 flex items-center gap-3.5">
@@ -697,13 +697,13 @@ const Services = () => {
                   viewport={{ once: true }}
                   className="lg:col-span-7 order-2 lg:order-1"
                 >
-                  <div className="relative rounded-[2rem] overflow-hidden shadow-[0_25px_60px_rgba(10,25,47,0.12)] border-4 border-white bg-gray-100 group h-[280px] sm:h-[370px] lg:h-[410px]">
+                  <div className="relative rounded-4xl overflow-hidden shadow-[0_25px_60px_rgba(10,25,47,0.12)] border-4 border-white bg-gray-100 group h-[280px] sm:h-92.5 lg:h-102.5">
                     <img
                       src="https://res.cloudinary.com/wtbwxhmc/image/upload/q_auto,f_auto/v1794633517/orbed_01_l3o0tb.png"
                       alt="Solar Water Pump Solutions"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/65 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0a192f]/65 via-transparent to-transparent" />
 
                     {/* Floating Glass Pill */}
                     <div className="absolute bottom-5 left-5 right-5 sm:left-auto sm:right-5 bg-white/90 backdrop-blur-md px-5 py-3 rounded-2xl shadow-lg border border-white/60 flex items-center gap-3.5">
