@@ -33,7 +33,8 @@ const AdminLayout = () => {
     { name: 'Job Applications', path: '/admin/applications', icon: FaUserTie },
     { name: 'Messages', path: '/admin/messages', icon: FaEnvelope },
     { name: 'Manage Jobs', path: '/admin/jobs', icon: FaBriefcase },
-    { name: 'Manage Gallery', path: '/admin/gallery', icon: FaImages }
+    { name: 'Manage Gallery', path: '/admin/gallery', icon: FaImages },
+    { name: 'Manage Blogs', path: '/admin/blogs', icon: FaNewspaper }
 
   ];
 

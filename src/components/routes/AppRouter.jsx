@@ -26,6 +26,8 @@ import ManageJobs from '../Admin/ManageJobs';
 import PageHead from '../../components/PageHead'; 
 import Gallery from '../Gallery/Gallery';
 import ManageGallery from '../Admin/ManageGallery';
+import ManageBlogs from '../Admin/ManageBlog';
+import Blog from '../Blog/Blog';
 
 const AppRoutes = () => {
   return (
@@ -117,6 +119,15 @@ const AppRoutes = () => {
               </>
             } 
           />
+          <Route 
+            path="/blog" 
+            element={
+              <>
+                <PageHead title="Contact Us" description="Get in touch with Orbed Green Energy. Request a quote, ask a question, or visit our office at Mirpur DOHS, Dhaka." />
+                <Blog />
+              </>
+            } 
+          />
         </Route>
 
         {/* 🟠 LOGIN ROUTE */}
@@ -148,6 +159,7 @@ const AppRoutes = () => {
           <Route path="messages" element={<><PageHead title="Messages & Inquiries" /><ManageMessages /></>} />
           <Route path="jobs" element={<><PageHead title="Manage Job Openings" /><ManageJobs /></>} />
           <Route path="gallery" element={<><PageHead title="Manage Our Gallery" /><ManageGallery /></>} />
+          <Route path="blogs" element={<><PageHead title="Manage Blogs"/><ManageBlogs/></>} />
         </Route>
         
       </Routes>
