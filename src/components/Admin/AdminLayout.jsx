@@ -10,8 +10,10 @@ import {
   FaBars,
   FaTimes,
   FaGlobe,
-  FaBriefcase
+  FaBriefcase,
+  FaImages
 } from 'react-icons/fa';
+import { path } from 'framer-motion/client';
 
 const AdminLayout = () => {
   const location = useLocation();
@@ -30,7 +32,8 @@ const AdminLayout = () => {
     { name: 'Manage Products', path: '/admin/products', icon: FaBoxOpen },
     { name: 'Job Applications', path: '/admin/applications', icon: FaUserTie },
     { name: 'Messages', path: '/admin/messages', icon: FaEnvelope },
-    { name: 'Manage Jobs', path: '/admin/jobs', icon: FaBriefcase }
+    { name: 'Manage Jobs', path: '/admin/jobs', icon: FaBriefcase },
+    { name: 'Manage Gallery', path: '/admin/gallery', icon: FaImages }
 
   ];
 

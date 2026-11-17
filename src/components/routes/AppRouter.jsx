@@ -24,6 +24,7 @@ import ManageMessages from '../Admin/ManageMessages';
 import ManageJobs from '../Admin/ManageJobs';
 // Import PageHead Component
 import PageHead from '../../components/PageHead'; 
+import Gallery from '../Gallery/Gallery';
 
 const AppRoutes = () => {
   return (
@@ -101,6 +102,17 @@ const AppRoutes = () => {
               <>
                 <PageHead title="Contact Us" description="Get in touch with Orbed Green Energy. Request a quote, ask a question, or visit our office at Mirpur DOHS, Dhaka." />
                 <ContactUs />
+              </>
+            } 
+          />
+          <Route 
+            path="/gallery" 
+            element={
+              <>
+                <PageHead
+  title="Gallery"
+  description="Explore our gallery of solar energy projects, solar panel installations, and renewable energy solutions by Orbed Green Energy. Discover our work, project highlights, and commitment to sustainable energy in Bangladesh."
+/>                <Gallery />
               </>
             } 
           />
