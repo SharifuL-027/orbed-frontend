@@ -91,19 +91,12 @@ const Gallery = () => {
         </div>
 
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 mt-16">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block text-[#8ab645] text-xs dm-sans-bold uppercase tracking-[0.25em] mb-3"
-          >
-            Our Visual Journey
-          </motion.span>
+          
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-3xl md:text-5xl dm-sans-bold text-white leading-[1.2]"
+            className="text-3xl md:text-4xl dm-sans-bold text-white leading-[1.2]"
           >
             Project Gallery &amp; Solar Milestones
           </motion.h1>
@@ -168,7 +161,7 @@ const Gallery = () => {
 
           {/* Main Interactive Sharp Carousel */}
           {loading ? (
-            <div className="w-full h-[420px] md:h-[580px] bg-gray-100 animate-pulse" />
+            <div className="w-full h-105 md:h-145 bg-gray-100 animate-pulse" />
           ) : featuredSlides.length === 0 ? (
             <div className="w-full py-24 bg-[#fafaf9] border border-gray-200 text-center">
               <FaImages className="mx-auto text-4xl text-gray-300 mb-3" />
@@ -179,7 +172,7 @@ const Gallery = () => {
             <div className="space-y-6">
               
               {/* Full-Bleed Sharp Stage */}
-              <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[620px] overflow-hidden shadow-[0_30px_70px_rgba(6,19,37,0.18)] bg-[#061325] group">
+              <div className="relative w-full h-100 sm:h-125 lg:h-155 overflow-hidden shadow-[0_30px_70px_rgba(6,19,37,0.18)] bg-[#061325] group">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={featuredSlides[currentSlide]._id}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaCloudUploadAlt, FaTrash, FaStar, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaCloudUploadAlt, FaTrash, FaStar, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
 import axiosInstance from '../../api/axiosInstance';
 
 const ManageGallery = () => {
@@ -11,8 +11,7 @@ const ManageGallery = () => {
   const [category, setCategory] = useState('Solar Projects');
   const [location, setLocation] = useState('Dhaka, Bangladesh');
   const [isFeatured, setIsFeatured] = useState(true);
-  const [imageFile, setImageFile] = useState(null);
-  const [preview, setPreview] = useState('');
+  const [selectedFiles, setSelectedFiles] = useState([]); // Array of { file, preview }
 
   const resolveImageUrl = (url) => {
     if (!url) return '';
@@ -36,16 +35,32 @@ const ManageGallery = () => {
     fetchItems();
   }, []);
 
+  // Select multiple files & append to existing selection
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    setImageFile(file);
-    setPreview(URL.createObjectURL(file));
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
+
+    const mapped = files.map((file) => ({
+      file,
+      preview: URL.createObjectURL(file),
+    }));
+
+    setSelectedFiles((prev) => [...prev, ...mapped]);
+    e.target.value = ''; // Reset input so same file can be re-selected if removed
+  };
+
+  // Remove a single image before uploading
+  const removeSelectedFile = (indexToRemove) => {
+    setSelectedFiles((prev) => {
+      const target = prev[indexToRemove];
+      if (target) URL.revokeObjectURL(target.preview);
+      return prev.filter((_, idx) => idx !== indexToRemove);
+    });
   };
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    if (!imageFile) return alert('Please select an image first.');
+    if (selectedFiles.length === 0) return alert('Please select at least one image.');
     setUploading(true);
 
     const formData = new FormData();
@@ -53,15 +68,19 @@ const ManageGallery = () => {
     formData.append('category', category);
     formData.append('location', location);
     formData.append('isFeatured', isFeatured);
-    formData.append('image', imageFile);
+
+    selectedFiles.forEach(({ file }) => {
+      formData.append('images', file);
+    });
 
     try {
       await axiosInstance.post('/gallery', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
+
+      selectedFiles.forEach(({ preview }) => URL.revokeObjectURL(preview));
       setTitle('');
-      setImageFile(null);
-      setPreview('');
+      setSelectedFiles([]);
       fetchItems();
     } catch (err) {
       alert('Upload failed. Please try again.');
@@ -94,17 +113,20 @@ const ManageGallery = () => {
     <div className="p-6 max-w-6xl mx-auto space-y-8">
       <div>
         <h2 className="text-2xl font-bold text-gray-900">Manage Project Gallery</h2>
-        <p className="text-sm text-gray-500">Upload project photos and choose which ones highlight in the top carousel.</p>
+        <p className="text-sm text-gray-500">
+          Select and upload multiple project photos at once, and choose which ones highlight in the top carousel.
+        </p>
       </div>
 
       {/* Upload Form */}
       <form onSubmit={handleUpload} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-xs font-bold text-gray-600 mb-1">Project / Photo Title *</label>
+            <label className="block text-xs font-bold text-gray-600 mb-1">
+              Project / Batch Title <span className="text-gray-400 font-normal">(Optional for multi-upload)</span>
+            </label>
             <input
               type="text"
-              required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. 500kW Industrial Rooftop Solar"
@@ -138,26 +160,68 @@ const ManageGallery = () => {
           </div>
         </div>
 
-        {/* File Dropzone */}
+        {/* Multi-File Dropzone */}
         <div className="relative border-2 border-dashed border-gray-200 hover:border-[#8ab645] rounded-2xl p-6 text-center bg-[#fafaf9] transition-colors">
           <input
             type="file"
             accept="image/*"
+            multiple
             onChange={handleFileChange}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
           />
-          {preview ? (
-            <img src={preview} alt="Preview" className="h-40 mx-auto rounded-xl object-cover shadow-sm" />
-          ) : (
-            <div className="space-y-1">
-              <FaCloudUploadAlt className="mx-auto text-3xl text-[#8ab645]" />
-              <p className="text-sm font-semibold text-gray-700">Click or drag an image to upload</p>
-              <p className="text-xs text-gray-400">JPG, PNG, WEBP up to 10MB</p>
-            </div>
-          )}
+          <div className="space-y-1">
+            <FaCloudUploadAlt className="mx-auto text-3xl text-[#8ab645]" />
+            <p className="text-sm font-semibold text-gray-700">
+              Click or drag multiple images here to upload
+            </p>
+            <p className="text-xs text-gray-400">
+              Select up to 20 images at once (JPG, PNG, WEBP • Max 10MB each)
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center justify-between">
+        {/* Selected Images Preview Grid */}
+        {selectedFiles.length > 0 && (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-gray-700">
+                Selected Images ({selectedFiles.length})
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  selectedFiles.forEach(({ preview }) => URL.revokeObjectURL(preview));
+                  setSelectedFiles([]);
+                }}
+                className="text-xs text-red-500 hover:underline font-semibold"
+              >
+                Clear All
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+              {selectedFiles.map((item, idx) => (
+                <div key={idx} className="relative group h-24 rounded-xl overflow-hidden border border-gray-200 bg-gray-100">
+                  <img
+                    src={item.preview}
+                    alt={`Preview ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeSelectedFile(idx)}
+                    title="Remove image"
+                    className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center text-xs transition-colors"
+                  >
+                    <FaTimes size={10} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="flex items-center justify-between pt-1">
           <label className="inline-flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer">
             <input
               type="checkbox"
@@ -170,15 +234,17 @@ const ManageGallery = () => {
 
           <button
             type="submit"
-            disabled={uploading}
-            className="bg-[#8ab645] hover:bg-[#769e38] text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors"
+            disabled={uploading || selectedFiles.length === 0}
+            className="bg-[#8ab645] hover:bg-[#769e38] disabled:opacity-50 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors"
           >
-            {uploading ? 'Uploading...' : 'Upload to Gallery'}
+            {uploading
+              ? `Uploading ${selectedFiles.length} Image${selectedFiles.length > 1 ? 's' : ''}...`
+              : `Upload ${selectedFiles.length > 0 ? `(${selectedFiles.length}) ` : ''}to Gallery`}
           </button>
         </div>
       </form>
 
-      {/* Gallery Grid */}
+      {/* Existing Gallery Grid */}
       {loading ? (
         <p className="text-sm text-gray-500">Loading gallery...</p>
       ) : (
