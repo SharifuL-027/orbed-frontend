@@ -21,7 +21,7 @@ import ManageCategories from '../Admin/ManageCategories';
 import ManageProducts from '../Admin/ManageProducts';
 import ManageApplications from '../Admin/ManageApplication';
 import ManageMessages from '../Admin/ManageMessages';
-
+import ManageJobs from '../Admin/ManageJobs';
 // Import PageHead Component
 import PageHead from '../../components/PageHead'; 
 
@@ -133,6 +133,7 @@ const AppRoutes = () => {
           <Route path="products" element={<><PageHead title="Manage Products" /><ManageProducts /></>} />
           <Route path="applications" element={<><PageHead title="Job Applications" /><ManageApplications /></>} />
           <Route path="messages" element={<><PageHead title="Messages & Inquiries" /><ManageMessages /></>} />
+          <Route path="jobs" element={<><PageHead title="Manage Job Openings" /><ManageJobs /></>} />
         </Route>
         
       </Routes>

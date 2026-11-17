@@ -811,7 +811,7 @@ const Services = () => {
 
             <div className="relative w-full h-[420px] sm:h-[520px] lg:h-[640px] rounded-[2.5rem] overflow-hidden shadow-[0_25px_65px_rgba(6,19,37,0.16)] border border-gray-100 group">
               <img
-                src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=85&w=1200"
+                src="https://images.pexels.com/photos/6876534/pexels-photo-6876534.jpeg"
                 alt="Solar Engineers Inspection and Maintenance"
                 className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
               />

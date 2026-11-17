@@ -9,7 +9,8 @@ import {
   FaSignOutAlt,
   FaBars,
   FaTimes,
-  FaGlobe
+  FaGlobe,
+  FaBriefcase
 } from 'react-icons/fa';
 
 const AdminLayout = () => {
@@ -29,6 +30,8 @@ const AdminLayout = () => {
     { name: 'Manage Products', path: '/admin/products', icon: FaBoxOpen },
     { name: 'Job Applications', path: '/admin/applications', icon: FaUserTie },
     { name: 'Messages', path: '/admin/messages', icon: FaEnvelope },
+    { name: 'Manage Jobs', path: '/admin/jobs', icon: FaBriefcase }
+
   ];
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaBriefcase, 
@@ -35,11 +35,23 @@ const Careers = () => {
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
 
-  // Jobs Data
-  const openPositions = [
-    { id: 1, title: "Project Manager", type: "Full-Time", location: "Dhaka, Bangladesh" },
-    { id: 2, title: "Solar Engineer", type: "Full-Time", location: "Bangladesh" }
-  ];
+  // Dynamic Jobs State
+  const [openPositions, setOpenPositions] = useState([]);
+  const [loadingJobs, setLoadingJobs] = useState(true);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await axiosInstance.get('/jobs');
+        setOpenPositions(res.data || []);
+      } catch (error) {
+        console.error("Failed to load open positions:", error);
+      } finally {
+        setLoadingJobs(false);
+      }
+    };
+    fetchJobs();
+  }, []);
 
   // Growth Perks
   const growthPerks = [
@@ -71,7 +83,6 @@ const Careers = () => {
     setFormData(prev => ({ ...prev, cv: e.target.files[0] }));
   };
 
-  // 🔥 Fully Dynamic Submission with FormData (for CV/Document file upload)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -83,11 +94,10 @@ const Careers = () => {
     submitData.append('position', formData.position);
     submitData.append('message', formData.message);
     if (formData.cv) {
-      submitData.append('cv', formData.cv); // File attachment
+      submitData.append('cv', formData.cv);
     }
 
     try {
-      // Backend API call to save application and file in MongoDB / Server storage
       const response = await axiosInstance.post('/careers', submitData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -114,25 +124,23 @@ const Careers = () => {
   return (
     <div className="w-full selection:bg-[#8ab645] selection:text-white pb-24">
       
-      {/* --- 100% PERFECT FIXED Parallax Hero Section --- */}
+      {/* --- Fixed Parallax Hero Section --- */}
       <section className="relative w-full h-[70vh] flex items-center justify-center">
         <div className="fixed top-0 left-0 w-full h-screen z-[-1]">
           <div 
             className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url('https\://res.cloudinary.com/dsrs8hryx/image/upload/q_auto,f_auto/v1794207752/Solar_panels_reflecting_sun_1ffa0567_2K_kdrgyu.jpg')` }}
+            style={{ backgroundImage: `url('https://res.cloudinary.com/dsrs8hryx/image/upload/q_auto,f_auto/v1794207752/Solar_panels_reflecting_sun_1ffa0567_2K_kdrgyu.jpg')` }}
           />
           <div className="absolute inset-0 bg-linear-to-b from-[#0a0f16]/90 via-[#0a0f16]/60 to-[#0a0f16]/90" />
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6 mt-16">
-          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
             className="text-3xl md:text-4xl dm-sans-bold text-white font-serif leading-[1.2] mb-6"
           >
             Join the Orbed Green Energy Ltd. Team and Power a Greener Future!
           </motion.h1>
-        
         </div>
       </section>
 
@@ -206,8 +214,8 @@ const Careers = () => {
           <div className="w-full lg:w-1/2 relative">
             <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <div className="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1668097613572-40b7c11c8727?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Team Diversity" className="w-full h-64 object-cover rounded-3xl mt-8 shadow-lg" />
-                <img src="https://images.unsplash.com/photo-1726221062287-fda475b85493?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Professional Workplace" className="w-full h-64 object-cover rounded-3xl shadow-lg" />
+                <img src="https://images.unsplash.com/photo-1668097613572-40b7c11c8727?q=80&w=1170&auto=format&fit=crop" alt="Team Diversity" className="w-full h-64 object-cover rounded-3xl mt-8 shadow-lg" />
+                <img src="https://images.unsplash.com/photo-1726221062287-fda475b85493?q=80&w=1170&auto=format&fit=crop" alt="Professional Workplace" className="w-full h-64 object-cover rounded-3xl shadow-lg" />
               </div>
             </motion.div>
           </div>
@@ -227,7 +235,7 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* --- Section 4: Explore Career Opportunities --- */}
+      {/* --- Section 4: Dynamic Explore Career Opportunities --- */}
       <section id="jobs-section" className="py-24 px-6 lg:px-8 bg-white relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-16">
@@ -238,30 +246,61 @@ const Careers = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {openPositions.map((job) => (
-              <motion.div key={job.id} variants={fadeUp} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-[#8ab645]/30 transition-all duration-300 flex flex-col group">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 font-serif group-hover:text-[#8ab645] transition-colors">{job.title}</h3>
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 font-medium">
-                    <span className="flex items-center gap-2"><FaBriefcase className="text-[#8ab645] dm-sans-bold" /> {job.type}</span>
-                    <span className="flex items-center gap-2"><FaMapMarkerAlt className="text-[#8ab645] dm-sans-bold" /> {job.location}</span>
+          {loadingJobs ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {[1, 2].map((n) => (
+                <div key={n} className="h-52 rounded-3xl bg-gray-100 animate-pulse" />
+              ))}
+            </div>
+          ) : openPositions.length === 0 ? (
+            <div className="max-w-2xl mx-auto text-center bg-[#fafaf9] border border-gray-200 rounded-3xl p-10">
+              <p className="text-gray-800 dm-sans-bold text-xl mb-2">No Specific Openings Right Now</p>
+              <p className="text-gray-500 text-sm mb-6">
+                You can still submit a General Application below—we always welcome talented engineers and professionals.
+              </p>
+              <button
+                onClick={() => scrollToForm('General Application')}
+                className="bg-[#8ab645] text-white px-6 py-3 rounded-full text-sm dm-sans-bold hover:bg-[#769e38] transition-colors"
+              >
+                Submit General Application
+              </button>
+            </div>
+          ) : (
+            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {openPositions.map((job) => (
+                <motion.div key={job._id} variants={fadeUp} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-[#8ab645]/30 transition-all duration-300 flex flex-col group">
+                  <div className="mb-6">
+                    {job.department && (
+                      <span className="inline-block text-[11px] uppercase tracking-wider font-bold text-[#8ab645] bg-green-50 px-3 py-1 rounded-full mb-3">
+                        {job.department}
+                      </span>
+                    )}
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 font-serif group-hover:text-[#8ab645] transition-colors">{job.title}</h3>
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 font-medium">
+                      <span className="flex items-center gap-2"><FaBriefcase className="text-[#8ab645]" /> {job.type}</span>
+                      <span className="flex items-center gap-2"><FaMapMarkerAlt className="text-[#8ab645]" /> {job.location}</span>
+                    </div>
+                    {job.description && (
+                      <p className="text-gray-600 text-sm mt-4 line-clamp-3 leading-relaxed">
+                        {job.description}
+                      </p>
+                    )}
                   </div>
-                </div>
-                <div className="mt-auto pt-6 border-t border-gray-100">
-                  <button 
-                    onClick={() => scrollToForm(job.title)}
-                    className="w-full flex items-center justify-between text-gray-800 font-bold group-hover:text-[#8ab645] transition-colors"
-                  >
-                    Apply Now
-                    <span className="w-10 h-10 rounded-full bg-[#f4f9f1] flex items-center justify-center group-hover:bg-[#8ab645] group-hover:text-white transition-colors duration-300">
-                      <FaArrowRight size={14} />
-                    </span>
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                  <div className="mt-auto pt-6 border-t border-gray-100">
+                    <button 
+                      onClick={() => scrollToForm(job.title)}
+                      className="w-full flex items-center justify-between text-gray-800 font-bold group-hover:text-[#8ab645] transition-colors"
+                    >
+                      Apply Now
+                      <span className="w-10 h-10 rounded-full bg-[#f4f9f1] flex items-center justify-center group-hover:bg-[#8ab645] group-hover:text-white transition-colors duration-300">
+                        <FaArrowRight size={14} />
+                      </span>
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -271,7 +310,7 @@ const Careers = () => {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden flex flex-col md:flex-row">
             
             {/* Form Left Side / Info */}
-            <div className="w-full md:w-2/5 bg-gradient-to-br from-[#8ab645] to-[#6b8e34] p-10 md:p-12 text-white flex flex-col justify-center relative overflow-hidden">
+            <div className="w-full md:w-2/5 bg-linear-to-br from-[#8ab645] to-[#6b8e34] p-10 md:p-12 text-white flex flex-col justify-center relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
               <h3 className="text-3xl dm-sans-bold mb-4 relative z-10">Submit Your Application</h3>
               <p className="text-white/90 text-sm sans-medium text-justify leading-relaxed mb-8 relative z-10">
@@ -326,7 +365,7 @@ const Careers = () => {
                       <select name="position" required value={formData.position} onChange={handleInputChange} className="w-full bg-[#fafaf9] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8ab645]/50 focus:border-[#8ab645] transition-all text-sm text-gray-700">
                         <option value="">Select a position</option>
                         {openPositions.map(job => (
-                          <option key={job.id} value={job.title}>{job.title}</option>
+                          <option key={job._id} value={job.title}>{job.title}</option>
                         ))}
                         <option value="General Application">General Application</option>
                       </select>
