@@ -11,7 +11,8 @@ import {
   FaTimes,
   FaGlobe,
   FaBriefcase,
-  FaImages
+  FaImages,
+  FaNewspaper
 } from 'react-icons/fa';
 import { path } from 'framer-motion/client';
 

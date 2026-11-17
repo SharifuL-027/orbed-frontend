@@ -109,7 +109,7 @@ const Services = () => {
       </section>
 
       {/* --- Section 1: Intro (Premium Overlapping Visuals) --- */}
-      <section className="py-24 lg:py-36 px-6 lg:px-8 relative z-10 bg-white rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.08)]">
+      <section className="py-15 lg:py-20 px-6 lg:px-8 relative z-10 bg-white rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.08)]">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           
           {/* Left: Premium Overlapping Vertical Images */}
@@ -174,7 +174,7 @@ const Services = () => {
 
   
      {/* --- Section 2: Interactive Coded EPC Infographic --- */}
-      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white relative z-10 overflow-hidden">
+      <section className="py-14 lg:py-22 px-4 sm:px-6 lg:px-8 bg-white relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           
           {/* Title Area */}
@@ -544,7 +544,7 @@ const Services = () => {
       
 
       {/* --- Section 3: Modern Showcase - Solar Street Light & Water Pump Solutions --- */}
-      <section className="py-24 lg:py-32 bg-white relative z-10 border-t border-gray-100 overflow-hidden">
+      <section className="py-14 lg:py-22 bg-white relative z-10 overflow-hidden">
         
         {/* Subtle Ambient Background Glow */}
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#8ab645]/10 rounded-full blur-[120px] pointer-events-none" />
@@ -571,7 +571,7 @@ const Services = () => {
             </h2>
           </motion.div>
 
-          <div className="space-y-28 lg:space-y-36">
+          <div className="space-y-20 lg:space-y-36">
 
             {/* =========================================================
                 1. SOLAR STREET LIGHT SOLUTIONS (Text Left, Image Right)
@@ -650,6 +650,7 @@ const Services = () => {
               </div>
 
               {/* 5-Card Interactive Feature Bento */}
+             {/* 5-Card Interactive Feature Bento */}
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -666,14 +667,14 @@ const Services = () => {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className={`group bg-white rounded-2xl p-5 border border-gray-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(138,182,69,0.14)] hover:border-[#8ab645]/45 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between gap-4 ${
+                    className={`group bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(138,182,69,0.14)] hover:border-[#8ab645]/45 transition-all duration-300 hover:-translate-y-1 flex flex-row items-center gap-3.5 ${
                       idx === 4 ? "sm:col-span-2 lg:col-span-1" : ""
                     }`}
                   >
-                    <div className="w-11 h-11 rounded-xl bg-[#f3f8ec] text-[#78b843] group-hover:bg-[#8ab645] group-hover:text-white flex items-center justify-center text-lg transition-colors duration-300">
+                    <div className="w-11 h-11 rounded-xl bg-[#f3f8ec] text-[#78b843] group-hover:bg-[#8ab645] group-hover:text-white flex items-center justify-center text-lg transition-colors duration-300 shrink-0">
                       {item.icon}
                     </div>
-                    <p className="text-[13.5px] font-semibold text-gray-700 leading-snug">
+                    <p className="text-[13.5px] font-semibold text-gray-700 leading-snug text-left">
                       {item.text}
                     </p>
                   </div>
@@ -759,6 +760,7 @@ const Services = () => {
               </div>
 
               {/* 5-Card Interactive Feature Bento */}
+              
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -775,14 +777,14 @@ const Services = () => {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className={`group bg-white rounded-2xl p-5 border border-gray-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(27,94,168,0.12)] hover:border-[#1b5ea8]/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between gap-4 ${
+                    className={`group bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(27,94,168,0.12)] hover:border-[#1b5ea8]/40 transition-all duration-300 hover:-translate-y-1 flex flex-row items-center gap-3.5 ${
                       idx === 4 ? "sm:col-span-2 lg:col-span-1" : ""
                     }`}
                   >
-                    <div className="w-11 h-11 rounded-xl bg-[#eef4fb] text-[#1b5ea8] group-hover:bg-[#1b5ea8] group-hover:text-white flex items-center justify-center text-lg transition-colors duration-300">
+                    <div className="w-11 h-11 rounded-xl bg-[#eef4fb] text-[#1b5ea8] group-hover:bg-[#1b5ea8] group-hover:text-white flex items-center justify-center text-lg transition-colors duration-300 shrink-0">
                       {item.icon}
                     </div>
-                    <p className="text-[13.5px] dm-sans-bold text-gray-700 leading-snug">
+                    <p className="text-[13.5px] dm-sans-bold text-gray-700 leading-snug text-left">
                       {item.text}
                     </p>
                   </div>
@@ -795,7 +797,7 @@ const Services = () => {
       </section>
 
       {/* --- Section 4: Bottom CTA / Contact (Single Heroic Image + Premium Dark Box) --- */}
-      <section className="py-24 lg:py-36 px-6 lg:px-8 bg-white relative z-10 overflow-hidden">
+      <section className="py-14 lg:py-22 px-6 lg:px-8 bg-white relative z-10 overflow-hidden">
         <div className="max-w-300 mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-14">
           
           {/* Left: Single Architectural Portrait Frame */}

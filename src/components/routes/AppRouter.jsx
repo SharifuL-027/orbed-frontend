@@ -123,8 +123,10 @@ const AppRoutes = () => {
             path="/blog" 
             element={
               <>
-                <PageHead title="Contact Us" description="Get in touch with Orbed Green Energy. Request a quote, ask a question, or visit our office at Mirpur DOHS, Dhaka." />
-                <Blog />
+                <PageHead
+  title="Solar Energy Blog"
+  description="Explore the latest solar energy news, renewable energy insights, solar panel guides, industry trends, and expert tips from Orbed Green Energy. Stay informed about sustainable energy solutions and solar technology in Bangladesh." />
+               <Blog />
               </>
             } 
           />
